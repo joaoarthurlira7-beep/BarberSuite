@@ -1,0 +1,613 @@
+import Link from 'next/link';
+import Image from 'next/image';
+import { ParticleCanvas } from '@/components/ParticleCanvas';
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const features = [
+  {
+    icon: '📅',
+    title: 'Agenda Inteligente',
+    description:
+      'Calendário visual por barbeiro com detecção automática de conflitos e lembretes por WhatsApp.',
+  },
+  {
+    icon: '💰',
+    title: 'Financeiro Completo',
+    description:
+      'Controle de caixa, despesas, relatórios detalhados e margem líquida em tempo real.',
+  },
+  {
+    icon: '🌐',
+    title: 'Página Pública',
+    description:
+      'Sua barbearia online em minutos, com agendamento direto pelo cliente sem precisar ligar.',
+  },
+  {
+    icon: '👥',
+    title: 'Gestão de Equipe',
+    description:
+      'Controle de barbeiros, comissões automáticas, metas e métricas de produtividade.',
+  },
+  {
+    icon: '📦',
+    title: 'Estoque Integrado',
+    description:
+      'Gestão de produtos, alertas de estoque baixo e controle de fornecedores em um só lugar.',
+  },
+  {
+    icon: '⭐',
+    title: 'Avaliações',
+    description:
+      'Colete e exiba reviews autênticos dos clientes para construir sua reputação online.',
+  },
+];
+
+const plans = [
+  {
+    id: 'basic',
+    name: 'INSTANCE',
+    label: 'BASIC',
+    price: 'R$99',
+    period: '/mês',
+    description: 'Ideal para barbearias que estão começando a crescer.',
+    features: [
+      '2 barbeiros',
+      '10 serviços cadastrados',
+      '200 agendamentos/mês',
+      'Página pública',
+      'Suporte por e-mail',
+    ],
+    cta: 'Começar Grátis',
+    highlighted: false,
+  },
+  {
+    id: 'pro',
+    name: 'SWARM',
+    label: 'PRO',
+    price: 'R$199',
+    period: '/mês',
+    description: 'Para barbearias que levam o negócio a sério.',
+    badge: 'MAIS POPULAR',
+    features: [
+      '5 barbeiros',
+      '30 serviços cadastrados',
+      '1.000 agendamentos/mês',
+      'WhatsApp integrado',
+      'Relatórios avançados',
+      'Gestão de comissões',
+    ],
+    cta: 'Começar Grátis',
+    highlighted: true,
+  },
+  {
+    id: 'enterprise',
+    name: 'NETWORK',
+    label: 'ENTERPRISE',
+    price: 'R$399+',
+    period: '/mês',
+    description: 'Para redes e franquias que precisam de escala total.',
+    features: [
+      'Barbeiros ilimitados',
+      'Serviços ilimitados',
+      'Agendamentos ilimitados',
+      'Domínio próprio',
+      'Suporte dedicado 24/7',
+      'API access',
+    ],
+    cta: 'Falar com Vendas',
+    highlighted: false,
+  },
+];
+
+const testimonials = [
+  {
+    id: 1,
+    name: 'Carlos Eduardo Souza',
+    city: 'São Paulo, SP',
+    role: 'Dono da Barbearia Corte & Estilo',
+    text: 'O BarberSuite mudou completamente como eu gerencio minha barbearia. Antes eu perdia clientes por falta de organização. Agora tenho tudo automatizado e meu faturamento cresceu 40% em 3 meses.',
+    rating: 5,
+    image: 'https://picsum.photos/seed/barber1/80/80',
+  },
+  {
+    id: 2,
+    name: 'Rafael Andrade Mendes',
+    city: 'Belo Horizonte, MG',
+    role: 'Proprietário da NavalhaDourada',
+    text: 'A página pública profissional que o BarberSuite criou pra mim trouxe 30 clientes novos no primeiro mês. O sistema de agendamento online é incrível e meus clientes adoraram a praticidade.',
+    rating: 5,
+    image: 'https://picsum.photos/seed/barber2/80/80',
+  },
+  {
+    id: 3,
+    name: 'Diego Ferreira Lima',
+    city: 'Curitiba, PR',
+    role: 'Sócio da Barbearia Clássica PR',
+    text: 'Gerencio 4 barbeiros e nunca foi tão fácil. Controle de comissões, agenda sem conflitos e relatórios financeiros detalhados. Recuperei o investimento na primeira semana de uso.',
+    rating: 5,
+    image: 'https://picsum.photos/seed/barber3/80/80',
+  },
+];
+
+const stats = [
+  { value: '500+', label: 'Barbearias' },
+  { value: '50k+', label: 'Agendamentos' },
+  { value: '4.9/5 ★', label: 'Avaliação' },
+];
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function StarRating({ count }: { count: number }) {
+  return (
+    <div className="flex gap-0.5">
+      {Array.from({ length: count }).map((_, i) => (
+        <span key={i} className="text-[#d4af37] text-sm">★</span>
+      ))}
+    </div>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg
+      className="w-4 h-4 shrink-0 mt-0.5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+      style={{ color: 'rgba(160,185,255,0.7)' }}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+  );
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
+
+export default function LandingPage() {
+  return (
+    <div className="min-h-screen text-[#c8cfe0] overflow-x-hidden" style={{ background: '#06080f' }}>
+
+      {/* ══════════════════════════════════════════
+          GLOBAL PARTICLE BACKGROUND (full page)
+      ══════════════════════════════════════════ */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <ParticleCanvas count={200} color="160, 190, 255" />
+      </div>
+
+      {/* ── 1. NAVBAR ── */}
+      <nav className="glass-dark fixed top-0 left-0 right-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="text-xl">✂️</span>
+            <span className="font-[family-name:var(--font-display)] text-xl tracking-widest">
+              <span className="text-white font-bold">BARBER</span>
+              <span className="text-[rgba(160,185,255,0.5)] font-bold">SUITE</span>
+            </span>
+          </Link>
+
+          <div className="hidden md:flex items-center gap-8">
+            {[
+              { href: '#features', label: 'Funcionalidades' },
+              { href: '#pricing',  label: 'Preços' },
+              { href: '#testimonials', label: 'Para Barbearias' },
+            ].map(({ href, label }) => (
+              <a
+                key={href}
+                href={href}
+                className="text-xs text-[rgba(200,207,224,0.6)] hover:text-white transition-colors duration-200 tracking-[0.12em] uppercase"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Link href="/login" className="btn-outline text-xs py-2 px-5 hidden sm:inline-flex">
+              Entrar
+            </Link>
+            <Link href="/signup" className="btn-gold text-xs py-2 px-5">
+              Começar Grátis
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* ── 2. HERO ── */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-20 z-10">
+        {/* central glow */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 70% 55% at 50% 42%, rgba(100,140,255,0.06) 0%, transparent 70%)' }}
+        />
+
+        <div className="relative max-w-5xl mx-auto flex flex-col items-center gap-8">
+          {/* Badge */}
+          <div className="animate-fade-in-up opacity-0 delay-100">
+            <span
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
+              style={{
+                background: 'rgba(212,175,55,0.08)',
+                border: '1px solid rgba(212,175,55,0.25)',
+                color: '#d4af37',
+              }}
+            >
+              ✨ 14 dias grátis — sem cartão de crédito
+            </span>
+          </div>
+
+          {/* H1 */}
+          <h1
+            className="animate-fade-in-up opacity-0 delay-200 font-[family-name:var(--font-display)] text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold leading-[0.9] tracking-tight text-white"
+          >
+            A Plataforma Que
+            <br />
+            Sua Barbearia{' '}
+            <em className="not-italic text-gold-gradient">Merecia</em>
+          </h1>
+
+          <p className="animate-fade-in-up opacity-0 delay-300 max-w-2xl text-lg sm:text-xl leading-relaxed" style={{ color: 'rgba(200,207,224,0.6)' }}>
+            Agendamento inteligente, gestão financeira, controle de equipe e
+            página pública profissional — tudo em um lugar.
+          </p>
+
+          <div className="animate-fade-in-up opacity-0 delay-400 flex flex-col sm:flex-row gap-4 items-center">
+            <Link href="/signup" className="btn-gold text-sm py-4 px-8 animate-pulse-glow">
+              Criar Conta Grátis →
+            </Link>
+            <a href="#features" className="btn-outline text-sm py-4 px-8">
+              Ver Demo
+            </a>
+          </div>
+
+          <div className="animate-fade-in-up opacity-0 delay-500 flex flex-wrap justify-center gap-10 mt-4">
+            {stats.map((s) => (
+              <div key={s.label} className="flex flex-col items-center gap-1">
+                <span className="font-[family-name:var(--font-display)] text-3xl font-bold text-gold-gradient">{s.value}</span>
+                <span className="text-xs tracking-widest uppercase" style={{ color: 'rgba(160,185,255,0.45)' }}>{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. FEATURES ── */}
+      <section id="features" className="relative py-28 px-6 z-10">
+        <div className="section-divider mb-16" />
+
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#d4af37]">
+              Funcionalidades
+            </span>
+            <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
+              Tudo Que Você Precisa{' '}
+              <span className="text-gold-gradient">Em Um Só Lugar</span>
+            </h2>
+            <p className="mt-4 max-w-xl mx-auto" style={{ color: 'rgba(200,207,224,0.55)' }}>
+              Desenvolvido especificamente para barbearias brasileiras, com cada
+              detalhe pensado para o seu dia a dia.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {features.map((f, i) => (
+              <div
+                key={f.title}
+                className="premium-card p-8 flex flex-col gap-4 group"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shrink-0"
+                  style={{ background: 'rgba(100,140,255,0.07)', border: '1px solid rgba(160,185,255,0.12)' }}
+                >
+                  {f.icon}
+                </div>
+                <div>
+                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors duration-300">
+                    {f.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: 'rgba(200,207,224,0.55)' }}>{f.description}</p>
+                </div>
+                <div
+                  className="mt-auto h-px w-0 group-hover:w-full transition-all duration-500 rounded-full"
+                  style={{ background: 'linear-gradient(90deg, rgba(212,175,55,0.6), transparent)' }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. PRICING ── */}
+      <section id="pricing" className="relative py-28 px-6 z-10 particle-section">
+        {/* Extra dense particle layer just for pricing */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <ParticleCanvas count={120} color="180, 210, 255" />
+        </div>
+
+        {/* faint radial glow at top */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 80% 40% at 50% 0%, rgba(80,120,255,0.05) 0%, transparent 65%)' }}
+        />
+
+        <div className="relative max-w-6xl mx-auto z-10">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#d4af37]">
+              Preços
+            </span>
+            <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
+              Planos Para{' '}
+              <span className="text-gold-gradient">Toda Barbearia</span>
+            </h2>
+            <p className="mt-4" style={{ color: 'rgba(200,207,224,0.5)' }}>
+              Comece grátis por 14 dias. Escolha o plano quando estiver pronto.
+            </p>
+          </div>
+
+          {/* Plans Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            {plans.map((plan) => (
+              <div
+                key={plan.id}
+                className={`relative flex flex-col gap-7 p-8 rounded-2xl transition-all duration-300 ${
+                  plan.highlighted ? 'md:-mt-6 md:mb-6' : ''
+                }`}
+                style={{
+                  background: plan.highlighted
+                    ? 'rgba(12, 17, 32, 0.97)'
+                    : 'rgba(9, 13, 24, 0.88)',
+                  border: plan.highlighted
+                    ? '1px solid rgba(212, 175, 55, 0.35)'
+                    : '1px solid rgba(130, 160, 230, 0.1)',
+                  boxShadow: plan.highlighted
+                    ? '0 0 70px rgba(212,175,55,0.12), 0 30px 60px rgba(0,0,0,0.9)'
+                    : '0 8px 32px rgba(0,0,0,0.6)',
+                  backdropFilter: 'blur(28px)',
+                }}
+              >
+                {/* Popular badge */}
+                {plan.badge && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
+                    {/* tiny icon above badge, like in the reference image */}
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center mb-1"
+                      style={{ background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.3)' }}
+                    >
+                      <span className="text-[#d4af37] text-sm">✦</span>
+                    </div>
+                    <span
+                      className="inline-block px-4 py-1 text-[10px] font-black tracking-[0.18em] uppercase rounded-full"
+                      style={{ background: 'linear-gradient(135deg, #d4af37, #b8942f)', color: '#000' }}
+                    >
+                      {plan.badge}
+                    </span>
+                  </div>
+                )}
+
+                {/* Plan name tag */}
+                <div className={plan.highlighted ? 'mt-6' : ''}>
+                  <div className="flex items-center justify-between mb-4">
+                    <span
+                      className="text-[10px] font-black tracking-[0.22em] uppercase px-3 py-1 rounded-full"
+                      style={{
+                        background: plan.highlighted ? 'rgba(212,175,55,0.12)' : 'rgba(160,185,255,0.06)',
+                        border: plan.highlighted ? '1px solid rgba(212,175,55,0.25)' : '1px solid rgba(160,185,255,0.12)',
+                        color: plan.highlighted ? '#d4af37' : 'rgba(160,185,255,0.6)',
+                      }}
+                    >
+                      {plan.name}
+                    </span>
+                    {/* small square icon like in reference */}
+                    <div
+                      className="w-6 h-6 rounded flex items-center justify-center"
+                      style={{ background: 'rgba(160,185,255,0.06)', border: '1px solid rgba(160,185,255,0.1)' }}
+                    >
+                      <div className="w-2 h-2 rounded-sm" style={{ background: plan.highlighted ? '#d4af37' : 'rgba(160,185,255,0.4)' }} />
+                    </div>
+                  </div>
+
+                  {/* Price */}
+                  <div className="flex items-baseline gap-1 mb-2">
+                    <span className="font-[family-name:var(--font-display)] text-6xl font-extrabold text-white leading-none">
+                      {plan.price}
+                    </span>
+                    <span className="text-sm pb-1" style={{ color: 'rgba(160,185,255,0.4)' }}>{plan.period}</span>
+                  </div>
+                  <p className="text-sm" style={{ color: 'rgba(200,207,224,0.5)' }}>{plan.description}</p>
+                </div>
+
+                {/* Divider */}
+                <div style={{ height: '1px', background: 'rgba(160,185,255,0.06)' }} />
+
+                {/* Features list */}
+                <ul className="flex flex-col gap-3">
+                  {plan.features.map((feat) => (
+                    <li key={feat} className="flex items-start gap-3 text-sm" style={{ color: 'rgba(200,207,224,0.75)' }}>
+                      <CheckIcon />
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <div className="mt-auto pt-2">
+                  <Link
+                    href={plan.id === 'enterprise' ? '/contact' : '/signup'}
+                    className={`w-full justify-center flex text-xs py-3 px-6 font-bold uppercase tracking-[0.12em] rounded transition-all duration-300 ${
+                      plan.highlighted ? 'btn-gold' : 'pricing-cta-outline'
+                    }`}
+                  >
+                    ▪ {plan.cta.toUpperCase()}
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer note */}
+          <p className="text-center mt-10 text-xs tracking-wide" style={{ color: 'rgba(160,185,255,0.3)' }}>
+            14 dias grátis em todos os planos &bull; Cancele a qualquer momento &bull; Sem taxa de configuração
+          </p>
+        </div>
+      </section>
+
+      {/* ── 5. TESTIMONIALS ── */}
+      <section id="testimonials" className="py-28 px-6 relative z-10">
+        <div className="section-divider mb-16" />
+
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#d4af37]">
+              Depoimentos
+            </span>
+            <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
+              Barbearias Que Já{' '}
+              <span className="text-gold-gradient">Transformaram</span> Seus Negócios
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {testimonials.map((t) => (
+              <div key={t.id} className="premium-card p-8 flex flex-col gap-5">
+                <StarRating count={t.rating} />
+                <p className="text-sm leading-relaxed flex-1" style={{ color: 'rgba(200,207,224,0.65)' }}>
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <div className="flex items-center gap-4 mt-auto pt-4" style={{ borderTop: '1px solid rgba(160,185,255,0.06)' }}>
+                  <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0" style={{ boxShadow: '0 0 0 2px rgba(212,175,55,0.2)' }}>
+                    <Image src={t.image} alt={t.name} fill className="object-cover" unoptimized />
+                  </div>
+                  <div>
+                    <p className="text-white text-sm font-semibold">{t.name}</p>
+                    <p className="text-xs" style={{ color: 'rgba(160,185,255,0.4)' }}>{t.role}</p>
+                    <p className="text-xs mt-0.5 text-[#d4af37]">{t.city}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6. CTA FINAL ── */}
+      <section className="py-28 px-6 relative overflow-hidden z-10">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 70% 70% at 50% 50%, rgba(80,120,255,0.06) 0%, transparent 70%)' }}
+        />
+        {/* rings */}
+        {[600, 900].map((size) => (
+          <div
+            key={size}
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{ width: size, height: size, border: '1px solid rgba(160,185,255,0.04)' }}
+          />
+        ))}
+
+        <div className="max-w-3xl mx-auto text-center relative z-10 flex flex-col items-center gap-8">
+          <span
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
+            style={{ background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.2)', color: '#d4af37' }}
+          >
+            ✂️ Comece Hoje
+          </span>
+
+          <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">
+            Pronto Para{' '}
+            <span className="text-gold-gradient">Transformar</span>
+            <br />
+            Sua Barbearia?
+          </h2>
+
+          <p className="text-lg max-w-lg" style={{ color: 'rgba(200,207,224,0.5)' }}>
+            14 dias grátis. Sem cartão de crédito. Configure em 5 minutos.
+          </p>
+
+          <Link href="/signup" className="btn-gold text-sm py-5 px-12 animate-pulse-glow">
+            Criar Minha Conta Grátis →
+          </Link>
+        </div>
+      </section>
+
+      {/* ── 7. FOOTER ── */}
+      <footer className="px-6 py-16 relative z-10" style={{ borderTop: '1px solid rgba(160,185,255,0.06)' }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+          <div className="md:col-span-2 flex flex-col gap-4">
+            <Link href="/" className="flex items-center gap-2">
+              <span className="text-xl">✂️</span>
+              <span className="font-[family-name:var(--font-display)] text-xl tracking-widest">
+                <span className="text-white font-bold">BARBER</span>
+                <span className="font-bold" style={{ color: 'rgba(160,185,255,0.4)' }}>SUITE</span>
+              </span>
+            </Link>
+            <p className="text-sm leading-relaxed max-w-xs" style={{ color: 'rgba(160,185,255,0.35)' }}>
+              A plataforma de gestão completa para barbearias modernas que
+              querem crescer com inteligência e profissionalismo.
+            </p>
+            <div className="flex gap-3 mt-2">
+              {['IG', 'WA'].map((s) => (
+                <a
+                  key={s}
+                  href="#"
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold transition-colors"
+                  style={{ background: 'rgba(160,185,255,0.04)', border: '1px solid rgba(160,185,255,0.08)', color: 'rgba(160,185,255,0.4)' }}
+                >
+                  {s}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold text-xs mb-4 tracking-[0.2em] uppercase">Produto</h4>
+            <ul className="flex flex-col gap-3">
+              {['Funcionalidades', 'Preços', 'Sobre', 'Blog'].map((link) => (
+                <li key={link}>
+                  <a href="#" className="text-sm transition-colors hover:text-white" style={{ color: 'rgba(160,185,255,0.35)' }}>{link}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold text-xs mb-4 tracking-[0.2em] uppercase">Legal</h4>
+            <ul className="flex flex-col gap-3">
+              {[
+                { label: 'Privacidade', href: '/privacy' },
+                { label: 'Termos', href: '/terms' },
+                { label: 'Cookies', href: '#' },
+                { label: 'Contato', href: '/contact' },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-sm transition-colors hover:text-white" style={{ color: 'rgba(160,185,255,0.35)' }}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div
+          className="max-w-7xl mx-auto mt-14 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+          style={{ borderTop: '1px solid rgba(160,185,255,0.05)' }}
+        >
+          <p className="text-xs" style={{ color: 'rgba(160,185,255,0.25)' }}>
+            © 2025 BarberSuite. Todos os direitos reservados.
+          </p>
+          <p className="text-xs" style={{ color: 'rgba(160,185,255,0.25)' }}>
+            Feito com ❤️ para barbearias brasileiras
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
