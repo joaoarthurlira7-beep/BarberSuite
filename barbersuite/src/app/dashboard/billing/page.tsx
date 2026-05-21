@@ -42,6 +42,15 @@ export default function BillingPage() {
   useEffect(() => {
     async function loadBilling() {
       try {
+        const isDemoMode = document.cookie.includes('demo-mode=true')
+        
+        if (isDemoMode) {
+          setPlan('pro')
+          setPlanStatus('active')
+          setTrialEnds(new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString())
+          return
+        }
+
         const supabase = createClient()
         const { data: { user } } = await supabase.auth.getUser()
         if (!user) return

@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import { cookies } from 'next/headers'
 import { 
   CalendarDays, ShoppingCart, Scissors, Package, 
   Users, BarChart3, Settings, CreditCard, 
@@ -63,19 +64,44 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode
 }) {
-  const supabase = await createClient()
+  const cookieStore = await cookies()
+  const isDemoMode = cookieStore.get('demo-mode')?.value === 'true'
 
-  const { data: { user }, error } = await supabase.auth.getUser()
+  let user = null
+  let barbershop: Barbershop | null = null
 
-  if (error || !user) {
-    redirect('/login')
+  if (isDemoMode) {
+    user = {
+      id: 'demo-user-id',
+      email: 'demo@barbeariasuite.com',
+    }
+    barbershop = {
+      id: 'demo-barbershop-id',
+      owner_id: 'demo-user-id',
+      name: 'Barbearia Suite',
+      slug: 'demo-barbearia',
+      plan: 'pro',
+      plan_status: 'active',
+      trial_ends_at: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    } as any
+  } else {
+    const supabase = await createClient()
+    const { data: { user: supabaseUser }, error } = await supabase.auth.getUser()
+
+    if (error || !supabaseUser) {
+      redirect('/login')
+    }
+    user = supabaseUser
+
+    const { data: realBarbershop } = await supabase
+      .from('barbershops')
+      .select('*')
+      .eq('owner_id', user.id)
+      .single<Barbershop>()
+    barbershop = realBarbershop
   }
-
-  const { data: barbershop } = await supabase
-    .from('barbershops')
-    .select('*')
-    .eq('owner_id', user.id)
-    .single<Barbershop>()
 
   return (
     <div className="h-screen overflow-hidden flex bg-[#050505]">

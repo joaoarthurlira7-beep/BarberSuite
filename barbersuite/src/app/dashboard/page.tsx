@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import { cookies } from 'next/headers'
 import { 
   TrendingUp, Calendar, DollarSign, Users, 
   ArrowRight, Plus, Lock, ShoppingCart,
@@ -19,133 +20,192 @@ const STATUS_CONFIG = {
 }
 
 export default async function DashboardPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const cookieStore = await cookies()
+  const isDemoMode = cookieStore.get('demo-mode')?.value === 'true'
 
-  if (!user) {
-    redirect('/login')
-  }
+  let user = null
+  let barbershop: Barbershop | null = null
+  let todayApts: any[] = []
+  let countToday = 0
+  let pendingTodayCount = 0
+  let revenueToday = 0
+  let countWeek = 0
+  let revenueWeek = 0
+  let countMonth = 0
+  let revenueMonth = 0
+  let chartData: { day: string; value: number }[] = []
+  let maxChartValue = 1
+  let daysLeft = 14
 
-  // Buscar a barbearia real associada ao dono logado
-  const { data: barbershop } = await supabase
-    .from('barbershops')
-    .select('*')
-    .eq('owner_id', user.id)
-    .maybeSingle()
+  if (isDemoMode) {
+    user = { id: 'demo-user-id', email: 'demo@barbeariasuite.com' }
+    barbershop = {
+      id: 'demo-barbershop-id',
+      name: 'Barbearia Suite',
+      slug: 'demo-barbearia',
+      plan: 'pro',
+      plan_status: 'active',
+      trial_ends_at: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString()
+    } as any
 
-  // Se o usuário não tiver uma barbearia cadastrada, redirecionar para o wizard de criação
-  if (!barbershop) {
-    redirect('/add-barbershop')
-  }
+    todayApts = [
+      { id: '1', client_name: 'Arthur Santos', time: '09:00', barber: 'José Shaper', service: 'Corte Degradê', status: 'completed', price: 45 },
+      { id: '2', client_name: 'Gustavo Lima', time: '10:30', barber: 'Pablo Barber', service: 'Barba Terapia', status: 'completed', price: 35 },
+      { id: '3', client_name: 'Lucas Souza', time: '13:00', barber: 'José Shaper', service: 'Corte + Barba', status: 'in_progress', price: 75 },
+      { id: '4', client_name: 'Rodrigo Silva', time: '14:30', barber: 'Pablo Barber', service: 'Corte Degradê', status: 'confirmed', price: 45 },
+      { id: '5', client_name: 'Matheus Pereira', time: '16:00', barber: 'José Shaper', service: 'Cabelo, Barba e Sobrancelha', status: 'pending', price: 95 },
+      { id: '6', client_name: 'Felipe Santos', time: '17:30', barber: 'Pablo Barber', service: 'Corte Infantil', status: 'pending', price: 40 },
+    ]
 
-  // 1. Obter datas limites de Hoje
-  const startOfDay = new Date()
-  startOfDay.setHours(0, 0, 0, 0)
-  const endOfDay = new Date()
-  endOfDay.setHours(23, 59, 59, 999)
+    revenueToday = 80
+    revenueWeek = 1420
+    revenueMonth = 5890
+    countToday = todayApts.length
+    pendingTodayCount = todayApts.filter(apt => apt.status === 'pending').length
+    countWeek = 38
+    countMonth = 154
+    daysLeft = 14
 
-  // 2. Buscar agendamentos de Hoje (com relacionamento de barbeiros e serviços)
-  const { data: todayAptsRaw } = await supabase
-    .from('appointments')
-    .select('*, barber:barbers(name), service:services(name)')
-    .eq('barbershop_id', barbershop.id)
-    .gte('scheduled_at', startOfDay.toISOString())
-    .lte('scheduled_at', endOfDay.toISOString())
-    .order('scheduled_at', { ascending: true })
+    chartData = [
+      { day: 'Sex', value: 340 },
+      { day: 'Sáb', value: 580 },
+      { day: 'Dom', value: 0 },
+      { day: 'Seg', value: 210 },
+      { day: 'Ter', value: 410 },
+      { day: 'Qua', value: 380 },
+      { day: 'Qui', value: 480 },
+    ]
+    maxChartValue = Math.max(...chartData.map(d => d.value), 1)
 
-  const todayApts = (todayAptsRaw || []).map(apt => ({
-    id: apt.id,
-    client_name: apt.client_name,
-    time: new Date(apt.scheduled_at).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-    barber: apt.barber ? (apt.barber as any).name : 'Não atribuído',
-    service: apt.service ? (apt.service as any).name : 'Serviço excluído',
-    status: apt.status,
-    price: Number(apt.price) || 0
-  }))
+  } else {
+    const supabase = await createClient()
+    const { data: { user: supabaseUser } } = await supabase.auth.getUser()
 
-  // 3. Buscar agendamentos desta Semana para os KPIs
-  const startOfWeek = new Date()
-  const dayOfWeek = startOfWeek.getDay()
-  const diff = startOfWeek.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1) // Inicia na Segunda-feira
-  startOfWeek.setDate(diff)
-  startOfWeek.setHours(0, 0, 0, 0)
+    if (!supabaseUser) {
+      redirect('/login')
+    }
+    user = supabaseUser
 
-  const { data: weekAptsRaw } = await supabase
-    .from('appointments')
-    .select('price, status, payment_status')
-    .eq('barbershop_id', barbershop.id)
-    .gte('scheduled_at', startOfWeek.toISOString())
+    const { data: realBarbershop } = await supabase
+      .from('barbershops')
+      .select('*')
+      .eq('owner_id', user.id)
+      .maybeSingle()
 
-  // 4. Buscar agendamentos deste Mês para os KPIs
-  const startOfMonth = new Date()
-  startOfMonth.setDate(1)
-  startOfMonth.setHours(0, 0, 0, 0)
+    if (!realBarbershop) {
+      redirect('/add-barbershop')
+    }
+    barbershop = realBarbershop
 
-  const { data: monthAptsRaw } = await supabase
-    .from('appointments')
-    .select('price, status, payment_status')
-    .eq('barbershop_id', barbershop.id)
-    .gte('scheduled_at', startOfMonth.toISOString())
+    // 1. Obter datas limites de Hoje
+    const startOfDay = new Date()
+    startOfDay.setHours(0, 0, 0, 0)
+    const endOfDay = new Date()
+    endOfDay.setHours(23, 59, 59, 999)
 
-  // Cálculos de KPIs reais
-  const revenueToday = (todayAptsRaw || [])
-    .filter(apt => apt.status === 'completed' || apt.payment_status === 'paid')
-    .reduce((acc, apt) => acc + (Number(apt.price) || 0), 0)
+    // 2. Buscar agendamentos de Hoje (com relacionamento de barbeiros e serviços)
+    const { data: todayAptsRaw } = await supabase
+      .from('appointments')
+      .select('*, barber:barbers(name), service:services(name)')
+      .eq('barbershop_id', barbershop!.id)
+      .gte('scheduled_at', startOfDay.toISOString())
+      .lte('scheduled_at', endOfDay.toISOString())
+      .order('scheduled_at', { ascending: true })
 
-  const revenueWeek = (weekAptsRaw || [])
-    .filter(apt => apt.status === 'completed' || apt.payment_status === 'paid')
-    .reduce((acc, apt) => acc + (Number(apt.price) || 0), 0)
+    todayApts = (todayAptsRaw || []).map(apt => ({
+      id: apt.id,
+      client_name: apt.client_name,
+      time: new Date(apt.scheduled_at).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+      barber: apt.barber ? (apt.barber as any).name : 'Não atribuído',
+      service: apt.service ? (apt.service as any).name : 'Serviço excluído',
+      status: apt.status,
+      price: Number(apt.price) || 0
+    }))
 
-  const revenueMonth = (monthAptsRaw || [])
-    .filter(apt => apt.status === 'completed' || apt.payment_status === 'paid')
-    .reduce((acc, apt) => acc + (Number(apt.price) || 0), 0)
+    // 3. Buscar agendamentos desta Semana para os KPIs
+    const startOfWeek = new Date()
+    const dayOfWeek = startOfWeek.getDay()
+    const diff = startOfWeek.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1) // Inicia na Segunda-feira
+    startOfWeek.setDate(diff)
+    startOfWeek.setHours(0, 0, 0, 0)
 
-  const countToday = todayAptsRaw?.length || 0
-  const pendingTodayCount = todayAptsRaw?.filter(apt => apt.status === 'pending').length || 0
-  const countWeek = weekAptsRaw?.length || 0
-  const countMonth = monthAptsRaw?.length || 0
+    const { data: weekAptsRaw } = await supabase
+      .from('appointments')
+      .select('price, status, payment_status')
+      .eq('barbershop_id', barbershop!.id)
+      .gte('scheduled_at', startOfWeek.toISOString())
 
-  // 5. Histórico de Faturamento dos Últimos 7 Dias (Gráfico)
-  const sevenDaysAgo = new Date()
-  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6)
-  sevenDaysAgo.setHours(0, 0, 0, 0)
+    // 4. Buscar agendamentos deste Mês para os KPIs
+    const startOfMonth = new Date()
+    startOfMonth.setDate(1)
+    startOfMonth.setHours(0, 0, 0, 0)
 
-  const { data: sevenDaysAptsRaw } = await supabase
-    .from('appointments')
-    .select('price, scheduled_at, status, payment_status')
-    .eq('barbershop_id', barbershop.id)
-    .gte('scheduled_at', sevenDaysAgo.toISOString())
+    const { data: monthAptsRaw } = await supabase
+      .from('appointments')
+      .select('price, status, payment_status')
+      .eq('barbershop_id', barbershop!.id)
+      .gte('scheduled_at', startOfMonth.toISOString())
 
-  const weekdays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
-  const chartMap = new Map<string, number>()
-  const orderOfDays: string[] = []
+    // Cálculos de KPIs reais
+    revenueToday = (todayAptsRaw || [])
+      .filter(apt => apt.status === 'completed' || apt.payment_status === 'paid')
+      .reduce((acc, apt) => acc + (Number(apt.price) || 0), 0)
 
-  // Inicializar o mapa com os últimos 7 dias na ordem correta
-  for (let i = 0; i < 7; i++) {
-    const d = new Date()
-    d.setDate(d.getDate() - 6 + i)
-    const dayName = weekdays[d.getDay()]
-    orderOfDays.push(dayName)
-    chartMap.set(dayName, 0)
-  }
+    revenueWeek = (weekAptsRaw || [])
+      .filter(apt => apt.status === 'completed' || apt.payment_status === 'paid')
+      .reduce((acc, apt) => acc + (Number(apt.price) || 0), 0)
 
-  (sevenDaysAptsRaw || [])
-    .filter(apt => apt.status === 'completed' || apt.payment_status === 'paid')
-    .forEach(apt => {
-      const d = new Date(apt.scheduled_at)
+    revenueMonth = (monthAptsRaw || [])
+      .filter(apt => apt.status === 'completed' || apt.payment_status === 'paid')
+      .reduce((acc, apt) => acc + (Number(apt.price) || 0), 0)
+
+    countToday = todayAptsRaw?.length || 0
+    pendingTodayCount = todayAptsRaw?.filter(apt => apt.status === 'pending').length || 0
+    countWeek = weekAptsRaw?.length || 0
+    countMonth = monthAptsRaw?.length || 0
+
+    // 5. Histórico de Faturamento dos Últimos 7 Dias (Gráfico)
+    const sevenDaysAgo = new Date()
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6)
+    sevenDaysAgo.setHours(0, 0, 0, 0)
+
+    const { data: sevenDaysAptsRaw } = await supabase
+      .from('appointments')
+      .select('price, scheduled_at, status, payment_status')
+      .eq('barbershop_id', barbershop!.id)
+      .gte('scheduled_at', sevenDaysAgo.toISOString())
+
+    const weekdays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
+    const chartMap = new Map<string, number>()
+    const orderOfDays: string[] = []
+
+    // Inicializar o mapa com os últimos 7 dias na ordem correta
+    for (let i = 0; i < 7; i++) {
+      const d = new Date()
+      d.setDate(d.getDate() - 6 + i)
       const dayName = weekdays[d.getDay()]
-      if (chartMap.has(dayName)) {
-        chartMap.set(dayName, (chartMap.get(dayName) || 0) + (Number(apt.price) || 0))
-      }
-    })
+      orderOfDays.push(dayName)
+      chartMap.set(dayName, 0)
+    }
 
-  const chartData = orderOfDays.map(day => ({
-    day,
-    value: chartMap.get(day) || 0
-  }))
+    (sevenDaysAptsRaw || [])
+      .filter(apt => apt.status === 'completed' || apt.payment_status === 'paid')
+      .forEach(apt => {
+        const d = new Date(apt.scheduled_at)
+        const dayName = weekdays[d.getDay()]
+        if (chartMap.has(dayName)) {
+          chartMap.set(dayName, (chartMap.get(dayName) || 0) + (Number(apt.price) || 0))
+        }
+      })
 
-  const maxChartValue = Math.max(...chartData.map(d => d.value), 1) // evita divisão por zero
-  const daysLeft = getDaysUntilTrialEnd(barbershop.trial_ends_at ?? '')
+    chartData = orderOfDays.map(day => ({
+      day,
+      value: chartMap.get(day) || 0
+    }))
+
+    maxChartValue = Math.max(...chartData.map(d => d.value), 1) // evita divisão por zero
+    daysLeft = getDaysUntilTrialEnd(barbershop!.trial_ends_at ?? '')
+  }
 
   const kpis = [
     { label: 'Faturamento Hoje', value: formatCurrency(revenueToday), icon: DollarSign, color: '#ffffff', sub: `${countToday} atendimentos hoje` },
@@ -160,7 +220,7 @@ export default async function DashboardPage() {
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl uppercase tracking-tight text-white">
-            Visão Geral — {barbershop.name}
+            Visão Geral — {barbershop?.name}
           </h1>
           <p className="text-neutral-500 text-sm mt-1">
             {new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
@@ -181,7 +241,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Trial Banner */}
-      {barbershop.plan === 'trial' && (
+      {barbershop?.plan === 'trial' && (
         <div className="bg-[#ffffff]/8 border border-[#ffffff]/25 rounded-2xl p-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-[#ffffff]/15 flex items-center justify-center flex-shrink-0">

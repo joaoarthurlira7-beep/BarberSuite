@@ -27,15 +27,17 @@ export async function middleware(request: NextRequest) {
     }
   )
 
+  const isDemoMode = request.cookies.get('demo-mode')?.value === 'true'
+
   const {
     data: { user },
-  } = await supabase.auth.getUser()
+  } = isDemoMode ? { data: { user: null } } : await supabase.auth.getUser()
 
   const { pathname } = request.nextUrl
 
   // Protect dashboard routes
   if (pathname.startsWith('/dashboard')) {
-    if (!user) {
+    if (!user && !isDemoMode) {
       const url = request.nextUrl.clone()
       url.pathname = '/login'
       url.searchParams.set('redirectTo', pathname)
@@ -44,7 +46,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Redirect logged-in users away from auth pages
-  if ((pathname === '/login' || pathname === '/signup') && user) {
+  if ((pathname === '/login' || pathname === '/signup') && (user || isDemoMode)) {
     const url = request.nextUrl.clone()
     url.pathname = '/dashboard'
     return NextResponse.redirect(url)

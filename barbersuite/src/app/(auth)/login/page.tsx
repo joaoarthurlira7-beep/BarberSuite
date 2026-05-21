@@ -73,6 +73,7 @@ export default function LoginPage() {
 
     // DEMO BYPASS
     if (email === 'demo@barbeariasuite.com' && password === 'demo12345') {
+      document.cookie = "demo-mode=true; path=/; max-age=86400; SameSite=Lax"
       setTimeout(() => {
         router.push('/dashboard')
         router.refresh()
