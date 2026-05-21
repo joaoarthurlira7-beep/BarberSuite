@@ -39,7 +39,7 @@ export async function POST(req: Request) {
         const customerId = session.customer as string
 
         // Retrieve subscription details
-        const subscription = await stripe.subscriptions.retrieve(subscriptionId)
+        const subscription = await stripe.subscriptions.retrieve(subscriptionId) as any
         const priceId = subscription.items.data[0].price.id
 
         // Determine plan name from price id
@@ -64,7 +64,7 @@ export async function POST(req: Request) {
       }
 
       case 'customer.subscription.updated': {
-        const subscription = event.data.object as Stripe.Subscription
+        const subscription = event.data.object as any
         const customerId = subscription.customer as string
         const status = subscription.status // active, past_due, canceled, paused, etc.
         const priceId = subscription.items.data[0].price.id
@@ -93,7 +93,7 @@ export async function POST(req: Request) {
       }
 
       case 'customer.subscription.deleted': {
-        const subscription = event.data.object as Stripe.Subscription
+        const subscription = event.data.object as any
         const customerId = subscription.customer as string
 
         await supabase
