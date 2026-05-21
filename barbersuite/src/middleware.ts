@@ -65,6 +65,7 @@ export async function middleware(request: NextRequest) {
     currentHost !== 'localhost' && 
     currentHost !== 'barbersuite.com.br' && 
     currentHost !== 'www' &&
+    !hostname.includes('vercel.app') && // Evitar tratar domínios de desenvolvimento/produção da Vercel como subdomínios de inquilinos
     !pathname.startsWith('/api') &&
     !pathname.startsWith('/_next')
   ) {
