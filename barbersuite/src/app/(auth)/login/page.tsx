@@ -72,7 +72,7 @@ export default function LoginPage() {
     setLoading(true)
 
     // DEMO BYPASS
-    if (email === 'demo@barbeariasuite.com' && password === 'demo123') {
+    if (email === 'demo@barbeariasuite.com' && password === 'demo12345') {
       setTimeout(() => {
         router.push('/dashboard')
         router.refresh()
@@ -98,7 +98,7 @@ export default function LoginPage() {
 
   const handleDemoLogin = () => {
     setEmail('demo@barbeariasuite.com')
-    setPassword('demo123')
+    setPassword('demo12345')
     setFormError('')
   }
 
