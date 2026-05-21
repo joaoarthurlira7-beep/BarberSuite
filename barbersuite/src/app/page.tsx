@@ -48,7 +48,7 @@ const plans = [
     id: 'basic',
     name: 'INSTANCE',
     label: 'BASIC',
-    price: 'R$99',
+    price: 'R$75',
     period: '/mês',
     description: 'Ideal para barbearias que estão começando a crescer.',
     features: [
@@ -65,7 +65,7 @@ const plans = [
     id: 'pro',
     name: 'SWARM',
     label: 'PRO',
-    price: 'R$199',
+    price: 'R$105',
     period: '/mês',
     description: 'Para barbearias que levam o negócio a sério.',
     badge: 'MAIS POPULAR',
@@ -84,7 +84,7 @@ const plans = [
     id: 'enterprise',
     name: 'NETWORK',
     label: 'ENTERPRISE',
-    price: 'R$399+',
+    price: 'R$200',
     period: '/mês',
     description: 'Para redes e franquias que precisam de escala total.',
     features: [

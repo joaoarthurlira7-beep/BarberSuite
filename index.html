@@ -267,6 +267,73 @@
             background: #d4a017;
             color: #000;
         }
+
+        /* --- Hero Section & Animations (Premium Dark Theme) --- */
+        .hero-bg-mask {
+            mask-image: linear-gradient(90deg, transparent, black 55%, black 60%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, black 55%, black 60%, transparent);
+        }
+
+        .blur-overlay {
+            position: absolute;
+            pointer-events: none;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .blur-overlay .glow {
+            position: absolute;
+            left: -10rem;   /* -40 in Tailwind spacing */
+            top: 2.5rem;    /* 10 in Tailwind spacing */
+            width: 60vh;
+            height: 70vh;
+            border-radius: 50%;
+            filter: blur(64px);
+            opacity: 0.25;
+            background: radial-gradient(closest-side, rgba(255,255,255,0.15), rgba(0,0,0,0));
+        }
+
+        .animate-in {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg-mask {
+                mask-image: linear-gradient(90deg, transparent 5%, black 20%, black 80%, transparent 95%);
+                -webkit-mask-image: linear-gradient(90deg, transparent 5%, black 20%, black 80%, transparent 95%);
+            }
+            .animate-in {
+                transform: translateY(16px);
+                animation-duration: 0.4s;
+            }
+            .blur-overlay .glow {
+                width: 40vh;
+                height: 50vh;
+                filter: blur(32px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate-in {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
     </style><!-- aura-ga4-start -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-2M6V79H761"></script>
     <script>
@@ -356,49 +423,55 @@
     <!-- HERO SECTION -->
     <header id="inicio"
         class="relative w-full h-screen min-h-[700px] flex items-end justify-between px-6 pb-12 overflow-hidden bg-black text-white">
-        <!-- Cinematic Background -->
-        <div class="absolute inset-0 z-0 opacity-50">
+        
+        <!-- Blur Overlay Glow -->
+        <div class="blur-overlay">
+            <div class="glow"></div>
+        </div>
+
+        <!-- Cinematic Background with Mask -->
+        <div class="absolute inset-0 z-0 opacity-50 hero-bg-mask">
             <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&amp;w=2000&amp;auto=format&amp;fit=crop"
                 class="w-full h-full object-cover grayscale" alt="Interior da Barbearia">
         </div>
-        <div class="absolute inset-0 z-1 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute inset-0 z-1 bg-gradient-to-t from-black via-transparent to-transparent opacity-90 pointer-events-none"></div>
 
         <div class="relative z-10 w-full flex flex-col md:flex-row md:items-end justify-between gap-12">
-            <div class="max-w-2xl reveal active">
-                <span
-                    class="inline-flex items-center gap-2 mb-6 px-3 py-1 border border-white/20 rounded-sm text-xs uppercase tracking-widest backdrop-blur-md">
+            <div class="max-w-2xl">
+                <span data-delay="100"
+                    class="animate-in inline-flex items-center gap-2 mb-6 px-3 py-1 border border-white/20 rounded-sm text-xs uppercase tracking-widest backdrop-blur-md">
                     <iconify-icon icon="solar:map-point-linear" width="14"></iconify-icon> Brasil
                 </span>
 
-                <h1
-                    class="font-display text-6xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight mb-6 font-semibold">
+                <h1 data-delay="200"
+                    class="animate-in font-display text-6xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight mb-6 font-semibold">
                     <span data-lang="pt">PRECISÃO.<br><span
                             class="italic font-light opacity-80 font-serif">ESTILO.</span></span>
                     <span data-lang="en" class="hidden">PRECISION.<br><span
                             class="italic font-light opacity-80 font-serif">STYLE.</span></span>
                 </h1>
 
-                <p class="text-sm md:text-base font-light text-gray-300 max-w-md leading-relaxed mb-8">
+                <p data-delay="300" class="animate-in text-sm md:text-base font-light text-gray-300 max-w-md leading-relaxed mb-8">
                     <span data-lang="pt">Barbearia clássica especializada em cortes profissionais e rituais premium.
                         Experimente o luxo do cuidado pessoal.</span>
                     <span data-lang="en" class="hidden">Classic barbershop specializing in professional haircuts and
                         premium grooming. Experience the luxury of self-care.</span>
                 </p>
 
-                <div class="flex flex-col md:flex-row gap-4">
+                <div data-delay="400" class="animate-in flex flex-col md:flex-row gap-4">
                     <a href="#reservas"
-                        class="btn-agendar bg-white text-black px-8 py-4 text-xs font-semibold uppercase tracking-widest hover:bg-gray-200 transition-colors text-center">
+                        class="btn-agendar bg-white text-black px-8 py-4 text-xs font-semibold uppercase tracking-widest hover:bg-gray-200 transition-colors text-center shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:-translate-y-1">
                         <span data-lang="pt">Agendar Horário</span><span data-lang="en" class="hidden">Book
                             Appointment</span>
                     </a>
                     <a href="https://wa.me/5562984804310" target="_blank"
-                        class="border border-white/30 text-white px-8 py-4 text-xs font-semibold uppercase tracking-widest hover:bg-white hover:text-black transition-colors text-center flex items-center justify-center gap-2">
+                        class="border border-white/30 text-white px-8 py-4 text-xs font-semibold uppercase tracking-widest hover:bg-white hover:text-black transition-colors text-center flex items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
                         <iconify-icon icon="solar:chat-round-call-linear" width="16"></iconify-icon> WhatsApp
                     </a>
                 </div>
             </div>
 
-            <div class="flex flex-col items-start md:items-end gap-6 reveal delay-200">
+            <div data-delay="500" class="animate-in flex flex-col items-start md:flex-row md:items-center gap-6">
                 <div class="flex gap-8 text-xs uppercase tracking-widest text-gray-400">
                     <span class="flex items-center gap-2"><iconify-icon icon="solar:star-linear"></iconify-icon>
                         Premium</span>
@@ -1596,6 +1669,23 @@
             alert('Avaliação enviada com sucesso!');
             location.reload();
         }
+
+        // Hero Section Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    entry.target.style.animationDelay = `${delay}ms`;
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-in').forEach(el => {
+            el.style.animationPlayState = 'paused'; // start paused
+            observer.observe(el);
+        });
     </script>
 </body>
 
