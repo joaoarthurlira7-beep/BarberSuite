@@ -156,7 +156,7 @@ function CheckIcon() {
       viewBox="0 0 24 24"
       stroke="currentColor"
       strokeWidth={2}
-      style={{ color: 'rgba(160,185,255,0.7)' }}
+      style={{ color: 'rgba(255,255,255,0.7)' }}
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
@@ -167,13 +167,13 @@ function CheckIcon() {
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen text-[#c8cfe0] overflow-x-hidden" style={{ background: '#06080f' }}>
+    <div className="min-h-screen text-[#c8cfe0] overflow-x-hidden" style={{ background: '#030303' }}>
 
       {/* ══════════════════════════════════════════
           GLOBAL PARTICLE BACKGROUND (full page)
       ══════════════════════════════════════════ */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <ParticleCanvas count={200} color="160, 190, 255" />
+        <ParticleCanvas count={200} color="0, 255, 102" />
       </div>
 
       {/* ── 1. NAVBAR ── */}
@@ -183,7 +183,7 @@ export default function LandingPage() {
             <span className="text-xl">✂️</span>
             <span className="font-[family-name:var(--font-display)] text-xl tracking-widest">
               <span className="text-white font-bold">BARBER</span>
-              <span className="text-[rgba(160,185,255,0.5)] font-bold">SUITE</span>
+              <span className="text-[rgba(255,255,255,0.5)] font-bold">SUITE</span>
             </span>
           </Link>
 
@@ -220,7 +220,7 @@ export default function LandingPage() {
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 70% 55% at 50% 42%, rgba(100,140,255,0.06) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse 70% 55% at 50% 42%, rgba(0,255,102,0.06) 0%, transparent 70%)' }}
         />
 
         <div className="relative max-w-5xl mx-auto flex flex-col items-center gap-8">
@@ -229,8 +229,8 @@ export default function LandingPage() {
             <span
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
               style={{
-                background: 'rgba(212,175,55,0.08)',
-                border: '1px solid rgba(212,175,55,0.25)',
+                background: 'rgba(0,255,102,0.08)',
+                border: '1px solid rgba(0,255,102,0.25)',
                 color: '#00ff66',
               }}
             >
@@ -266,7 +266,7 @@ export default function LandingPage() {
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col items-center gap-1">
                 <span className="font-[family-name:var(--font-display)] text-3xl font-bold text-neon-gradient">{s.value}</span>
-                <span className="text-xs tracking-widest uppercase" style={{ color: 'rgba(160,185,255,0.45)' }}>{s.label}</span>
+                <span className="text-xs tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.45)' }}>{s.label}</span>
               </div>
             ))}
           </div>
@@ -301,7 +301,7 @@ export default function LandingPage() {
               >
                 <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shrink-0"
-                  style={{ background: 'rgba(100,140,255,0.07)', border: '1px solid rgba(160,185,255,0.12)' }}
+                  style={{ background: 'rgba(0,255,102,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}
                 >
                   {f.icon}
                 </div>
@@ -313,7 +313,7 @@ export default function LandingPage() {
                 </div>
                 <div
                   className="mt-auto h-px w-0 group-hover:w-full transition-all duration-500 rounded-full"
-                  style={{ background: 'linear-gradient(90deg, rgba(212,175,55,0.6), transparent)' }}
+                  style={{ background: 'linear-gradient(90deg, rgba(0,255,102,0.6), transparent)' }}
                 />
               </div>
             ))}
@@ -325,7 +325,7 @@ export default function LandingPage() {
       <section id="pricing" className="relative py-28 px-6 z-10 particle-section">
         {/* Extra dense particle layer just for pricing */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <ParticleCanvas count={120} color="180, 210, 255" />
+          <ParticleCanvas count={120} color="0, 255, 102" />
         </div>
 
         {/* faint radial glow at top */}
@@ -363,10 +363,10 @@ export default function LandingPage() {
                     ? 'rgba(12, 17, 32, 0.97)'
                     : 'rgba(9, 13, 24, 0.88)',
                   border: plan.highlighted
-                    ? '1px solid rgba(212, 175, 55, 0.35)'
+                    ? '1px solid rgba(0, 255, 102, 0.35)'
                     : '1px solid rgba(130, 160, 230, 0.1)',
                   boxShadow: plan.highlighted
-                    ? '0 0 70px rgba(212,175,55,0.12), 0 30px 60px rgba(0,0,0,0.9)'
+                    ? '0 0 70px rgba(0,255,102,0.12), 0 30px 60px rgba(0,0,0,0.9)'
                     : '0 8px 32px rgba(0,0,0,0.6)',
                   backdropFilter: 'blur(28px)',
                 }}
@@ -377,7 +377,7 @@ export default function LandingPage() {
                     {/* tiny icon above badge, like in the reference image */}
                     <div
                       className="w-9 h-9 rounded-lg flex items-center justify-center mb-1"
-                      style={{ background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.3)' }}
+                      style={{ background: 'rgba(0,255,102,0.15)', border: '1px solid rgba(0,255,102,0.3)' }}
                     >
                       <span className="text-[#00ff66] text-sm">✦</span>
                     </div>
@@ -396,9 +396,9 @@ export default function LandingPage() {
                     <span
                       className="text-[10px] font-black tracking-[0.22em] uppercase px-3 py-1 rounded-full"
                       style={{
-                        background: plan.highlighted ? 'rgba(212,175,55,0.12)' : 'rgba(160,185,255,0.06)',
-                        border: plan.highlighted ? '1px solid rgba(212,175,55,0.25)' : '1px solid rgba(160,185,255,0.12)',
-                        color: plan.highlighted ? '#00ff66' : 'rgba(160,185,255,0.6)',
+                        background: plan.highlighted ? 'rgba(0,255,102,0.12)' : 'rgba(255,255,255,0.06)',
+                        border: plan.highlighted ? '1px solid rgba(0,255,102,0.25)' : '1px solid rgba(255,255,255,0.12)',
+                        color: plan.highlighted ? '#00ff66' : 'rgba(255,255,255,0.6)',
                       }}
                     >
                       {plan.name}
@@ -406,9 +406,9 @@ export default function LandingPage() {
                     {/* small square icon like in reference */}
                     <div
                       className="w-6 h-6 rounded flex items-center justify-center"
-                      style={{ background: 'rgba(160,185,255,0.06)', border: '1px solid rgba(160,185,255,0.1)' }}
+                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
                     >
-                      <div className="w-2 h-2 rounded-sm" style={{ background: plan.highlighted ? '#00ff66' : 'rgba(160,185,255,0.4)' }} />
+                      <div className="w-2 h-2 rounded-sm" style={{ background: plan.highlighted ? '#00ff66' : 'rgba(255,255,255,0.4)' }} />
                     </div>
                   </div>
 
@@ -417,13 +417,13 @@ export default function LandingPage() {
                     <span className="font-[family-name:var(--font-display)] text-6xl font-extrabold text-white leading-none">
                       {plan.price}
                     </span>
-                    <span className="text-sm pb-1" style={{ color: 'rgba(160,185,255,0.4)' }}>{plan.period}</span>
+                    <span className="text-sm pb-1" style={{ color: 'rgba(255,255,255,0.4)' }}>{plan.period}</span>
                   </div>
                   <p className="text-sm" style={{ color: 'rgba(200,207,224,0.5)' }}>{plan.description}</p>
                 </div>
 
                 {/* Divider */}
-                <div style={{ height: '1px', background: 'rgba(160,185,255,0.06)' }} />
+                <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)' }} />
 
                 {/* Features list */}
                 <ul className="flex flex-col gap-3">
@@ -451,7 +451,7 @@ export default function LandingPage() {
           </div>
 
           {/* Footer note */}
-          <p className="text-center mt-10 text-xs tracking-wide" style={{ color: 'rgba(160,185,255,0.3)' }}>
+          <p className="text-center mt-10 text-xs tracking-wide" style={{ color: 'rgba(255,255,255,0.3)' }}>
             14 dias grátis em todos os planos &bull; Cancele a qualquer momento &bull; Sem taxa de configuração
           </p>
         </div>
@@ -479,13 +479,13 @@ export default function LandingPage() {
                 <p className="text-sm leading-relaxed flex-1" style={{ color: 'rgba(200,207,224,0.65)' }}>
                   &ldquo;{t.text}&rdquo;
                 </p>
-                <div className="flex items-center gap-4 mt-auto pt-4" style={{ borderTop: '1px solid rgba(160,185,255,0.06)' }}>
-                  <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0" style={{ boxShadow: '0 0 0 2px rgba(212,175,55,0.2)' }}>
+                <div className="flex items-center gap-4 mt-auto pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0" style={{ boxShadow: '0 0 0 2px rgba(0,255,102,0.2)' }}>
                     <Image src={t.image} alt={t.name} fill className="object-cover" unoptimized />
                   </div>
                   <div>
                     <p className="text-white text-sm font-semibold">{t.name}</p>
-                    <p className="text-xs" style={{ color: 'rgba(160,185,255,0.4)' }}>{t.role}</p>
+                    <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{t.role}</p>
                     <p className="text-xs mt-0.5 text-[#00ff66]">{t.city}</p>
                   </div>
                 </div>
@@ -508,14 +508,14 @@ export default function LandingPage() {
             key={size}
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
-            style={{ width: size, height: size, border: '1px solid rgba(160,185,255,0.04)' }}
+            style={{ width: size, height: size, border: '1px solid rgba(255,255,255,0.04)' }}
           />
         ))}
 
         <div className="max-w-3xl mx-auto text-center relative z-10 flex flex-col items-center gap-8">
           <span
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
-            style={{ background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.2)', color: '#00ff66' }}
+            style={{ background: 'rgba(0,255,102,0.08)', border: '1px solid rgba(0,255,102,0.2)', color: '#00ff66' }}
           >
             ✂️ Comece Hoje
           </span>
@@ -538,17 +538,17 @@ export default function LandingPage() {
       </section>
 
       {/* ── 7. FOOTER ── */}
-      <footer className="px-6 py-16 relative z-10" style={{ borderTop: '1px solid rgba(160,185,255,0.06)' }}>
+      <footer className="px-6 py-16 relative z-10" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-2 flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2">
               <span className="text-xl">✂️</span>
               <span className="font-[family-name:var(--font-display)] text-xl tracking-widest">
                 <span className="text-white font-bold">BARBER</span>
-                <span className="font-bold" style={{ color: 'rgba(160,185,255,0.4)' }}>SUITE</span>
+                <span className="font-bold" style={{ color: 'rgba(255,255,255,0.4)' }}>SUITE</span>
               </span>
             </Link>
-            <p className="text-sm leading-relaxed max-w-xs" style={{ color: 'rgba(160,185,255,0.35)' }}>
+            <p className="text-sm leading-relaxed max-w-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
               A plataforma de gestão completa para barbearias modernas que
               querem crescer com inteligência e profissionalismo.
             </p>
@@ -558,7 +558,7 @@ export default function LandingPage() {
                   key={s}
                   href="#"
                   className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold transition-colors"
-                  style={{ background: 'rgba(160,185,255,0.04)', border: '1px solid rgba(160,185,255,0.08)', color: 'rgba(160,185,255,0.4)' }}
+                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)' }}
                 >
                   {s}
                 </a>
@@ -571,7 +571,7 @@ export default function LandingPage() {
             <ul className="flex flex-col gap-3">
               {['Funcionalidades', 'Preços', 'Sobre', 'Blog'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-sm transition-colors hover:text-white" style={{ color: 'rgba(160,185,255,0.35)' }}>{link}</a>
+                  <a href="#" className="text-sm transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.35)' }}>{link}</a>
                 </li>
               ))}
             </ul>
@@ -587,7 +587,7 @@ export default function LandingPage() {
                 { label: 'Contato', href: '/contact' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-sm transition-colors hover:text-white" style={{ color: 'rgba(160,185,255,0.35)' }}>
+                  <Link href={item.href} className="text-sm transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.35)' }}>
                     {item.label}
                   </Link>
                 </li>
@@ -598,12 +598,12 @@ export default function LandingPage() {
 
         <div
           className="max-w-7xl mx-auto mt-14 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
-          style={{ borderTop: '1px solid rgba(160,185,255,0.05)' }}
+          style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
         >
-          <p className="text-xs" style={{ color: 'rgba(160,185,255,0.25)' }}>
+          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>
             © 2025 BarberSuite. Todos os direitos reservados.
           </p>
-          <p className="text-xs" style={{ color: 'rgba(160,185,255,0.25)' }}>
+          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>
             Feito com ❤️ para barbearias brasileiras
           </p>
         </div>

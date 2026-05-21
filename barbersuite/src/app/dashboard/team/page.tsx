@@ -184,7 +184,7 @@ export default function TeamPage() {
           {/* Period tabs */}
           <div
             className="flex items-center gap-1 p-1 rounded-xl"
-            style={{ background: 'rgba(10,14,26,0.85)', border: '1px solid rgba(160,185,255,0.1)' }}
+            style={{ background: 'rgba(10,14,26,0.85)', border: '1px solid rgba(255,255,255,0.1)' }}
           >
             {PERIODS.map((p) => (
               <button
@@ -193,7 +193,7 @@ export default function TeamPage() {
                 className="px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
                 style={
                   period === p
-                    ? { background: '#00ff66', color: '#06080f' }
+                    ? { background: '#00ff66', color: '#030303' }
                     : { color: 'rgba(200,207,224,0.5)' }
                 }
               >
@@ -208,12 +208,12 @@ export default function TeamPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr style={{ borderBottom: '1px solid rgba(160,185,255,0.08)' }}>
+                <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                   {['Barbeiro', 'Atendimentos', 'Fat. Bruto', '% Comissão', 'Valor a Receber', 'Status', 'Ação'].map((h) => (
                     <th
                       key={h}
                       className="text-left px-6 py-4 text-[10px] uppercase font-bold tracking-widest whitespace-nowrap"
-                      style={{ color: 'rgba(160,185,255,0.4)' }}
+                      style={{ color: 'rgba(255,255,255,0.4)' }}
                     >
                       {h}
                     </th>
@@ -229,7 +229,7 @@ export default function TeamPage() {
                       key={row.id}
                       className="transition-colors duration-200 hover:bg-white/[0.02]"
                       style={{
-                        borderBottom: idx < rows.length - 1 ? '1px solid rgba(160,185,255,0.06)' : 'none',
+                        borderBottom: idx < rows.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
                       }}
                     >
                       {/* Barbeiro */}
@@ -237,7 +237,7 @@ export default function TeamPage() {
                         <div className="flex items-center gap-3">
                           <div
                             className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
-                            style={{ background: 'rgba(212,175,55,0.12)', color: '#00ff66', border: '1px solid rgba(212,175,55,0.25)' }}
+                            style={{ background: 'rgba(0,255,102,0.12)', color: '#00ff66', border: '1px solid rgba(0,255,102,0.25)' }}
                           >
                             {row.barber.split(' ').map((n) => n[0]).slice(0, 2).join('')}
                           </div>
@@ -248,7 +248,7 @@ export default function TeamPage() {
                       {/* Atendimentos */}
                       <td className="px-6 py-4">
                         <span className="font-semibold text-white">{row.atendimentos}</span>
-                        <span className="text-xs ml-1" style={{ color: 'rgba(160,185,255,0.4)' }}>atend.</span>
+                        <span className="text-xs ml-1" style={{ color: 'rgba(255,255,255,0.4)' }}>atend.</span>
                       </td>
 
                       {/* Fat. Bruto */}
@@ -291,7 +291,7 @@ export default function TeamPage() {
                       {/* Ação */}
                       <td className="px-6 py-4">
                         {isPago ? (
-                          <span className="text-xs" style={{ color: 'rgba(160,185,255,0.35)' }}>—</span>
+                          <span className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>—</span>
                         ) : (
                           <button
                             onClick={() => handleMarkPaid(row.id)}
@@ -327,7 +327,7 @@ export default function TeamPage() {
               <TrendingUp size={18} style={{ color: '#60a5fa' }} />
             </div>
             <div>
-              <p className="text-[10px] uppercase font-bold tracking-widest" style={{ color: 'rgba(160,185,255,0.4)' }}>
+              <p className="text-[10px] uppercase font-bold tracking-widest" style={{ color: 'rgba(255,255,255,0.4)' }}>
                 Faturamento Total
               </p>
               <p className="text-lg font-bold text-white">{fmt(totalGross)}</p>
@@ -338,12 +338,12 @@ export default function TeamPage() {
           <div className="premium-card p-5 flex items-center gap-4">
             <div
               className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(212,175,55,0.1)', border: '1px solid rgba(212,175,55,0.25)' }}
+              style={{ background: 'rgba(0,255,102,0.1)', border: '1px solid rgba(0,255,102,0.25)' }}
             >
               <DollarSign size={18} style={{ color: '#00ff66' }} />
             </div>
             <div>
-              <p className="text-[10px] uppercase font-bold tracking-widest" style={{ color: 'rgba(160,185,255,0.4)' }}>
+              <p className="text-[10px] uppercase font-bold tracking-widest" style={{ color: 'rgba(255,255,255,0.4)' }}>
                 Total em Comissões
               </p>
               <p className="text-lg font-bold" style={{ color: '#00ff66' }}>
@@ -371,7 +371,7 @@ export default function TeamPage() {
               }
             </div>
             <div>
-              <p className="text-[10px] uppercase font-bold tracking-widest" style={{ color: 'rgba(160,185,255,0.4)' }}>
+              <p className="text-[10px] uppercase font-bold tracking-widest" style={{ color: 'rgba(255,255,255,0.4)' }}>
                 A Pagar (Pendente)
               </p>
               <p

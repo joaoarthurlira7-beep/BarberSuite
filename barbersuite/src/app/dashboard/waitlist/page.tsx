@@ -32,7 +32,7 @@ export default function WaitlistPage() {
   }
 
   return (
-    <div className="flex flex-col gap-8 p-6 min-h-full" style={{ background: '#06080f' }}>
+    <div className="flex flex-col gap-8 p-6 min-h-full" style={{ background: '#030303' }}>
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
@@ -73,7 +73,7 @@ export default function WaitlistPage() {
           
           <div className="flex flex-col gap-4">
             {waitlist.map(entry => (
-              <div key={entry.id} className="premium-card p-0 flex overflow-hidden border-l-4" style={{ borderLeftColor: entry.position === 1 ? '#00ff66' : 'rgba(160,185,255,0.2)' }}>
+              <div key={entry.id} className="premium-card p-0 flex overflow-hidden border-l-4" style={{ borderLeftColor: entry.position === 1 ? '#00ff66' : 'rgba(255,255,255,0.2)' }}>
                 {/* Position Number */}
                 <div className="w-20 bg-white/5 flex flex-col items-center justify-center border-r border-white/5">
                   <span className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest mb-1">Posição</span>

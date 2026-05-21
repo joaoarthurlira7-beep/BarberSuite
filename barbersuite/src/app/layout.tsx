@@ -44,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${oswald.variable}`}>
-      <body className="antialiased font-sans" style={{ background: '#06080f', color: '#c8cfe0' }}>
+      <body className="antialiased font-sans" style={{ background: '#030303', color: '#c8cfe0' }}>
         {children}
       </body>
     </html>

@@ -190,7 +190,7 @@ export default function BillingPage() {
             {PLANS.map((p) => (
               <div 
                 key={p.id} 
-                className={`premium-card p-6 relative flex flex-col transition-all ${p.recommended ? 'border-[#00ff66]/30 shadow-[0_0_30px_rgba(212,175,55,0.1)] transform md:-translate-y-2' : ''}`}
+                className={`premium-card p-6 relative flex flex-col transition-all ${p.recommended ? 'border-[#00ff66]/30 shadow-[0_0_30px_rgba(0,255,102,0.1)] transform md:-translate-y-2' : ''}`}
               >
                 {p.recommended && (
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#00ff66] text-black text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap">
@@ -222,7 +222,7 @@ export default function BillingPage() {
                     ${plan === p.id 
                       ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed border border-neutral-700' 
                       : p.recommended 
-                        ? 'bg-gradient-to-r from-[#00ff66] to-[#00cc52] text-black hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]' 
+                        ? 'bg-gradient-to-r from-[#00ff66] to-[#00cc52] text-black hover:shadow-[0_0_20px_rgba(0,255,102,0.4)]' 
                         : 'bg-transparent border border-neutral-700 text-white hover:border-white hover:bg-white/5'
                     }`}
                 >

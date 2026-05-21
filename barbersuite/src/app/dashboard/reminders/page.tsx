@@ -29,7 +29,7 @@ const getStatusColor = (status: string) => {
 
 export default function RemindersPage() {
   return (
-    <div className="flex flex-col gap-8 p-6 min-h-full" style={{ background: '#06080f' }}>
+    <div className="flex flex-col gap-8 p-6 min-h-full" style={{ background: '#030303' }}>
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
@@ -147,7 +147,7 @@ export default function RemindersPage() {
             <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-500 mb-4 flex items-center gap-1">
               <Smartphone size={12} /> Simulação de SMS
             </span>
-            <div className="w-full aspect-[9/19] rounded-[2rem] border-[6px] border-neutral-900 bg-[#06080f] relative overflow-hidden flex flex-col shadow-xl max-w-[200px]">
+            <div className="w-full aspect-[9/19] rounded-[2rem] border-[6px] border-neutral-900 bg-[#030303] relative overflow-hidden flex flex-col shadow-xl max-w-[200px]">
               <div className="absolute top-0 inset-x-0 h-3 bg-neutral-900 rounded-b-xl mx-auto w-1/2" />
               
               <div className="pt-6 pb-2 px-4 flex items-center justify-center border-b border-white/5 bg-white/[0.02]">

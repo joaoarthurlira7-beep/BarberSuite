@@ -24,7 +24,7 @@ export default function AutomationsPage() {
   }
 
   return (
-    <div className="flex flex-col gap-8 p-6 min-h-full" style={{ background: '#06080f' }}>
+    <div className="flex flex-col gap-8 p-6 min-h-full" style={{ background: '#030303' }}>
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
@@ -60,7 +60,7 @@ export default function AutomationsPage() {
       {/* Automation Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {autos.map(auto => (
-          <div key={auto.id} className="premium-card flex flex-col transition-all duration-300" style={{ opacity: auto.active ? 1 : 0.6, borderColor: auto.active ? 'rgba(160,185,255,0.2)' : 'rgba(160,185,255,0.05)' }}>
+          <div key={auto.id} className="premium-card flex flex-col transition-all duration-300" style={{ opacity: auto.active ? 1 : 0.6, borderColor: auto.active ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.05)' }}>
             
             <div className="p-5 border-b border-white/5 flex justify-between items-start">
               <div>

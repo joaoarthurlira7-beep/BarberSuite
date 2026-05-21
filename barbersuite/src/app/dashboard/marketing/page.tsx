@@ -23,7 +23,7 @@ export default function MarketingPage() {
   const [isFormOpen, setIsFormOpen] = useState(false)
 
   return (
-    <div className="flex flex-col gap-8 p-6 min-h-full relative" style={{ background: '#06080f' }}>
+    <div className="flex flex-col gap-8 p-6 min-h-full relative" style={{ background: '#030303' }}>
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
@@ -106,7 +106,7 @@ export default function MarketingPage() {
         <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm transition-all duration-300">
           <div className="w-full md:w-[600px] h-full bg-[#0a0a0a] border-l border-neutral-800 shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
             
-            <div className="p-6 border-b border-neutral-800 flex justify-between items-center bg-[#06080f]">
+            <div className="p-6 border-b border-neutral-800 flex justify-between items-center bg-[#030303]">
               <h2 className="font-[family-name:var(--font-display)] text-xl font-bold text-white uppercase tracking-tight">Criar <span className="text-[#00ff66]">Campanha</span></h2>
               <button onClick={() => setIsFormOpen(false)} className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-neutral-400 hover:text-white transition-colors">
                 <X size={18} />
@@ -162,7 +162,7 @@ export default function MarketingPage() {
               {/* Preview Panel */}
               <div className="w-full md:w-48 flex-shrink-0 flex flex-col items-center">
                 <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-500 mb-4">Preview do Cliente</span>
-                <div className="w-full aspect-[9/19] rounded-[2rem] border-[6px] border-neutral-900 bg-[#06080f] relative overflow-hidden flex flex-col">
+                <div className="w-full aspect-[9/19] rounded-[2rem] border-[6px] border-neutral-900 bg-[#030303] relative overflow-hidden flex flex-col">
                   {/* Notch */}
                   <div className="absolute top-0 inset-x-0 h-4 bg-neutral-900 rounded-b-xl mx-auto w-1/2" />
                   
@@ -185,7 +185,7 @@ export default function MarketingPage() {
 
             </div>
 
-            <div className="p-6 border-t border-neutral-800 bg-[#06080f] flex justify-end gap-4">
+            <div className="p-6 border-t border-neutral-800 bg-[#030303] flex justify-end gap-4">
               <button onClick={() => setIsFormOpen(false)} className="btn-outline px-6 py-2 text-xs">Cancelar</button>
               <button className="btn-neon px-8 py-2 text-xs flex items-center gap-2">
                 <Send size={14} /> Disparar Campanha

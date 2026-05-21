@@ -97,7 +97,7 @@ export default async function TenantPublicPage({ params }: { params: Promise<{ s
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#050505]/80 to-[#050505]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.15)_0%,transparent_70%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,255,102,0.15)_0%,transparent_70%)]" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center animate-fade-in-up">

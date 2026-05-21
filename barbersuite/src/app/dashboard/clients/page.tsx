@@ -38,7 +38,7 @@ export default function ClientsPage() {
   )
 
   return (
-    <div className="flex flex-col gap-8 p-6 min-h-full" style={{ background: '#06080f' }}>
+    <div className="flex flex-col gap-8 p-6 min-h-full" style={{ background: '#030303' }}>
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
@@ -71,7 +71,7 @@ export default function ClientsPage() {
             </div>
             <div className="flex items-end justify-between mt-2">
               <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-white">{kpi.value}</span>
-              <span className="text-xs" style={{ color: 'rgba(160,185,255,0.4)' }}>{kpi.change}</span>
+              <span className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{kpi.change}</span>
             </div>
           </div>
         ))}

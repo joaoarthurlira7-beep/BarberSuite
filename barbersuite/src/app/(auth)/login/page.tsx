@@ -252,7 +252,7 @@ export default function LoginPage() {
             </p>
             <h2
               className="font-display text-5xl xl:text-6xl uppercase leading-[1.05] font-bold"
-              style={{ textShadow: '0 0 60px rgba(212,175,55,0.25)' }}
+              style={{ textShadow: '0 0 60px rgba(0,255,102,0.25)' }}
             >
               O futuro da<br />
               <span className="text-[#00ff66]">gestão</span><br />

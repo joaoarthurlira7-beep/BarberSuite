@@ -22,7 +22,7 @@ const MONTH_BIRTHDAYS = [
 
 export default function BirthdaysPage() {
   return (
-    <div className="flex flex-col gap-8 p-6 min-h-full" style={{ background: '#06080f' }}>
+    <div className="flex flex-col gap-8 p-6 min-h-full" style={{ background: '#030303' }}>
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
@@ -59,7 +59,7 @@ export default function BirthdaysPage() {
         <div className="lg:col-span-2 flex flex-col gap-6">
           
           {/* Today */}
-          <div className="premium-card flex flex-col" style={{ borderColor: 'rgba(212,175,55,0.3)', boxShadow: '0 0 20px rgba(212,175,55,0.05)' }}>
+          <div className="premium-card flex flex-col" style={{ borderColor: 'rgba(0,255,102,0.3)', boxShadow: '0 0 20px rgba(0,255,102,0.05)' }}>
             <div className="p-6 border-b border-white/5 flex items-center gap-2">
               <Cake className="text-[#00ff66]" size={20} />
               <h2 className="text-lg font-bold text-white uppercase tracking-wider">Aniversariantes de Hoje</h2>
