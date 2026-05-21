@@ -7,7 +7,7 @@ export default function BookingModalClientWrapper({
   barbershop,
   barbers,
   services,
-  className = "btn-gold py-2 text-xs"
+  className = "btn-neon py-2 text-xs"
 }: {
   barbershop: any
   barbers: any[]

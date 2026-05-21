@@ -21,7 +21,7 @@ export default function AddBarbershopPage() {
     adminEmail: '',
     password: '',
     logo: '',
-    primaryColor: '#d4af37',
+    primaryColor: '#00ff66',
     secondaryColor: '#ffffff',
     address: '',
     phone: '',

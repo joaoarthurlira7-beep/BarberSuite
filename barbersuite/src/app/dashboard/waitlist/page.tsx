@@ -6,7 +6,7 @@ import { Users, Clock, Zap, Check, X, Plus } from 'lucide-react'
 // --- Mock Data ---
 const KPIs = [
   { label: 'Na Fila Agora', value: '3', icon: Users, color: 'text-blue-400' },
-  { label: 'Tempo Médio de Espera', value: '24 min', icon: Clock, color: 'text-[#d4af37]' },
+  { label: 'Tempo Médio de Espera', value: '24 min', icon: Clock, color: 'text-[#00ff66]' },
   { label: 'Convertidos Hoje', value: '8', icon: Zap, color: 'text-green-400' },
 ]
 
@@ -37,7 +37,7 @@ export default function WaitlistPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Lista de <span className="text-[#d4af37]">Espera</span>
+            Lista de <span className="text-[#00ff66]">Espera</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Fila virtual para clientes sem agendamento prévio.
@@ -73,11 +73,11 @@ export default function WaitlistPage() {
           
           <div className="flex flex-col gap-4">
             {waitlist.map(entry => (
-              <div key={entry.id} className="premium-card p-0 flex overflow-hidden border-l-4" style={{ borderLeftColor: entry.position === 1 ? '#d4af37' : 'rgba(160,185,255,0.2)' }}>
+              <div key={entry.id} className="premium-card p-0 flex overflow-hidden border-l-4" style={{ borderLeftColor: entry.position === 1 ? '#00ff66' : 'rgba(160,185,255,0.2)' }}>
                 {/* Position Number */}
                 <div className="w-20 bg-white/5 flex flex-col items-center justify-center border-r border-white/5">
                   <span className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest mb-1">Posição</span>
-                  <span className="font-[family-name:var(--font-display)] text-4xl font-bold" style={{ color: entry.position === 1 ? '#d4af37' : '#fff' }}>
+                  <span className="font-[family-name:var(--font-display)] text-4xl font-bold" style={{ color: entry.position === 1 ? '#00ff66' : '#fff' }}>
                     {entry.position}
                   </span>
                 </div>
@@ -89,7 +89,7 @@ export default function WaitlistPage() {
                     <p className="text-xs text-neutral-400 mt-0.5">{entry.phone}</p>
                     <div className="flex items-center gap-4 mt-3">
                       <span className="text-xs font-semibold px-2 py-1 rounded bg-white/10 text-white">{entry.service}</span>
-                      <span className="text-xs text-[#d4af37] font-semibold">{entry.barber}</span>
+                      <span className="text-xs text-[#00ff66] font-semibold">{entry.barber}</span>
                     </div>
                   </div>
                   
@@ -153,7 +153,7 @@ export default function WaitlistPage() {
             </select>
           </div>
 
-          <button className="btn-gold w-full justify-center mt-2">
+          <button className="btn-neon w-full justify-center mt-2">
             <Plus size={16} /> Colocar na Fila
           </button>
         </div>

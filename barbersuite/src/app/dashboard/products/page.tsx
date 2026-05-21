@@ -48,7 +48,7 @@ export default function ProductsPage() {
               onChange={e => setSearchQuery(e.target.value)}
             />
           </div>
-          <button onClick={() => setIsModalOpen(true)} className="btn-gold py-2 text-xs whitespace-nowrap">
+          <button onClick={() => setIsModalOpen(true)} className="btn-neon py-2 text-xs whitespace-nowrap">
             <Plus size={16} /> Novo Produto
           </button>
         </div>
@@ -58,7 +58,7 @@ export default function ProductsPage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {[
           { label: 'Itens em Estoque', value: String(totalItems), icon: Package, color: '#3b82f6', desc: 'Unidades totais' },
-          { label: 'Alerta Estoque Baixo', value: String(lowStockCount), icon: AlertTriangle, color: '#d4af37', desc: 'Abaixo do recomendado' },
+          { label: 'Alerta Estoque Baixo', value: String(lowStockCount), icon: AlertTriangle, color: '#00ff66', desc: 'Abaixo do recomendado' },
           { label: 'Sem Estoque (Esgotado)', value: String(outOfStockCount), icon: AlertTriangle, color: '#ef4444', desc: 'Reabastecimento urgente' },
           { label: 'Valor do Estoque', value: formatCurrency(totalValue), icon: DollarSign, color: '#22c55e', desc: 'Preço de venda estimado' },
         ].map((kpi, i) => (
@@ -112,7 +112,7 @@ export default function ProductsPage() {
                 )}
 
                 {isLowStock && (
-                  <span className="inline-block px-2.5 py-1 rounded-full bg-[#d4af37]/10 text-[#d4af37] text-[9px] font-bold uppercase tracking-widest flex items-center gap-1 animate-pulse">
+                  <span className="inline-block px-2.5 py-1 rounded-full bg-[#00ff66]/10 text-[#00ff66] text-[9px] font-bold uppercase tracking-widest flex items-center gap-1 animate-pulse">
                     <AlertTriangle size={10} /> Estoque Baixo
                   </span>
                 )}
@@ -135,7 +135,7 @@ export default function ProductsPage() {
 
                 <div className="flex flex-col items-end">
                   <span className="text-[9px] text-neutral-600 uppercase font-bold">Quantidade</span>
-                  <span className={`font-semibold ${isOutOfStock ? 'text-red-500 font-bold' : isLowStock ? 'text-[#d4af37]' : 'text-white'}`}>
+                  <span className={`font-semibold ${isOutOfStock ? 'text-red-500 font-bold' : isLowStock ? 'text-[#00ff66]' : 'text-white'}`}>
                     {prod.stock} / {prod.low_stock} <span className="text-[9px] text-neutral-600 font-light">(mín)</span>
                   </span>
                 </div>
@@ -194,7 +194,7 @@ export default function ProductsPage() {
 
             <div className="flex gap-3 mt-8">
               <button onClick={() => setIsModalOpen(false)} className="btn-outline flex-1 justify-center py-2 text-xs">Cancelar</button>
-              <button onClick={() => setIsModalOpen(false)} className="btn-gold flex-1 justify-center py-2 text-xs">Salvar Produto</button>
+              <button onClick={() => setIsModalOpen(false)} className="btn-neon flex-1 justify-center py-2 text-xs">Salvar Produto</button>
             </div>
           </div>
         </div>

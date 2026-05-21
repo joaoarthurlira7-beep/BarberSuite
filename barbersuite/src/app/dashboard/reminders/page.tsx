@@ -5,7 +5,7 @@ import { Bell, ShieldCheck, CalendarClock, Settings2, Smartphone, Send, Check } 
 // --- Mock Data ---
 const KPIs = [
   { label: 'Enviados Hoje', value: '24', icon: Bell, color: 'text-blue-400' },
-  { label: 'Taxa de Confirmação', value: '89%', icon: ShieldCheck, color: 'text-[#d4af37]' },
+  { label: 'Taxa de Confirmação', value: '89%', icon: ShieldCheck, color: 'text-[#00ff66]' },
   { label: 'Faltas Evitadas', value: '3', icon: CalendarClock, color: 'text-green-400' },
 ]
 
@@ -34,7 +34,7 @@ export default function RemindersPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Lembretes de <span className="text-[#d4af37]">Horários</span>
+            Lembretes de <span className="text-[#00ff66]">Horários</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Reduza faltas e atrasos com envios automáticos via SMS.
@@ -90,7 +90,7 @@ export default function RemindersPage() {
                     <td className="p-4 font-medium text-white">{rem.client}</td>
                     <td className="p-4">
                       <p className="text-sm text-white">{rem.service}</p>
-                      <p className="text-[10px] text-[#d4af37] uppercase">{rem.barber}</p>
+                      <p className="text-[10px] text-[#00ff66] uppercase">{rem.barber}</p>
                     </td>
                     <td className="p-4 text-center">
                       <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${getStatusColor(rem.status)}`}>
@@ -121,13 +121,13 @@ export default function RemindersPage() {
           
           <div className="premium-card p-6 flex flex-col gap-5">
             <div className="flex items-center gap-3 border-b border-white/5 pb-4">
-              <Settings2 className="text-[#d4af37]" />
+              <Settings2 className="text-[#00ff66]" />
               <h2 className="text-lg font-bold text-white uppercase tracking-wider">Configuração Automática</h2>
             </div>
 
             <div>
               <label className="flex items-center gap-2 cursor-pointer mb-4">
-                <input type="checkbox" className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#d4af37]" defaultChecked />
+                <input type="checkbox" className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#00ff66]" defaultChecked />
                 <span className="text-sm font-bold text-white">Ativar Envio Automático</span>
               </label>
 
@@ -138,7 +138,7 @@ export default function RemindersPage() {
               </div>
             </div>
 
-            <button className="btn-gold w-full justify-center mt-2">
+            <button className="btn-neon w-full justify-center mt-2">
               Salvar Configuração
             </button>
           </div>

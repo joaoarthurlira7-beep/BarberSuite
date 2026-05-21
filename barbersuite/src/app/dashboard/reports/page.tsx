@@ -51,7 +51,7 @@ export default function ReportsPage() {
           <button 
             onClick={handleExport} 
             disabled={isExporting}
-            className="btn-gold py-2 text-xs whitespace-nowrap"
+            className="btn-neon py-2 text-xs whitespace-nowrap"
           >
             <Download size={14} /> {isExporting ? 'Exportando...' : 'Exportar Relatório'}
           </button>
@@ -63,7 +63,7 @@ export default function ReportsPage() {
         {[
           { label: 'Faturamento Bruto', value: formatCurrency(18320.00), icon: DollarSign, color: '#22c55e', sub: '+15.2% vs mês anterior' },
           { label: 'Total de Atendimentos', value: '354', icon: Calendar, color: '#3b82f6', sub: 'Média de 11.8/dia' },
-          { label: 'Ticket Médio Geral', value: formatCurrency(51.75), icon: TrendingUp, color: '#d4af37', sub: '+3.5% este mês' },
+          { label: 'Ticket Médio Geral', value: formatCurrency(51.75), icon: TrendingUp, color: '#00ff66', sub: '+3.5% este mês' },
           { label: 'Novos Clientes', value: '48', icon: Users, color: '#8b5cf6', sub: '25% de retenção' },
         ].map((kpi, i) => (
           <div key={i} className="premium-card p-5">
@@ -87,7 +87,7 @@ export default function ReportsPage() {
         <div className="premium-card p-6 lg:col-span-3">
           <div className="flex items-center justify-between mb-6">
             <h3 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-white text-sm font-bold flex items-center gap-2">
-              <BarChart3 size={16} className="text-[#d4af37]" /> Evolução Mensal
+              <BarChart3 size={16} className="text-[#00ff66]" /> Evolução Mensal
             </h3>
             <span className="text-[10px] text-neutral-500 uppercase tracking-widest">Ano de 2026</span>
           </div>
@@ -105,7 +105,7 @@ export default function ReportsPage() {
               const percentageHeight = month.value > 0 ? (month.value / maxValue) * 100 : 0
               return (
                 <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
-                  <span className="text-[9px] text-neutral-500 group-hover:text-[#d4af37] transition-colors">
+                  <span className="text-[9px] text-neutral-500 group-hover:text-[#00ff66] transition-colors">
                     {month.value > 0 ? formatCurrency(month.value).replace('R$\u00a0', 'R$') : '-'}
                   </span>
                   <div className="w-full relative rounded-t-lg overflow-hidden bg-neutral-900" style={{ height: '140px' }}>
@@ -113,7 +113,7 @@ export default function ReportsPage() {
                       className="absolute bottom-0 left-0 right-0 rounded-t-lg transition-all duration-700 group-hover:opacity-100"
                       style={{ 
                         height: `${percentageHeight}%`,
-                        background: month.value > 0 ? 'linear-gradient(to top, #d4af37, #f0d98a80)' : '#1a1a1a',
+                        background: month.value > 0 ? 'linear-gradient(to top, #00ff66, #ccffea80)' : '#1a1a1a',
                         opacity: month.value > 0 ? 0.8 : 0.3
                       }}
                     />
@@ -129,7 +129,7 @@ export default function ReportsPage() {
         <div className="premium-card p-6 lg:col-span-2">
           <div className="flex items-center justify-between mb-6">
             <h3 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-white text-sm font-bold flex items-center gap-2">
-              <Award size={16} className="text-[#d4af37]" /> Serviços Mais Procurados
+              <Award size={16} className="text-[#00ff66]" /> Serviços Mais Procurados
             </h3>
           </div>
 
@@ -142,7 +142,7 @@ export default function ReportsPage() {
                 </div>
                 <div className="w-full h-1.5 bg-neutral-900 rounded-full overflow-hidden">
                   <div 
-                    className="h-full rounded-full bg-gradient-to-r from-[#d4af37] to-[#f0d98a]" 
+                    className="h-full rounded-full bg-gradient-to-r from-[#00ff66] to-[#ccffea]" 
                     style={{ width: `${service.percentage}%` }}
                   />
                 </div>
@@ -173,7 +173,7 @@ export default function ReportsPage() {
               {TEAM_PERFORMANCE.map((barber, i) => (
                 <tr key={i} className="hover:bg-neutral-900/20 transition-colors">
                   <td className="py-3.5 font-medium text-white flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#d4af37]/10 flex items-center justify-center font-bold text-xs text-[#d4af37]">
+                    <div className="w-8 h-8 rounded-full bg-[#00ff66]/10 flex items-center justify-center font-bold text-xs text-[#00ff66]">
                       {barber.name.charAt(0)}
                     </div>
                     {barber.name}
@@ -181,10 +181,10 @@ export default function ReportsPage() {
                   <td className="py-3.5">{barber.appointments} cortes</td>
                   <td className="py-3.5 font-bold text-white">{formatCurrency(barber.revenue)}</td>
                   <td className="py-3.5 text-white flex items-center gap-1 mt-2.5">
-                    <span className="text-[#d4af37]">★</span> {barber.rating}
+                    <span className="text-[#00ff66]">★</span> {barber.rating}
                   </td>
                   <td className="py-3.5 text-right">
-                    <button className="text-[10px] uppercase font-bold text-[#d4af37] tracking-wider hover:underline inline-flex items-center gap-1">
+                    <button className="text-[10px] uppercase font-bold text-[#00ff66] tracking-wider hover:underline inline-flex items-center gap-1">
                       Ver Ficha <ArrowUpRight size={12} />
                     </button>
                   </td>

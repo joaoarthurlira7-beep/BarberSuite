@@ -29,13 +29,13 @@ export default function AutomationsPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Automações de <span className="text-[#d4af37]">Retorno</span>
+            Automações de <span className="text-[#00ff66]">Retorno</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Engaje clientes inativos automaticamente e recupere faturamento.
           </p>
         </div>
-        <button className="btn-gold text-xs py-2">
+        <button className="btn-neon text-xs py-2">
           + Nova Automação
         </button>
       </div>
@@ -65,7 +65,7 @@ export default function AutomationsPage() {
             <div className="p-5 border-b border-white/5 flex justify-between items-start">
               <div>
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider">{auto.name}</h3>
-                <span className="inline-block mt-1 text-[10px] uppercase font-bold tracking-widest text-[#d4af37] bg-[#d4af37]/10 px-2 py-0.5 rounded">
+                <span className="inline-block mt-1 text-[10px] uppercase font-bold tracking-widest text-[#00ff66] bg-[#00ff66]/10 px-2 py-0.5 rounded">
                   {auto.trigger}
                 </span>
               </div>
@@ -93,7 +93,7 @@ export default function AutomationsPage() {
                     <span className="text-white font-bold">{auto.opened}</span>
                   </div>
                 </div>
-                <button className="text-xs text-[#d4af37] flex items-center gap-1 hover:underline">
+                <button className="text-xs text-[#00ff66] flex items-center gap-1 hover:underline">
                   <Edit3 size={12} /> Editar
                 </button>
               </div>
@@ -103,8 +103,8 @@ export default function AutomationsPage() {
         ))}
 
         {/* Create New Card */}
-        <div className="premium-card flex flex-col items-center justify-center p-8 border-dashed cursor-pointer hover:border-[#d4af37]/30 transition-colors group">
-          <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-neutral-500 group-hover:text-[#d4af37] group-hover:bg-[#d4af37]/10 transition-colors mb-4">
+        <div className="premium-card flex flex-col items-center justify-center p-8 border-dashed cursor-pointer hover:border-[#00ff66]/30 transition-colors group">
+          <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-neutral-500 group-hover:text-[#00ff66] group-hover:bg-[#00ff66]/10 transition-colors mb-4">
             <Settings2 size={24} />
           </div>
           <h3 className="text-white font-bold">Criar Regra Personalizada</h3>

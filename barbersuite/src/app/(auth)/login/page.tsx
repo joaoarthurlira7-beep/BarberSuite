@@ -255,7 +255,7 @@ export default function LoginPage() {
               style={{ textShadow: '0 0 60px rgba(212,175,55,0.25)' }}
             >
               O futuro da<br />
-              <span className="text-[#d4af37]">gestão</span><br />
+              <span className="text-[#00ff66]">gestão</span><br />
               chegou.
             </h2>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-xs">

@@ -6,7 +6,7 @@ import { UserCheck, Search, Filter, Star, Clock, AlertTriangle, MoreHorizontal, 
 // --- Mock Data ---
 const KPIs = [
   { label: 'Total de Clientes', value: '247', change: '+12 este mês', icon: UserCheck, color: 'text-blue-400' },
-  { label: 'Clientes VIP', value: '38', change: 'Top 15%', icon: Star, color: 'text-[#d4af37]' },
+  { label: 'Clientes VIP', value: '38', change: 'Top 15%', icon: Star, color: 'text-[#00ff66]' },
   { label: 'Novos (30 dias)', value: '12', change: '+3 vs mês ant.', icon: Clock, color: 'text-green-400' },
   { label: 'Inativos (+60 dias)', value: '54', change: 'Precisam de atenção', icon: AlertTriangle, color: 'text-red-400' },
 ]
@@ -23,7 +23,7 @@ const MOCK_CLIENTS = [
 ]
 
 const STATUS_COLORS: Record<string, string> = {
-  'VIP': 'bg-[#d4af37]/10 text-[#d4af37] border-[#d4af37]/20',
+  'VIP': 'bg-[#00ff66]/10 text-[#00ff66] border-[#00ff66]/20',
   'Frequente': 'bg-blue-500/10 text-blue-400 border-blue-500/20',
   'Inativo': 'bg-red-500/10 text-red-400 border-red-500/20'
 }
@@ -43,7 +43,7 @@ export default function ClientsPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Clube de <span className="text-[#d4af37]">Clientes</span>
+            Clube de <span className="text-[#00ff66]">Clientes</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Gerencie sua base de clientes, histórico de visitas e segmentação.
@@ -53,7 +53,7 @@ export default function ClientsPage() {
           <button className="btn-outline text-xs">
             <Download size={14} /> Exportar
           </button>
-          <button className="btn-gold text-xs">
+          <button className="btn-neon text-xs">
             + Novo Cliente
           </button>
         </div>

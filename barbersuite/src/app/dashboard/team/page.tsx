@@ -14,7 +14,7 @@ const MOCK_TEAM = [
     photo: 'https://images.unsplash.com/photo-1593702288056-ccde39692473?w=400&q=80',
     instagram: '@joseshaper',
     phone: '62999999999',
-    color: '#d4af37',
+    color: '#00ff66',
     is_active: true
   },
   { 
@@ -97,7 +97,7 @@ export default function TeamPage() {
           </h1>
           <p className="text-neutral-500 text-sm mt-1">Gerencie os profissionais da sua barbearia.</p>
         </div>
-        <button onClick={() => setIsModalOpen(true)} className="btn-gold py-2 text-xs">
+        <button onClick={() => setIsModalOpen(true)} className="btn-neon py-2 text-xs">
           <Plus size={16} /> Adicionar Barbeiro
         </button>
       </div>
@@ -139,7 +139,7 @@ export default function TeamPage() {
               </div>
 
               <h3 className="font-[family-name:var(--font-display)] text-xl text-white tracking-wide">{member.name}</h3>
-              <p className="text-[#d4af37] text-xs font-bold uppercase tracking-widest mt-1 mb-4">{member.role}</p>
+              <p className="text-[#00ff66] text-xs font-bold uppercase tracking-widest mt-1 mb-4">{member.role}</p>
               
               <p className="text-neutral-400 text-sm mb-6 line-clamp-3">
                 {member.bio}
@@ -148,7 +148,7 @@ export default function TeamPage() {
               {/* Social/Contact */}
               <div className="flex items-center gap-4 pt-4 border-t border-neutral-800/50 w-full justify-center">
                 {member.instagram && (
-                  <a href={`https://instagram.com/${member.instagram.replace('@', '')}`} target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-[#d4af37] transition-colors">
+                  <a href={`https://instagram.com/${member.instagram.replace('@', '')}`} target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-[#00ff66] transition-colors">
                     <Instagram size={18} />
                   </a>
                 )}
@@ -193,7 +193,7 @@ export default function TeamPage() {
                 className="px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
                 style={
                   period === p
-                    ? { background: '#d4af37', color: '#06080f' }
+                    ? { background: '#00ff66', color: '#06080f' }
                     : { color: 'rgba(200,207,224,0.5)' }
                 }
               >
@@ -237,7 +237,7 @@ export default function TeamPage() {
                         <div className="flex items-center gap-3">
                           <div
                             className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
-                            style={{ background: 'rgba(212,175,55,0.12)', color: '#d4af37', border: '1px solid rgba(212,175,55,0.25)' }}
+                            style={{ background: 'rgba(212,175,55,0.12)', color: '#00ff66', border: '1px solid rgba(212,175,55,0.25)' }}
                           >
                             {row.barber.split(' ').map((n) => n[0]).slice(0, 2).join('')}
                           </div>
@@ -268,7 +268,7 @@ export default function TeamPage() {
 
                       {/* Valor a Receber */}
                       <td className="px-6 py-4">
-                        <span className="text-lg font-bold" style={{ color: '#d4af37' }}>
+                        <span className="text-lg font-bold" style={{ color: '#00ff66' }}>
                           {fmt(valorComissao)}
                         </span>
                       </td>
@@ -340,13 +340,13 @@ export default function TeamPage() {
               className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
               style={{ background: 'rgba(212,175,55,0.1)', border: '1px solid rgba(212,175,55,0.25)' }}
             >
-              <DollarSign size={18} style={{ color: '#d4af37' }} />
+              <DollarSign size={18} style={{ color: '#00ff66' }} />
             </div>
             <div>
               <p className="text-[10px] uppercase font-bold tracking-widest" style={{ color: 'rgba(160,185,255,0.4)' }}>
                 Total em Comissões
               </p>
-              <p className="text-lg font-bold" style={{ color: '#d4af37' }}>
+              <p className="text-lg font-bold" style={{ color: '#00ff66' }}>
                 {fmt(rows.reduce((s, r) => s + (r.faturamentoBruto * r.percentualComissao) / 100, 0))}
               </p>
             </div>
@@ -393,7 +393,7 @@ export default function TeamPage() {
             
             <div className="space-y-4">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-20 h-20 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center cursor-pointer hover:border-[#d4af37] transition-colors">
+                <div className="w-20 h-20 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center cursor-pointer hover:border-[#00ff66] transition-colors">
                   <Plus size={24} className="text-neutral-500" />
                 </div>
                 <div className="flex-1">
@@ -432,17 +432,17 @@ export default function TeamPage() {
               <div>
                 <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Cor no Calendário</label>
                 <div className="flex gap-2">
-                  {['#d4af37', '#3b82f6', '#22c55e', '#8b5cf6', '#ec4899', '#f97316'].map(color => (
+                  {['#00ff66', '#3b82f6', '#22c55e', '#8b5cf6', '#ec4899', '#f97316'].map(color => (
                     <button key={color} className="w-8 h-8 rounded-full border-2 border-transparent hover:border-white transition-all focus:border-white focus:outline-none" style={{ backgroundColor: color }} />
                   ))}
-                  <input type="color" className="w-8 h-8 rounded-full border-0 p-0 cursor-pointer overflow-hidden" defaultValue="#d4af37" />
+                  <input type="color" className="w-8 h-8 rounded-full border-0 p-0 cursor-pointer overflow-hidden" defaultValue="#00ff66" />
                 </div>
               </div>
             </div>
 
             <div className="flex gap-3 mt-8">
               <button onClick={() => setIsModalOpen(false)} className="btn-outline flex-1 justify-center py-2 text-xs">Cancelar</button>
-              <button onClick={() => setIsModalOpen(false)} className="btn-gold flex-1 justify-center py-2 text-xs">Salvar</button>
+              <button onClick={() => setIsModalOpen(false)} className="btn-neon flex-1 justify-center py-2 text-xs">Salvar</button>
             </div>
           </div>
         </div>

@@ -84,7 +84,7 @@ export default async function DashboardLayout({
         {/* Logo */}
         <div className="h-[72px] flex items-center justify-center md:justify-start md:px-6 border-b border-neutral-900 flex-shrink-0">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <span className="text-[#d4af37] text-2xl">✂</span>
+            <span className="text-[#00ff66] text-2xl">✂</span>
             <span className="hidden md:block font-[family-name:var(--font-display)] text-xl tracking-tighter uppercase text-white">
               BARBER<span className="font-light opacity-60 ml-1">SUITE</span>
             </span>
@@ -104,7 +104,7 @@ export default async function DashboardLayout({
                   href={item.href}
                   className="nav-item flex items-center gap-3 px-3 py-2.5 text-neutral-500 hover:text-white transition-colors group mx-2 rounded-xl"
                 >
-                  <item.icon size={18} className="flex-shrink-0 group-hover:text-[#d4af37] transition-colors" />
+                  <item.icon size={18} className="flex-shrink-0 group-hover:text-[#00ff66] transition-colors" />
                   <span className="hidden md:block font-medium uppercase tracking-wider text-[10px]">
                     {item.label}
                   </span>
@@ -117,8 +117,8 @@ export default async function DashboardLayout({
         {/* User Footer */}
         <div className="p-3 md:p-4 border-t border-neutral-900 flex-shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#d4af37]/20 border border-[#d4af37]/30 flex items-center justify-center flex-shrink-0">
-              <span className="text-[#d4af37] text-sm font-bold">
+            <div className="w-9 h-9 rounded-full bg-[#00ff66]/20 border border-[#00ff66]/30 flex items-center justify-center flex-shrink-0">
+              <span className="text-[#00ff66] text-sm font-bold">
                 {barbershop?.name?.[0]?.toUpperCase() ?? 'B'}
               </span>
             </div>
@@ -145,9 +145,9 @@ export default async function DashboardLayout({
             <Link
               href={`/b/${barbershop.slug}`}
               target="_blank"
-              className="hidden md:flex items-center gap-2 mt-3 text-[10px] text-neutral-600 hover:text-[#d4af37] transition-colors group"
+              className="hidden md:flex items-center gap-2 mt-3 text-[10px] text-neutral-600 hover:text-[#00ff66] transition-colors group"
             >
-              <Zap size={12} className="group-hover:text-[#d4af37]" />
+              <Zap size={12} className="group-hover:text-[#00ff66]" />
               Ver página pública
               <ChevronRight size={10} />
             </Link>
@@ -159,13 +159,13 @@ export default async function DashboardLayout({
       <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Trial banner */}
         {barbershop?.plan === 'trial' && (
-          <div className="bg-[#d4af37]/10 border-b border-[#d4af37]/20 px-6 py-2 flex items-center justify-between flex-shrink-0">
-            <p className="text-xs text-[#d4af37] font-medium">
+          <div className="bg-[#00ff66]/10 border-b border-[#00ff66]/20 px-6 py-2 flex items-center justify-between flex-shrink-0">
+            <p className="text-xs text-[#00ff66] font-medium">
               ✨ Trial gratuito ativo — Escolha um plano para continuar após o período de avaliação
             </p>
             <Link
               href="/dashboard/billing"
-              className="text-xs text-[#d4af37] font-bold underline hover:no-underline"
+              className="text-xs text-[#00ff66] font-bold underline hover:no-underline"
             >
               Ver planos →
             </Link>

@@ -5,7 +5,7 @@ import { Gift, Award, TrendingUp, Sparkles, Settings2, CheckCircle2 } from 'luci
 // --- Mock Data ---
 const KPIs = [
   { label: 'Clientes no Programa', value: '89', icon: Award, color: 'text-purple-400' },
-  { label: 'Resgates este Mês', value: '14', icon: Gift, color: 'text-[#d4af37]' },
+  { label: 'Resgates este Mês', value: '14', icon: Gift, color: 'text-[#00ff66]' },
   { label: 'Serviços Grátis Pendentes', value: '7', icon: Sparkles, color: 'text-blue-400' },
   { label: 'Taxa de Retenção', value: '78%', icon: TrendingUp, color: 'text-green-400' },
 ]
@@ -26,7 +26,7 @@ export default function LoyaltyPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Programa de <span className="text-[#d4af37]">Fidelidade</span>
+            Programa de <span className="text-[#00ff66]">Fidelidade</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Incentive o retorno de seus clientes oferecendo recompensas.
@@ -89,7 +89,7 @@ export default function LoyaltyPage() {
                           </div>
                           <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                             <div 
-                              className={`h-full rounded-full ${isReady ? 'bg-[#d4af37]' : 'bg-blue-400'}`} 
+                              className={`h-full rounded-full ${isReady ? 'bg-[#00ff66]' : 'bg-blue-400'}`} 
                               style={{ width: `${progressPct}%` }}
                             />
                           </div>
@@ -97,7 +97,7 @@ export default function LoyaltyPage() {
                       </td>
                       <td className="p-4 text-center">
                         {isReady ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border bg-[#d4af37]/10 text-[#d4af37] border-[#d4af37]/20 animate-pulse">
+                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border bg-[#00ff66]/10 text-[#00ff66] border-[#00ff66]/20 animate-pulse">
                             <Sparkles size={10} /> Resgate Disponível!
                           </span>
                         ) : (
@@ -108,7 +108,7 @@ export default function LoyaltyPage() {
                       </td>
                       <td className="p-4 text-right">
                         {isReady && (
-                          <button className="btn-gold px-3 py-1.5 text-[10px]">
+                          <button className="btn-neon px-3 py-1.5 text-[10px]">
                             Registrar Resgate
                           </button>
                         )}
@@ -124,7 +124,7 @@ export default function LoyaltyPage() {
         {/* Right: Config Panel */}
         <div className="premium-card p-6 flex flex-col gap-6">
           <div className="flex items-center gap-3 border-b border-white/5 pb-4">
-            <Settings2 className="text-[#d4af37]" />
+            <Settings2 className="text-[#00ff66]" />
             <h2 className="text-lg font-bold text-white uppercase tracking-wider">Configuração</h2>
           </div>
           
@@ -163,7 +163,7 @@ export default function LoyaltyPage() {
               />
             </div>
 
-            <button className="btn-gold w-full justify-center mt-4">
+            <button className="btn-neon w-full justify-center mt-4">
               Salvar Configurações
             </button>
           </div>

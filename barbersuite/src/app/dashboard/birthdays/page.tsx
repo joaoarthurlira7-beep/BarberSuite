@@ -4,7 +4,7 @@ import { Cake, MessageSquare, Save, User, Calendar, Phone, Gift, ToggleRight } f
 
 // --- Mock Data ---
 const KPIs = [
-  { label: 'Aniversariantes Hoje', value: '2', icon: Cake, color: 'text-[#d4af37]' },
+  { label: 'Aniversariantes Hoje', value: '2', icon: Cake, color: 'text-[#00ff66]' },
   { label: 'Este Mês', value: '18', icon: Calendar, color: 'text-blue-400' },
   { label: 'Mensagens Enviadas', value: '16', icon: MessageSquare, color: 'text-green-400' },
 ]
@@ -27,7 +27,7 @@ export default function BirthdaysPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            <span className="text-[#d4af37]">Aniversariantes</span> do Mês
+            <span className="text-[#00ff66]">Aniversariantes</span> do Mês
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Fidelize clientes enviando mensagens de parabéns e presentes especiais.
@@ -61,14 +61,14 @@ export default function BirthdaysPage() {
           {/* Today */}
           <div className="premium-card flex flex-col" style={{ borderColor: 'rgba(212,175,55,0.3)', boxShadow: '0 0 20px rgba(212,175,55,0.05)' }}>
             <div className="p-6 border-b border-white/5 flex items-center gap-2">
-              <Cake className="text-[#d4af37]" size={20} />
+              <Cake className="text-[#00ff66]" size={20} />
               <h2 className="text-lg font-bold text-white uppercase tracking-wider">Aniversariantes de Hoje</h2>
             </div>
             <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
               {TODAY_BIRTHDAYS.map(client => (
                 <div key={client.id} className="bg-white/5 border border-white/10 p-4 rounded-xl flex flex-col gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#d4af37]/20 border border-[#d4af37]/30 flex items-center justify-center flex-shrink-0 text-[#d4af37] font-bold text-sm">
+                    <div className="w-10 h-10 rounded-full bg-[#00ff66]/20 border border-[#00ff66]/30 flex items-center justify-center flex-shrink-0 text-[#00ff66] font-bold text-sm">
                       {client.name.substring(0, 2).toUpperCase()}
                     </div>
                     <div>
@@ -77,7 +77,7 @@ export default function BirthdaysPage() {
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <button className="btn-gold flex-1 text-[10px] py-2 px-0 justify-center">
+                    <button className="btn-neon flex-1 text-[10px] py-2 px-0 justify-center">
                       <MessageSquare size={12} className="mr-1" /> SMS
                     </button>
                     <button className="btn-outline flex-1 text-[10px] py-2 px-0 justify-center text-neutral-400">
@@ -125,7 +125,7 @@ export default function BirthdaysPage() {
         {/* Right: Automation Config */}
         <div className="premium-card p-6 flex flex-col gap-6 h-fit">
           <div className="flex items-center gap-3 border-b border-white/5 pb-4">
-            <MessageSquare className="text-[#d4af37]" />
+            <MessageSquare className="text-[#00ff66]" />
             <h2 className="text-lg font-bold text-white uppercase tracking-wider">Mensagem Automática</h2>
           </div>
           
@@ -134,16 +134,16 @@ export default function BirthdaysPage() {
               <p className="text-sm font-bold text-white">Envio Automático via SMS</p>
               <p className="text-[10px] text-neutral-500 uppercase tracking-wider mt-0.5">Dispara às 09:00 do dia</p>
             </div>
-            <ToggleRight size={32} className="text-[#d4af37] cursor-pointer" />
+            <ToggleRight size={32} className="text-[#00ff66] cursor-pointer" />
           </div>
 
           <div className="bg-white/5 border border-white/10 p-4 rounded-xl mt-2 relative">
             <div className="absolute top-2 right-3 text-[10px] text-neutral-500 font-mono">110/160</div>
             <p className="text-xs text-neutral-300 font-mono leading-relaxed">
-              "Feliz Aniversário, <span className="text-[#d4af37]">{'<nome>'}</span>! 🎂 A BarberSuite tem um presente especial para vc: <span className="text-green-400">{'<desconto>'}</span>% de desconto no seu prox. corte. Mostre esta msg!"
+              "Feliz Aniversário, <span className="text-[#00ff66]">{'<nome>'}</span>! 🎂 A BarberSuite tem um presente especial para vc: <span className="text-green-400">{'<desconto>'}</span>% de desconto no seu prox. corte. Mostre esta msg!"
             </p>
           </div>
-          <button className="text-xs text-[#d4af37] font-bold uppercase tracking-wider hover:underline text-left">Editar Mensagem</button>
+          <button className="text-xs text-[#00ff66] font-bold uppercase tracking-wider hover:underline text-left">Editar Mensagem</button>
 
           <div className="border-t border-white/5 pt-4">
             <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">Desconto Oferecido</label>
@@ -153,7 +153,7 @@ export default function BirthdaysPage() {
             </div>
           </div>
 
-          <button className="btn-gold w-full justify-center mt-2">
+          <button className="btn-neon w-full justify-center mt-2">
             <Save size={16} /> Salvar Automação
           </button>
         </div>

@@ -35,7 +35,7 @@ export default function ServicesPage() {
               className="premium-input pl-9 py-2 text-sm w-full"
             />
           </div>
-          <button onClick={() => setIsModalOpen(true)} className="btn-gold py-2 text-xs whitespace-nowrap">
+          <button onClick={() => setIsModalOpen(true)} className="btn-neon py-2 text-xs whitespace-nowrap">
             <Plus size={16} /> Novo Serviço
           </button>
         </div>
@@ -56,7 +56,7 @@ export default function ServicesPage() {
             </div>
 
             {/* Category badge */}
-            <span className="inline-block px-2.5 py-1 rounded-full bg-[#d4af37]/10 text-[#d4af37] text-[9px] font-bold uppercase tracking-widest mb-3">
+            <span className="inline-block px-2.5 py-1 rounded-full bg-[#00ff66]/10 text-[#00ff66] text-[9px] font-bold uppercase tracking-widest mb-3">
               {service.category}
             </span>
 
@@ -68,11 +68,11 @@ export default function ServicesPage() {
 
             <div className="flex items-center gap-4 pt-4 border-t border-neutral-800/50">
               <div className="flex items-center gap-1.5 text-neutral-300">
-                <DollarSign size={16} className="text-[#d4af37]" />
+                <DollarSign size={16} className="text-[#00ff66]" />
                 <span className="font-bold">{formatCurrency(service.price)}</span>
               </div>
               <div className="flex items-center gap-1.5 text-neutral-300">
-                <Clock size={16} className="text-[#d4af37]" />
+                <Clock size={16} className="text-[#00ff66]" />
                 <span className="font-medium text-sm">{service.duration} min</span>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function ServicesPage() {
 
             <div className="flex gap-3 mt-8">
               <button onClick={() => setIsModalOpen(false)} className="btn-outline flex-1 justify-center py-2 text-xs">Cancelar</button>
-              <button onClick={() => setIsModalOpen(false)} className="btn-gold flex-1 justify-center py-2 text-xs">Salvar Serviço</button>
+              <button onClick={() => setIsModalOpen(false)} className="btn-neon flex-1 justify-center py-2 text-xs">Salvar Serviço</button>
             </div>
           </div>
         </div>

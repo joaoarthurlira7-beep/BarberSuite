@@ -43,7 +43,7 @@ export default function AppointmentsPage() {
     switch (status) {
       case 'confirmed': return 'border-blue-500 bg-blue-500/10'
       case 'completed': return 'border-green-500 bg-green-500/10'
-      case 'pending': return 'border-[#d4af37] bg-[#d4af37]/10'
+      case 'pending': return 'border-[#00ff66] bg-[#00ff66]/10'
       default: return 'border-neutral-700 bg-neutral-800'
     }
   }
@@ -61,7 +61,7 @@ export default function AppointmentsPage() {
               <ChevronLeft size={16} />
             </button>
             <div className="flex items-center gap-2 px-3 text-sm font-medium text-white">
-              <CalendarIcon size={14} className="text-[#d4af37]" />
+              <CalendarIcon size={14} className="text-[#00ff66]" />
               {currentDate.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: 'short' })}
             </div>
             <button onClick={handleNextDay} className="p-1.5 hover:bg-neutral-800 rounded-md transition-colors text-white">
@@ -72,7 +72,7 @@ export default function AppointmentsPage() {
 
         <div className="flex items-center gap-3">
           <button className="btn-outline py-2 text-xs">Bloquear Horário</button>
-          <button onClick={() => setIsModalOpen(true)} className="btn-gold py-2 text-xs">
+          <button onClick={() => setIsModalOpen(true)} className="btn-neon py-2 text-xs">
             <Plus size={16} /> Novo Agendamento
           </button>
         </div>
@@ -99,7 +99,7 @@ export default function AppointmentsPage() {
               {/* Header */}
               <div className="h-12 border-b border-neutral-800/50 flex items-center justify-center sticky top-0 bg-[#0a0a0a] z-10">
                 <span className="text-sm font-medium text-white flex items-center gap-2">
-                  <User size={14} className="text-[#d4af37]" />
+                  <User size={14} className="text-[#00ff66]" />
                   {barber.name}
                 </span>
               </div>
@@ -170,7 +170,7 @@ export default function AppointmentsPage() {
 
             <div className="flex gap-3 mt-8">
               <button onClick={() => setIsModalOpen(false)} className="btn-outline flex-1 justify-center py-2 text-xs">Cancelar</button>
-              <button onClick={() => setIsModalOpen(false)} className="btn-gold flex-1 justify-center py-2 text-xs">Salvar</button>
+              <button onClick={() => setIsModalOpen(false)} className="btn-neon flex-1 justify-center py-2 text-xs">Salvar</button>
             </div>
           </div>
         </div>

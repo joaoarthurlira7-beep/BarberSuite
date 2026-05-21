@@ -6,7 +6,7 @@ import { ClipboardCheck, BarChart3, Target, Settings2, Star } from 'lucide-react
 const KPIs = [
   { label: 'Pesquisas Enviadas', value: '143', icon: ClipboardCheck, color: 'text-blue-400' },
   { label: 'Taxa de Resposta', value: '63%', icon: Target, color: 'text-purple-400' },
-  { label: 'Média de Avaliação', value: '4.7 / 5', icon: Star, color: 'text-[#d4af37]' },
+  { label: 'Média de Avaliação', value: '4.7 / 5', icon: Star, color: 'text-[#00ff66]' },
 ]
 
 const RESPONSES = [
@@ -30,7 +30,7 @@ export default function SurveysPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Pesquisa de <span className="text-[#d4af37]">Satisfação</span>
+            Pesquisa de <span className="text-[#00ff66]">Satisfação</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Acompanhe o seu NPS (Net Promoter Score) e avaliações de clientes.
@@ -39,17 +39,17 @@ export default function SurveysPage() {
       </div>
 
       {/* NPS Score Card */}
-      <div className="premium-card p-8 flex flex-col md:flex-row items-center gap-8 border-l-4" style={{ borderLeftColor: '#d4af37' }}>
+      <div className="premium-card p-8 flex flex-col md:flex-row items-center gap-8 border-l-4" style={{ borderLeftColor: '#00ff66' }}>
         <div className="flex flex-col items-center justify-center w-40 flex-shrink-0">
           <p className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-2">Score NPS</p>
-          <div className="w-32 h-32 rounded-full border-[8px] border-[#d4af37]/20 flex items-center justify-center relative">
+          <div className="w-32 h-32 rounded-full border-[8px] border-[#00ff66]/20 flex items-center justify-center relative">
             <span className="font-[family-name:var(--font-display)] text-5xl text-white">72</span>
             {/* Pseudo-progress border (CSS only representation) */}
             <svg className="absolute inset-0 w-full h-full -rotate-90">
-              <circle cx="50%" cy="50%" r="46%" fill="none" stroke="#d4af37" strokeWidth="8" strokeDasharray="300" strokeDashoffset="80" />
+              <circle cx="50%" cy="50%" r="46%" fill="none" stroke="#00ff66" strokeWidth="8" strokeDasharray="300" strokeDashoffset="80" />
             </svg>
           </div>
-          <span className="mt-3 text-xs font-bold text-[#d4af37] uppercase">Zona de Excelência</span>
+          <span className="mt-3 text-xs font-bold text-[#00ff66] uppercase">Zona de Excelência</span>
         </div>
 
         <div className="flex-1 w-full space-y-6">
@@ -146,13 +146,13 @@ export default function SurveysPage() {
         {/* Right: Config */}
         <div className="premium-card p-6 flex flex-col gap-5 h-fit">
           <div className="flex items-center gap-3 border-b border-white/5 pb-4">
-            <Settings2 className="text-[#d4af37]" />
+            <Settings2 className="text-[#00ff66]" />
             <h2 className="text-lg font-bold text-white uppercase tracking-wider">Configuração de Envio</h2>
           </div>
 
           <div>
             <label className="flex items-center gap-2 cursor-pointer mb-4">
-              <input type="checkbox" className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#d4af37]" defaultChecked />
+              <input type="checkbox" className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#00ff66]" defaultChecked />
               <span className="text-sm font-bold text-white">Ativar envio automático NPS</span>
             </label>
 
@@ -167,11 +167,11 @@ export default function SurveysPage() {
           <div className="bg-white/5 border border-white/10 p-4 rounded-xl relative mt-2">
             <div className="absolute top-2 right-3 text-[10px] text-neutral-500 font-mono">SMS</div>
             <p className="text-xs text-neutral-300 font-mono leading-relaxed mt-2">
-              "Olá <span className="text-[#d4af37]">{'<nome>'}</span>! Como foi sua experiência na <span className="text-white">{'<estabelecimento>'}</span> hoje? Responda esta msg com uma nota de 0 a 10."
+              "Olá <span className="text-[#00ff66]">{'<nome>'}</span>! Como foi sua experiência na <span className="text-white">{'<estabelecimento>'}</span> hoje? Responda esta msg com uma nota de 0 a 10."
             </p>
           </div>
 
-          <button className="btn-gold w-full justify-center mt-2">
+          <button className="btn-neon w-full justify-center mt-2">
             Salvar Configuração
           </button>
         </div>

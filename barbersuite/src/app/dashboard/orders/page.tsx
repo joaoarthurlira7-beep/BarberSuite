@@ -8,7 +8,7 @@ const KPIs = [
   { label: 'Comandas Abertas', value: '3', icon: FileText, color: 'text-blue-400' },
   { label: 'Fechadas Hoje', value: '12', icon: CheckCircle2, color: 'text-green-400' },
   { label: 'Ticket Médio', value: 'R$ 87,50', icon: Calculator, color: 'text-purple-400' },
-  { label: 'Faturamento do Dia', value: 'R$ 1.050,00', icon: Receipt, color: 'text-[#d4af37]' },
+  { label: 'Faturamento do Dia', value: 'R$ 1.050,00', icon: Receipt, color: 'text-[#00ff66]' },
 ]
 
 const MOCK_BARBERS = ['José Shaper', 'Pablo Barber', 'Rafael Nunes']
@@ -88,7 +88,7 @@ export default function OrdersPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Comandas & <span className="text-[#d4af37]">Consumo</span>
+            Comandas & <span className="text-[#00ff66]">Consumo</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Controle de serviços e produtos consumidos durante a visita.
@@ -126,7 +126,7 @@ export default function OrdersPage() {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h3 className="text-lg font-bold text-white">{order.clientName}</h3>
-                    <p className="text-xs text-[#d4af37] font-semibold tracking-wider uppercase mt-1">{order.barber}</p>
+                    <p className="text-xs text-[#00ff66] font-semibold tracking-wider uppercase mt-1">{order.barber}</p>
                   </div>
                   <span className="text-xs text-neutral-500 flex items-center gap-1">
                     <Clock size={12} /> {order.time}
@@ -233,12 +233,12 @@ export default function OrdersPage() {
           <div className="mt-auto pt-4 border-t border-white/5">
             <div className="flex justify-between items-end mb-4">
               <span className="text-xs uppercase tracking-widest text-neutral-400 font-bold">Total Previsto</span>
-              <span className="text-2xl font-bold text-[#d4af37]">{fmt(newTotal)}</span>
+              <span className="text-2xl font-bold text-[#00ff66]">{fmt(newTotal)}</span>
             </div>
             <button 
               onClick={handleCreateOrder}
               disabled={!newClient || selectedItems.length === 0}
-              className={`w-full justify-center ${(!newClient || selectedItems.length === 0) ? 'btn-outline opacity-50 cursor-not-allowed' : 'btn-gold'}`}
+              className={`w-full justify-center ${(!newClient || selectedItems.length === 0) ? 'btn-outline opacity-50 cursor-not-allowed' : 'btn-neon'}`}
             >
               Abrir Comanda
             </button>
@@ -251,7 +251,7 @@ export default function OrdersPage() {
       <div className="premium-card flex flex-col mt-4">
         <div className="p-6 border-b border-white/5 flex justify-between items-center">
           <h2 className="text-lg font-bold text-white uppercase tracking-wider">Fechadas Recentemente</h2>
-          <button className="text-xs text-[#d4af37] font-bold uppercase tracking-wider hover:underline">Ver Histórico Completo</button>
+          <button className="text-xs text-[#00ff66] font-bold uppercase tracking-wider hover:underline">Ver Histórico Completo</button>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -268,7 +268,7 @@ export default function OrdersPage() {
               {closedOrders.slice(0, 5).map((order) => (
                 <tr key={order.id} className="hover:bg-white/[0.02] transition-colors">
                   <td className="p-4 font-medium text-white">{order.clientName}</td>
-                  <td className="p-4 text-sm text-[#d4af37]">{order.barber}</td>
+                  <td className="p-4 text-sm text-[#00ff66]">{order.barber}</td>
                   <td className="p-4 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
                     {order.items.map(i => i.name).join(', ')}
                   </td>

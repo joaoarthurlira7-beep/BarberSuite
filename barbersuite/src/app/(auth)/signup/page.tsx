@@ -125,14 +125,14 @@ export default function SignupPage() {
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#050505]" />
         {/* Gold glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#d4af37]/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-[#d4af37]/5 blur-[80px] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#00ff66]/10 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-[#00ff66]/5 blur-[80px] pointer-events-none" />
 
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d4af37] to-[#b8942f] flex items-center justify-center shadow-lg shadow-[#d4af37]/20">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00ff66] to-[#00cc52] flex items-center justify-center shadow-lg shadow-[#00ff66]/20">
               <span className="text-black font-bold text-lg font-[family-name:var(--font-display)]">B</span>
             </div>
             <span className="text-white/70 text-sm tracking-widest uppercase font-[family-name:var(--font-display)]">BarberSuite</span>
@@ -141,7 +141,7 @@ export default function SignupPage() {
           {/* Main brand block */}
           <div className="flex-1 flex flex-col justify-center gap-8">
             <div>
-              <h1 className="text-gold-gradient font-[family-name:var(--font-display)] text-6xl xl:text-7xl font-bold tracking-tight leading-none mb-4">
+              <h1 className="text-neon-gradient font-[family-name:var(--font-display)] text-6xl xl:text-7xl font-bold tracking-tight leading-none mb-4">
                 BARBER<br />SUITE
               </h1>
               <p className="text-white/50 text-lg font-[family-name:var(--font-sans)] max-w-xs leading-relaxed">
@@ -153,7 +153,7 @@ export default function SignupPage() {
             <ul className="space-y-3">
               {features.map((f) => (
                 <li key={f.label} className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-lg bg-[#d4af37]/10 border border-[#d4af37]/20 flex items-center justify-center text-sm">
+                  <span className="w-8 h-8 rounded-lg bg-[#00ff66]/10 border border-[#00ff66]/20 flex items-center justify-center text-sm">
                     {f.icon}
                   </span>
                   <span className="text-white/60 text-sm font-[family-name:var(--font-sans)]">{f.label}</span>
@@ -169,7 +169,7 @@ export default function SignupPage() {
         </div>
 
         {/* Vertical gold line decoration */}
-        <div className="absolute right-0 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-[#d4af37]/30 to-transparent" />
+        <div className="absolute right-0 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-[#00ff66]/30 to-transparent" />
       </div>
 
       {/* ── RIGHT COLUMN – Form ── */}
@@ -177,17 +177,17 @@ export default function SignupPage() {
         <div className="w-full max-w-md">
           {/* Mobile logo */}
           <div className="flex md:hidden items-center gap-3 mb-10 justify-center">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d4af37] to-[#b8942f] flex items-center justify-center shadow-lg shadow-[#d4af37]/20">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00ff66] to-[#00cc52] flex items-center justify-center shadow-lg shadow-[#00ff66]/20">
               <span className="text-black font-bold text-lg font-[family-name:var(--font-display)]">B</span>
             </div>
-            <span className="text-gold-gradient font-[family-name:var(--font-display)] text-xl tracking-widest uppercase">BarberSuite</span>
+            <span className="text-neon-gradient font-[family-name:var(--font-display)] text-xl tracking-widest uppercase">BarberSuite</span>
           </div>
 
           {/* Success state */}
           {success ? (
             <div className="premium-card p-10 text-center space-y-5">
-              <div className="w-16 h-16 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/30 flex items-center justify-center mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-[#d4af37]">
+              <div className="w-16 h-16 rounded-2xl bg-[#00ff66]/10 border border-[#00ff66]/30 flex items-center justify-center mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-[#00ff66]">
                   <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -199,7 +199,7 @@ export default function SignupPage() {
               </p>
               <Link
                 href="/login"
-                className="btn-gold w-full justify-center"
+                className="btn-neon w-full justify-center"
               >
                 Ir para o Login
               </Link>
@@ -247,13 +247,13 @@ export default function SignupPage() {
                     className="premium-input"
                   />
                   {slug && (
-                    <p className="text-[#d4af37]/60 text-xs font-[family-name:var(--font-sans)] flex items-center gap-1.5">
+                    <p className="text-[#00ff66]/60 text-xs font-[family-name:var(--font-sans)] flex items-center gap-1.5">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 shrink-0">
                         <path d="M12.232 4.232a2.5 2.5 0 013.536 3.536l-1.225 1.224a.75.75 0 001.061 1.06l1.224-1.224a4 4 0 00-5.656-5.656l-3 3a4 4 0 00.225 5.865.75.75 0 00.977-1.138 2.5 2.5 0 01-.142-3.667l3-3z" />
                         <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
                       </svg>
                       Sua URL:{' '}
-                      <span className="text-[#d4af37]">barbersuite.com.br/b/{slug}</span>
+                      <span className="text-[#00ff66]">barbersuite.com.br/b/{slug}</span>
                     </p>
                   )}
                 </div>
@@ -388,7 +388,7 @@ export default function SignupPage() {
                       onChange={(e) => setAcceptedTerms(e.target.checked)}
                       className="sr-only peer"
                     />
-                    <div className="w-5 h-5 rounded-md border border-white/20 bg-[#121212] peer-checked:bg-[#d4af37] peer-checked:border-[#d4af37] transition-all flex items-center justify-center">
+                    <div className="w-5 h-5 rounded-md border border-white/20 bg-[#121212] peer-checked:bg-[#00ff66] peer-checked:border-[#00ff66] transition-all flex items-center justify-center">
                       {acceptedTerms && (
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-black">
                           <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
@@ -398,11 +398,11 @@ export default function SignupPage() {
                   </div>
                   <span className="text-white/40 text-sm font-[family-name:var(--font-sans)] leading-relaxed group-hover:text-white/60 transition-colors">
                     Li e aceito os{' '}
-                    <Link href="/terms" className="text-[#d4af37] hover:text-[#f0d98a] transition-colors">
+                    <Link href="/terms" className="text-[#00ff66] hover:text-[#ccffea] transition-colors">
                       Termos de Uso
                     </Link>{' '}
                     e a{' '}
-                    <Link href="/privacy" className="text-[#d4af37] hover:text-[#f0d98a] transition-colors">
+                    <Link href="/privacy" className="text-[#00ff66] hover:text-[#ccffea] transition-colors">
                       Política de Privacidade
                     </Link>
                   </span>
@@ -422,7 +422,7 @@ export default function SignupPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-gold w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none"
+                  className="btn-neon w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   {loading ? (
                     <>
@@ -452,7 +452,7 @@ export default function SignupPage() {
                   Já tem conta?{' '}
                   <Link
                     href="/login"
-                    className="text-[#d4af37] hover:text-[#f0d98a] transition-colors font-semibold"
+                    className="text-[#00ff66] hover:text-[#ccffea] transition-colors font-semibold"
                   >
                     Fazer login
                   </Link>

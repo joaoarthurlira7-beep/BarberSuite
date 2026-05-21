@@ -142,7 +142,7 @@ function StarRating({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: count }).map((_, i) => (
-        <span key={i} className="text-[#d4af37] text-sm">★</span>
+        <span key={i} className="text-[#00ff66] text-sm">★</span>
       ))}
     </div>
   );
@@ -207,7 +207,7 @@ export default function LandingPage() {
             <Link href="/login" className="btn-outline text-xs py-2 px-5 hidden sm:inline-flex">
               Entrar
             </Link>
-            <Link href="/signup" className="btn-gold text-xs py-2 px-5">
+            <Link href="/signup" className="btn-neon text-xs py-2 px-5">
               Começar Grátis
             </Link>
           </div>
@@ -231,7 +231,7 @@ export default function LandingPage() {
               style={{
                 background: 'rgba(212,175,55,0.08)',
                 border: '1px solid rgba(212,175,55,0.25)',
-                color: '#d4af37',
+                color: '#00ff66',
               }}
             >
               ✨ 14 dias grátis — sem cartão de crédito
@@ -245,7 +245,7 @@ export default function LandingPage() {
             A Plataforma Que
             <br />
             Sua Barbearia{' '}
-            <em className="not-italic text-gold-gradient">Merecia</em>
+            <em className="not-italic text-neon-gradient">Merecia</em>
           </h1>
 
           <p className="animate-fade-in-up opacity-0 delay-300 max-w-2xl text-lg sm:text-xl leading-relaxed" style={{ color: 'rgba(200,207,224,0.6)' }}>
@@ -254,7 +254,7 @@ export default function LandingPage() {
           </p>
 
           <div className="animate-fade-in-up opacity-0 delay-400 flex flex-col sm:flex-row gap-4 items-center">
-            <Link href="/signup" className="btn-gold text-sm py-4 px-8 animate-pulse-glow">
+            <Link href="/signup" className="btn-neon text-sm py-4 px-8 animate-pulse-glow">
               Criar Conta Grátis →
             </Link>
             <a href="#features" className="btn-outline text-sm py-4 px-8">
@@ -265,7 +265,7 @@ export default function LandingPage() {
           <div className="animate-fade-in-up opacity-0 delay-500 flex flex-wrap justify-center gap-10 mt-4">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col items-center gap-1">
-                <span className="font-[family-name:var(--font-display)] text-3xl font-bold text-gold-gradient">{s.value}</span>
+                <span className="font-[family-name:var(--font-display)] text-3xl font-bold text-neon-gradient">{s.value}</span>
                 <span className="text-xs tracking-widest uppercase" style={{ color: 'rgba(160,185,255,0.45)' }}>{s.label}</span>
               </div>
             ))}
@@ -279,12 +279,12 @@ export default function LandingPage() {
 
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#d4af37]">
+            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#00ff66]">
               Funcionalidades
             </span>
             <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
               Tudo Que Você Precisa{' '}
-              <span className="text-gold-gradient">Em Um Só Lugar</span>
+              <span className="text-neon-gradient">Em Um Só Lugar</span>
             </h2>
             <p className="mt-4 max-w-xl mx-auto" style={{ color: 'rgba(200,207,224,0.55)' }}>
               Desenvolvido especificamente para barbearias brasileiras, com cada
@@ -306,7 +306,7 @@ export default function LandingPage() {
                   {f.icon}
                 </div>
                 <div>
-                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors duration-300">
+                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-white mb-2 group-hover:text-[#00ff66] transition-colors duration-300">
                     {f.title}
                   </h3>
                   <p className="text-sm leading-relaxed" style={{ color: 'rgba(200,207,224,0.55)' }}>{f.description}</p>
@@ -338,12 +338,12 @@ export default function LandingPage() {
         <div className="relative max-w-6xl mx-auto z-10">
           {/* Header */}
           <div className="text-center mb-16">
-            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#d4af37]">
+            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#00ff66]">
               Preços
             </span>
             <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
               Planos Para{' '}
-              <span className="text-gold-gradient">Toda Barbearia</span>
+              <span className="text-neon-gradient">Toda Barbearia</span>
             </h2>
             <p className="mt-4" style={{ color: 'rgba(200,207,224,0.5)' }}>
               Comece grátis por 14 dias. Escolha o plano quando estiver pronto.
@@ -379,11 +379,11 @@ export default function LandingPage() {
                       className="w-9 h-9 rounded-lg flex items-center justify-center mb-1"
                       style={{ background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.3)' }}
                     >
-                      <span className="text-[#d4af37] text-sm">✦</span>
+                      <span className="text-[#00ff66] text-sm">✦</span>
                     </div>
                     <span
                       className="inline-block px-4 py-1 text-[10px] font-black tracking-[0.18em] uppercase rounded-full"
-                      style={{ background: 'linear-gradient(135deg, #d4af37, #b8942f)', color: '#000' }}
+                      style={{ background: 'linear-gradient(135deg, #00ff66, #00cc52)', color: '#000' }}
                     >
                       {plan.badge}
                     </span>
@@ -398,7 +398,7 @@ export default function LandingPage() {
                       style={{
                         background: plan.highlighted ? 'rgba(212,175,55,0.12)' : 'rgba(160,185,255,0.06)',
                         border: plan.highlighted ? '1px solid rgba(212,175,55,0.25)' : '1px solid rgba(160,185,255,0.12)',
-                        color: plan.highlighted ? '#d4af37' : 'rgba(160,185,255,0.6)',
+                        color: plan.highlighted ? '#00ff66' : 'rgba(160,185,255,0.6)',
                       }}
                     >
                       {plan.name}
@@ -408,7 +408,7 @@ export default function LandingPage() {
                       className="w-6 h-6 rounded flex items-center justify-center"
                       style={{ background: 'rgba(160,185,255,0.06)', border: '1px solid rgba(160,185,255,0.1)' }}
                     >
-                      <div className="w-2 h-2 rounded-sm" style={{ background: plan.highlighted ? '#d4af37' : 'rgba(160,185,255,0.4)' }} />
+                      <div className="w-2 h-2 rounded-sm" style={{ background: plan.highlighted ? '#00ff66' : 'rgba(160,185,255,0.4)' }} />
                     </div>
                   </div>
 
@@ -440,7 +440,7 @@ export default function LandingPage() {
                   <Link
                     href={plan.id === 'enterprise' ? '/contact' : '/signup'}
                     className={`w-full justify-center flex text-xs py-3 px-6 font-bold uppercase tracking-[0.12em] rounded transition-all duration-300 ${
-                      plan.highlighted ? 'btn-gold' : 'pricing-cta-outline'
+                      plan.highlighted ? 'btn-neon' : 'pricing-cta-outline'
                     }`}
                   >
                     ▪ {plan.cta.toUpperCase()}
@@ -463,12 +463,12 @@ export default function LandingPage() {
 
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#d4af37]">
+            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#00ff66]">
               Depoimentos
             </span>
             <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
               Barbearias Que Já{' '}
-              <span className="text-gold-gradient">Transformaram</span> Seus Negócios
+              <span className="text-neon-gradient">Transformaram</span> Seus Negócios
             </h2>
           </div>
 
@@ -486,7 +486,7 @@ export default function LandingPage() {
                   <div>
                     <p className="text-white text-sm font-semibold">{t.name}</p>
                     <p className="text-xs" style={{ color: 'rgba(160,185,255,0.4)' }}>{t.role}</p>
-                    <p className="text-xs mt-0.5 text-[#d4af37]">{t.city}</p>
+                    <p className="text-xs mt-0.5 text-[#00ff66]">{t.city}</p>
                   </div>
                 </div>
               </div>
@@ -515,14 +515,14 @@ export default function LandingPage() {
         <div className="max-w-3xl mx-auto text-center relative z-10 flex flex-col items-center gap-8">
           <span
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
-            style={{ background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.2)', color: '#d4af37' }}
+            style={{ background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.2)', color: '#00ff66' }}
           >
             ✂️ Comece Hoje
           </span>
 
           <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">
             Pronto Para{' '}
-            <span className="text-gold-gradient">Transformar</span>
+            <span className="text-neon-gradient">Transformar</span>
             <br />
             Sua Barbearia?
           </h2>
@@ -531,7 +531,7 @@ export default function LandingPage() {
             14 dias grátis. Sem cartão de crédito. Configure em 5 minutos.
           </p>
 
-          <Link href="/signup" className="btn-gold text-sm py-5 px-12 animate-pulse-glow">
+          <Link href="/signup" className="btn-neon text-sm py-5 px-12 animate-pulse-glow">
             Criar Minha Conta Grátis →
           </Link>
         </div>

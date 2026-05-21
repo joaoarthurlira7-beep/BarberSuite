@@ -57,14 +57,14 @@ export function getDaysUntilTrialEnd(trialEndsAt: string): number {
 
 export function getStatusColor(status: string): string {
   const colors: Record<string, string> = {
-    pending: "#d4af37",
+    pending: "#00ff66",
     confirmed: "#3b82f6",
     in_progress: "#8b5cf6",
     completed: "#22c55e",
     canceled: "#6b7280",
     no_show: "#ef4444",
     active: "#22c55e",
-    trial: "#d4af37",
+    trial: "#00ff66",
     past_due: "#ef4444",
     paused: "#6b7280",
   }
@@ -75,7 +75,7 @@ export function getPlanColor(plan: string): string {
   const colors: Record<string, string> = {
     trial: "#6b7280",
     basic: "#3b82f6",
-    pro: "#d4af37",
+    pro: "#00ff66",
     enterprise: "#8b5cf6",
   }
   return colors[plan] ?? "#6b7280"

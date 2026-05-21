@@ -95,7 +95,7 @@ export default function BillingPage() {
   if (loading) {
     return (
       <div className="p-6 max-w-6xl mx-auto w-full flex items-center justify-center min-h-[400px]">
-        <div className="text-[#d4af37] animate-pulse">Carregando dados de faturamento...</div>
+        <div className="text-[#00ff66] animate-pulse">Carregando dados de faturamento...</div>
       </div>
     )
   }
@@ -140,7 +140,7 @@ export default function BillingPage() {
                   </div>
                   <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
                     <div 
-                      className="h-full rounded-full bg-gradient-to-r from-[#d4af37] to-[#f0d98a]" 
+                      className="h-full rounded-full bg-gradient-to-r from-[#00ff66] to-[#ccffea]" 
                       style={{ width: `${Math.min(100, Math.max(0, ((14 - daysLeft) / 14) * 100))}%` }}
                     />
                   </div>
@@ -190,10 +190,10 @@ export default function BillingPage() {
             {PLANS.map((p) => (
               <div 
                 key={p.id} 
-                className={`premium-card p-6 relative flex flex-col transition-all ${p.recommended ? 'border-[#d4af37]/30 shadow-[0_0_30px_rgba(212,175,55,0.1)] transform md:-translate-y-2' : ''}`}
+                className={`premium-card p-6 relative flex flex-col transition-all ${p.recommended ? 'border-[#00ff66]/30 shadow-[0_0_30px_rgba(212,175,55,0.1)] transform md:-translate-y-2' : ''}`}
               >
                 {p.recommended && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#d4af37] text-black text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#00ff66] text-black text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap">
                     Recomendado
                   </div>
                 )}
@@ -209,7 +209,7 @@ export default function BillingPage() {
                 <ul className="space-y-3 mb-8 flex-1">
                   {p.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-neutral-300">
-                      <Check size={16} className="text-[#d4af37] mt-0.5 flex-shrink-0" />
+                      <Check size={16} className="text-[#00ff66] mt-0.5 flex-shrink-0" />
                       <span className="text-xs">{feature}</span>
                     </li>
                   ))}
@@ -222,7 +222,7 @@ export default function BillingPage() {
                     ${plan === p.id 
                       ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed border border-neutral-700' 
                       : p.recommended 
-                        ? 'bg-gradient-to-r from-[#d4af37] to-[#b8942f] text-black hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]' 
+                        ? 'bg-gradient-to-r from-[#00ff66] to-[#00cc52] text-black hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]' 
                         : 'bg-transparent border border-neutral-700 text-white hover:border-white hover:bg-white/5'
                     }`}
                 >

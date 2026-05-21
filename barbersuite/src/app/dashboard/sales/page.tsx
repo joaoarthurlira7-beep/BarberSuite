@@ -15,7 +15,7 @@ const MOCK_SALES = [
 
 const METHOD_LABELS = {
   pix: { label: 'PIX', color: '#00b4d8', bg: 'bg-[#00b4d8]/10' },
-  credit_card: { label: 'Crédito', color: '#d4af37', bg: 'bg-[#d4af37]/10' },
+  credit_card: { label: 'Crédito', color: '#00ff66', bg: 'bg-[#00ff66]/10' },
   debit_card: { label: 'Débito', color: '#3b82f6', bg: 'bg-blue-500/10' },
   cash: { label: 'Dinheiro', color: '#22c55e', bg: 'bg-green-500/10' },
   transfer: { label: 'Transferência', color: '#8b5cf6', bg: 'bg-purple-500/10' },
@@ -53,7 +53,7 @@ export default function SalesPage() {
               onChange={e => setSearchQuery(e.target.value)}
             />
           </div>
-          <button onClick={() => setIsModalOpen(true)} className="btn-gold py-2 text-xs whitespace-nowrap">
+          <button onClick={() => setIsModalOpen(true)} className="btn-neon py-2 text-xs whitespace-nowrap">
             <Plus size={16} /> Registrar Venda
           </button>
         </div>
@@ -62,7 +62,7 @@ export default function SalesPage() {
       {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {[
-          { label: 'Faturamento Total', value: formatCurrency(375.00), icon: DollarSign, color: '#d4af37', desc: 'Últimos 30 dias' },
+          { label: 'Faturamento Total', value: formatCurrency(375.00), icon: DollarSign, color: '#00ff66', desc: 'Últimos 30 dias' },
           { label: 'Vendas de Produtos', value: formatCurrency(120.00), icon: ShoppingBag, color: '#3b82f6', desc: 'Pomadas, óleos, shampoos' },
           { label: 'Ticket Médio', value: formatCurrency(75.00), icon: TrendingUpIcon, color: '#22c55e', desc: 'Média por cliente' },
           { label: 'Total Transações', value: '5', icon: CreditCard, color: '#8b5cf6', desc: 'Pagamentos processados' },
@@ -176,7 +176,7 @@ export default function SalesPage() {
 
             <div className="flex gap-3 mt-8">
               <button onClick={() => setIsModalOpen(false)} className="btn-outline flex-1 justify-center py-2 text-xs">Cancelar</button>
-              <button onClick={() => setIsModalOpen(false)} className="btn-gold flex-1 justify-center py-2 text-xs">Salvar Venda</button>
+              <button onClick={() => setIsModalOpen(false)} className="btn-neon flex-1 justify-center py-2 text-xs">Salvar Venda</button>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ import { Megaphone, Users, MessageSquare, DollarSign, Send, Calendar, Smartphone
 const KPIs = [
   { label: 'Campanhas Mês', value: '8', icon: Megaphone, color: 'text-blue-400' },
   { label: 'Clientes Alcançados', value: '1.847', icon: Users, color: 'text-purple-400' },
-  { label: 'Taxa de Abertura', value: '43%', icon: MessageSquare, color: 'text-[#d4af37]' },
+  { label: 'Taxa de Abertura', value: '43%', icon: MessageSquare, color: 'text-[#00ff66]' },
   { label: 'Retorno Estimado', value: 'R$ 2.340', icon: DollarSign, color: 'text-green-400' },
 ]
 
@@ -28,13 +28,13 @@ export default function MarketingPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Campanhas de <span className="text-[#d4af37]">Marketing</span>
+            Campanhas de <span className="text-[#00ff66]">Marketing</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Envie promoções via SMS para impulsionar o movimento.
           </p>
         </div>
-        <button onClick={() => setIsFormOpen(true)} className="btn-gold py-2 text-xs">
+        <button onClick={() => setIsFormOpen(true)} className="btn-neon py-2 text-xs">
           + Nova Campanha
         </button>
       </div>
@@ -61,7 +61,7 @@ export default function MarketingPage() {
         {CAMPAIGNS.map(camp => {
           let badgeColor = 'bg-white/5 text-white border-white/10'
           if (camp.status === 'Enviada') badgeColor = 'bg-blue-500/10 text-blue-400 border-blue-500/20'
-          if (camp.status === 'Agendada') badgeColor = 'bg-[#d4af37]/10 text-[#d4af37] border-[#d4af37]/20'
+          if (camp.status === 'Agendada') badgeColor = 'bg-[#00ff66]/10 text-[#00ff66] border-[#00ff66]/20'
           
           return (
             <div key={camp.id} className="premium-card p-6 flex flex-col gap-4">
@@ -87,11 +87,11 @@ export default function MarketingPage() {
                 {camp.status === 'Enviada' && (
                   <div className="mt-4">
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="text-[#d4af37] font-bold">Abertura</span>
+                      <span className="text-[#00ff66] font-bold">Abertura</span>
                       <span className="text-white font-bold">{camp.openRate}%</span>
                     </div>
                     <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#d4af37]" style={{ width: `${camp.openRate}%` }} />
+                      <div className="h-full bg-[#00ff66]" style={{ width: `${camp.openRate}%` }} />
                     </div>
                   </div>
                 )}
@@ -107,7 +107,7 @@ export default function MarketingPage() {
           <div className="w-full md:w-[600px] h-full bg-[#0a0a0a] border-l border-neutral-800 shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
             
             <div className="p-6 border-b border-neutral-800 flex justify-between items-center bg-[#06080f]">
-              <h2 className="font-[family-name:var(--font-display)] text-xl font-bold text-white uppercase tracking-tight">Criar <span className="text-[#d4af37]">Campanha</span></h2>
+              <h2 className="font-[family-name:var(--font-display)] text-xl font-bold text-white uppercase tracking-tight">Criar <span className="text-[#00ff66]">Campanha</span></h2>
               <button onClick={() => setIsFormOpen(false)} className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-neutral-400 hover:text-white transition-colors">
                 <X size={18} />
               </button>
@@ -149,7 +149,7 @@ export default function MarketingPage() {
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">Agendamento</label>
                   <div className="grid grid-cols-2 gap-2">
-                    <button className="premium-input w-full justify-center bg-[#d4af37]/10 text-[#d4af37] border-[#d4af37]/30 text-sm font-bold">
+                    <button className="premium-input w-full justify-center bg-[#00ff66]/10 text-[#00ff66] border-[#00ff66]/30 text-sm font-bold">
                       Enviar Agora
                     </button>
                     <button className="premium-input w-full justify-center text-sm">
@@ -187,7 +187,7 @@ export default function MarketingPage() {
 
             <div className="p-6 border-t border-neutral-800 bg-[#06080f] flex justify-end gap-4">
               <button onClick={() => setIsFormOpen(false)} className="btn-outline px-6 py-2 text-xs">Cancelar</button>
-              <button className="btn-gold px-8 py-2 text-xs flex items-center gap-2">
+              <button className="btn-neon px-8 py-2 text-xs flex items-center gap-2">
                 <Send size={14} /> Disparar Campanha
               </button>
             </div>
