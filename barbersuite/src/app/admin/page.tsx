@@ -54,13 +54,13 @@ export default async function SuperAdminDashboardPage() {
   }))
 
   return (
-    <div className="min-h-screen bg-[#050505] selection:bg-[#00ff66] selection:text-black text-white">
+    <div className="min-h-screen bg-[#050505] selection:bg-[#ffffff] selection:text-black text-white">
       {/* Super Admin Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-40 glass-dark border-b border-white/5 h-16 flex items-center justify-between px-6">
         <div className="flex items-center gap-3">
-          <span className="text-[#00ff66] text-2xl">👑</span>
+          <span className="text-[#ffffff] text-2xl">👑</span>
           <span className="font-[family-name:var(--font-display)] text-lg tracking-tighter uppercase text-white font-bold">
-            BARBER<span className="text-[#00ff66]">SUITE</span> <span className="text-[10px] bg-[#00ff66]/20 text-[#00ff66] px-2 py-0.5 rounded-full font-bold ml-2">MASTER ADMIN</span>
+            BARBER<span className="text-[#ffffff]">SUITE</span> <span className="text-[10px] bg-[#ffffff]/20 text-[#ffffff] px-2 py-0.5 rounded-full font-bold ml-2">MASTER ADMIN</span>
           </span>
         </div>
 
@@ -97,7 +97,7 @@ export default async function SuperAdminDashboardPage() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { label: 'Faturamento Mensal (MRR)', value: formatCurrency(mrr), icon: DollarSign, color: '#22c55e', desc: 'Soma de assinaturas ativas' },
-            { label: 'Total Barbearias', value: String(totalBarbershops), icon: Building2, color: '#00ff66', desc: `${activeShops} ativas no sistema` },
+            { label: 'Total Barbearias', value: String(totalBarbershops), icon: Building2, color: '#ffffff', desc: `${activeShops} ativas no sistema` },
             { label: 'Clientes Pagantes', value: String(paidShops), icon: CreditCard, color: '#3b82f6', desc: 'Fora do período Trial' },
             { label: 'Em Período Trial', value: String(trialShops), icon: Activity, color: '#8b5cf6', desc: '14 dias de teste grátis' },
           ].map((kpi, i) => (
@@ -146,7 +146,7 @@ export default async function SuperAdminDashboardPage() {
                     <tr key={shop.id} className="hover:bg-neutral-900/20 transition-colors">
                       <td className="py-4 font-medium text-white">
                         <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-lg bg-[#00ff66]/10 flex items-center justify-center font-bold text-[#00ff66] text-sm">
+                          <div className="w-9 h-9 rounded-lg bg-[#ffffff]/10 flex items-center justify-center font-bold text-[#ffffff] text-sm">
                             {shop.name.charAt(0).toUpperCase()}
                           </div>
                           <div>
@@ -160,7 +160,7 @@ export default async function SuperAdminDashboardPage() {
                           href={`/b/${shop.slug}`} 
                           target="_blank" 
                           rel="noreferrer" 
-                          className="hover:text-[#00ff66] transition-colors flex items-center gap-1 group"
+                          className="hover:text-[#ffffff] transition-colors flex items-center gap-1 group"
                         >
                           /b/{shop.slug}
                           <ExternalLink size={10} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -220,7 +220,7 @@ export default async function SuperAdminDashboardPage() {
           {/* Audit Logs */}
           <div className="premium-card p-6">
             <h3 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-white text-sm font-bold mb-4 flex items-center gap-2">
-              <Activity size={16} className="text-[#00ff66]" /> Log de Eventos do Sistema
+              <Activity size={16} className="text-[#ffffff]" /> Log de Eventos do Sistema
             </h3>
             <div className="flex flex-col gap-3">
               {recentLogs.length > 0 ? (
@@ -239,7 +239,7 @@ export default async function SuperAdminDashboardPage() {
           {/* Pricing Controls */}
           <div className="premium-card p-6">
             <h3 className="font-[family-name:var(--font-display)] uppercase tracking-wide text-white text-sm font-bold mb-4 flex items-center gap-2">
-              <Settings size={16} className="text-[#00ff66]" /> Configurações de Cobrança do SaaS
+              <Settings size={16} className="text-[#ffffff]" /> Configurações de Cobrança do SaaS
             </h3>
             <div className="space-y-4 text-xs text-neutral-300">
               <div className="flex justify-between items-center p-3 rounded-lg bg-neutral-900/30">

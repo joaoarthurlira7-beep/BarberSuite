@@ -48,7 +48,7 @@ const plans = [
     id: 'basic',
     name: 'INSTANCE',
     label: 'BASIC',
-    price: 'R$75',
+    price: 'R$90',
     period: '/mês',
     description: 'Ideal para barbearias que estão começando a crescer.',
     features: [
@@ -65,7 +65,7 @@ const plans = [
     id: 'pro',
     name: 'SWARM',
     label: 'PRO',
-    price: 'R$105',
+    price: 'R$120',
     period: '/mês',
     description: 'Para barbearias que levam o negócio a sério.',
     badge: 'MAIS POPULAR',
@@ -106,7 +106,7 @@ const testimonials = [
     name: 'Carlos Eduardo Souza',
     city: 'São Paulo, SP',
     role: 'Dono da Barbearia Corte & Estilo',
-    text: 'O BarberSuite mudou completamente como eu gerencio minha barbearia. Antes eu perdia clientes por falta de organização. Agora tenho tudo automatizado e meu faturamento cresceu 40% em 3 meses.',
+    text: 'O BarberSuite mudou completamente como eu gerencio Barbearia Suite. Antes eu perdia clientes por falta de organização. Agora tenho tudo automatizado e meu faturamento cresceu 40% em 3 meses.',
     rating: 5,
     image: 'https://picsum.photos/seed/barber1/80/80',
   },
@@ -142,7 +142,7 @@ function StarRating({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: count }).map((_, i) => (
-        <span key={i} className="text-[#00ff66] text-sm">★</span>
+        <span key={i} className="text-[#ffffff] text-sm">★</span>
       ))}
     </div>
   );
@@ -173,7 +173,7 @@ export default function LandingPage() {
           GLOBAL PARTICLE BACKGROUND (full page)
       ══════════════════════════════════════════ */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <ParticleCanvas count={200} color="0, 255, 102" />
+        <ParticleCanvas count={200} color="255, 255, 255" />
       </div>
 
       {/* ── 1. NAVBAR ── */}
@@ -220,12 +220,12 @@ export default function LandingPage() {
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 60% 55% at 30% 50%, rgba(0,255,102,0.08) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse 60% 55% at 30% 50%, rgba(255, 255, 255,0.08) 0%, transparent 70%)' }}
         />
 
         {/* LEFT COLUMN: Text Content */}
         <div className="relative flex flex-col items-start gap-8 z-10 w-full max-w-2xl">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-[#00ff66] font-bold">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#ffffff] font-bold">
             Sua barbearia no futuro
           </span>
           <h1
@@ -235,7 +235,7 @@ export default function LandingPage() {
             <br />
             Sua Barbearia{' '}
             <br />
-            <em className="not-italic text-neon-gradient">Merecia</em>
+            <em className="not-italic text-white">Merecia</em>
           </h1>
 
           <p className="animate-fade-in-up opacity-0 delay-300 max-w-lg text-left text-lg sm:text-xl leading-relaxed" style={{ color: 'rgba(200,207,224,0.6)' }}>
@@ -265,7 +265,7 @@ export default function LandingPage() {
         {/* RIGHT COLUMN: Phone Mockup */}
         <div className="relative flex justify-center lg:justify-end z-10 animate-fade-in-up delay-300 opacity-0 lg:pr-12">
           {/* Subtle glow behind the phone */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#00ff66] opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#ffffff] opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
           
           <div className="relative w-[320px] sm:w-[360px] h-[720px] bg-[#050505] rounded-[3rem] border-[8px] border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col">
             {/* Notch */}
@@ -274,7 +274,7 @@ export default function LandingPage() {
             {/* Screen Content - Login */}
             <div className="flex-1 bg-[#030303] flex flex-col p-7 pt-20 relative">
               {/* Decorative background glow inside phone */}
-              <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[rgba(0,255,102,0.12)] to-transparent pointer-events-none" />
+              <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[rgba(255, 255, 255,0.12)] to-transparent pointer-events-none" />
               
               <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-8">
@@ -291,17 +291,17 @@ export default function LandingPage() {
                 <form className="flex flex-col gap-4">
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold">E-mail</label>
-                    <input type="email" placeholder="contato@barbearia.com" className="premium-input bg-[#0a0a0a] border-white/10 text-sm py-3.5 focus:border-[#00ff66] focus:ring-1 focus:ring-[#00ff66]" />
+                    <input type="email" placeholder="contato@barbearia.com" className="premium-input bg-[#0a0a0a] border-white/10 text-sm py-3.5 focus:border-[#ffffff] focus:ring-1 focus:ring-[#ffffff]" />
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center justify-between">
                       <label className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold">Senha</label>
-                      <a href="#" className="text-[10px] text-[#00ff66] hover:underline">Esqueceu?</a>
+                      <a href="#" className="text-[10px] text-[#ffffff] hover:underline">Esqueceu?</a>
                     </div>
-                    <input type="password" placeholder="••••••••" className="premium-input bg-[#0a0a0a] border-white/10 text-sm py-3.5 focus:border-[#00ff66] focus:ring-1 focus:ring-[#00ff66]" />
+                    <input type="password" placeholder="••••••••" className="premium-input bg-[#0a0a0a] border-white/10 text-sm py-3.5 focus:border-[#ffffff] focus:ring-1 focus:ring-[#ffffff]" />
                   </div>
                   
-                  <Link href="/dashboard" className="btn-neon w-full justify-center py-3.5 mt-4 text-xs font-bold shadow-[0_0_15px_rgba(0,255,102,0.2)]">
+                  <Link href="/dashboard" className="btn-neon w-full justify-center py-3.5 mt-4 text-xs font-bold shadow-[0_0_15px_rgba(255, 255, 255,0.2)]">
                     Entrar no Sistema
                   </Link>
                   
@@ -336,7 +336,7 @@ export default function LandingPage() {
 
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#00ff66]">
+            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#ffffff]">
               Funcionalidades
             </span>
             <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
@@ -358,19 +358,19 @@ export default function LandingPage() {
               >
                 <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shrink-0"
-                  style={{ background: 'rgba(0,255,102,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}
+                  style={{ background: 'rgba(255, 255, 255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}
                 >
                   {f.icon}
                 </div>
                 <div>
-                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-white mb-2 group-hover:text-[#00ff66] transition-colors duration-300">
+                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-white mb-2 group-hover:text-[#ffffff] transition-colors duration-300">
                     {f.title}
                   </h3>
                   <p className="text-sm leading-relaxed" style={{ color: 'rgba(200,207,224,0.55)' }}>{f.description}</p>
                 </div>
                 <div
                   className="mt-auto h-px w-0 group-hover:w-full transition-all duration-500 rounded-full"
-                  style={{ background: 'linear-gradient(90deg, rgba(0,255,102,0.6), transparent)' }}
+                  style={{ background: 'linear-gradient(90deg, rgba(255, 255, 255,0.6), transparent)' }}
                 />
               </div>
             ))}
@@ -382,7 +382,7 @@ export default function LandingPage() {
       <section id="pricing" className="relative py-28 px-6 z-10 particle-section">
         {/* Extra dense particle layer just for pricing */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <ParticleCanvas count={120} color="0, 255, 102" />
+          <ParticleCanvas count={120} color="255, 255, 255" />
         </div>
 
         {/* faint radial glow at top */}
@@ -395,7 +395,7 @@ export default function LandingPage() {
         <div className="relative max-w-6xl mx-auto z-10">
           {/* Header */}
           <div className="text-center mb-16">
-            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#00ff66]">
+            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#ffffff]">
               Preços
             </span>
             <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
@@ -420,10 +420,10 @@ export default function LandingPage() {
                     ? 'rgba(12, 17, 32, 0.97)'
                     : 'rgba(9, 13, 24, 0.88)',
                   border: plan.highlighted
-                    ? '1px solid rgba(0, 255, 102, 0.35)'
+                    ? '1px solid rgba(255, 255, 255, 0.35)'
                     : '1px solid rgba(130, 160, 230, 0.1)',
                   boxShadow: plan.highlighted
-                    ? '0 0 70px rgba(0,255,102,0.12), 0 30px 60px rgba(0,0,0,0.9)'
+                    ? '0 0 70px rgba(255, 255, 255,0.12), 0 30px 60px rgba(0,0,0,0.9)'
                     : '0 8px 32px rgba(0,0,0,0.6)',
                   backdropFilter: 'blur(28px)',
                 }}
@@ -434,13 +434,13 @@ export default function LandingPage() {
                     {/* tiny icon above badge, like in the reference image */}
                     <div
                       className="w-9 h-9 rounded-lg flex items-center justify-center mb-1"
-                      style={{ background: 'rgba(0,255,102,0.15)', border: '1px solid rgba(0,255,102,0.3)' }}
+                      style={{ background: 'rgba(255, 255, 255,0.15)', border: '1px solid rgba(255, 255, 255,0.3)' }}
                     >
-                      <span className="text-[#00ff66] text-sm">✦</span>
+                      <span className="text-[#ffffff] text-sm">✦</span>
                     </div>
                     <span
                       className="inline-block px-4 py-1 text-[10px] font-black tracking-[0.18em] uppercase rounded-full"
-                      style={{ background: 'linear-gradient(135deg, #00ff66, #00cc52)', color: '#000' }}
+                      style={{ background: 'linear-gradient(135deg, #ffffff, #d1d5db)', color: '#000' }}
                     >
                       {plan.badge}
                     </span>
@@ -453,9 +453,9 @@ export default function LandingPage() {
                     <span
                       className="text-[10px] font-black tracking-[0.22em] uppercase px-3 py-1 rounded-full"
                       style={{
-                        background: plan.highlighted ? 'rgba(0,255,102,0.12)' : 'rgba(255,255,255,0.06)',
-                        border: plan.highlighted ? '1px solid rgba(0,255,102,0.25)' : '1px solid rgba(255,255,255,0.12)',
-                        color: plan.highlighted ? '#00ff66' : 'rgba(255,255,255,0.6)',
+                        background: plan.highlighted ? 'rgba(255, 255, 255,0.12)' : 'rgba(255,255,255,0.06)',
+                        border: plan.highlighted ? '1px solid rgba(255, 255, 255,0.25)' : '1px solid rgba(255,255,255,0.12)',
+                        color: plan.highlighted ? '#ffffff' : 'rgba(255,255,255,0.6)',
                       }}
                     >
                       {plan.name}
@@ -465,7 +465,7 @@ export default function LandingPage() {
                       className="w-6 h-6 rounded flex items-center justify-center"
                       style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
                     >
-                      <div className="w-2 h-2 rounded-sm" style={{ background: plan.highlighted ? '#00ff66' : 'rgba(255,255,255,0.4)' }} />
+                      <div className="w-2 h-2 rounded-sm" style={{ background: plan.highlighted ? '#ffffff' : 'rgba(255,255,255,0.4)' }} />
                     </div>
                   </div>
 
@@ -520,7 +520,7 @@ export default function LandingPage() {
 
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#00ff66]">
+            <span className="inline-block mb-4 text-xs font-bold tracking-[0.3em] uppercase text-[#ffffff]">
               Depoimentos
             </span>
             <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
@@ -537,13 +537,13 @@ export default function LandingPage() {
                   &ldquo;{t.text}&rdquo;
                 </p>
                 <div className="flex items-center gap-4 mt-auto pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                  <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0" style={{ boxShadow: '0 0 0 2px rgba(0,255,102,0.2)' }}>
+                  <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0" style={{ boxShadow: '0 0 0 2px rgba(255, 255, 255,0.2)' }}>
                     <Image src={t.image} alt={t.name} fill className="object-cover" unoptimized />
                   </div>
                   <div>
                     <p className="text-white text-sm font-semibold">{t.name}</p>
                     <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{t.role}</p>
-                    <p className="text-xs mt-0.5 text-[#00ff66]">{t.city}</p>
+                    <p className="text-xs mt-0.5 text-[#ffffff]">{t.city}</p>
                   </div>
                 </div>
               </div>
@@ -572,7 +572,7 @@ export default function LandingPage() {
         <div className="max-w-3xl mx-auto text-center relative z-10 flex flex-col items-center gap-8">
           <span
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
-            style={{ background: 'rgba(0,255,102,0.08)', border: '1px solid rgba(0,255,102,0.2)', color: '#00ff66' }}
+            style={{ background: 'rgba(255, 255, 255,0.08)', border: '1px solid rgba(255, 255, 255,0.2)', color: '#ffffff' }}
           >
             ✂️ Comece Hoje
           </span>

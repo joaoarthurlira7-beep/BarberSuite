@@ -34,7 +34,7 @@ export default function DashboardSidebarClient({ navLinks }: DashboardSidebarCli
           >
             <Icon
               size={20}
-              className={isActive ? 'text-[#00ff66]' : 'group-hover:text-white transition-colors'}
+              className={isActive ? 'text-[#ffffff]' : 'group-hover:text-white transition-colors'}
             />
             <span className="hidden md:block font-medium uppercase tracking-wider text-[11px]">
               {label}

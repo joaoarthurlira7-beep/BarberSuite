@@ -38,25 +38,25 @@ export default function SettingsPage() {
           <nav className="flex lg:flex-col overflow-x-auto lg:overflow-visible gap-2 pb-2 lg:pb-0">
             <button 
               onClick={() => setActiveTab('geral')}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all whitespace-nowrap ${activeTab === 'geral' ? 'bg-[#00ff66]/10 text-[#00ff66]' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'}`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all whitespace-nowrap ${activeTab === 'geral' ? 'bg-[#ffffff]/10 text-[#ffffff]' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'}`}
             >
               <Store size={18} /> <span className="text-sm font-medium">Dados Gerais</span>
             </button>
             <button 
               onClick={() => setActiveTab('aparencia')}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all whitespace-nowrap ${activeTab === 'aparencia' ? 'bg-[#00ff66]/10 text-[#00ff66]' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'}`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all whitespace-nowrap ${activeTab === 'aparencia' ? 'bg-[#ffffff]/10 text-[#ffffff]' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'}`}
             >
               <LinkIcon size={18} /> <span className="text-sm font-medium">Página Pública</span>
             </button>
             <button 
               onClick={() => setActiveTab('horarios')}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all whitespace-nowrap ${activeTab === 'horarios' ? 'bg-[#00ff66]/10 text-[#00ff66]' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'}`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all whitespace-nowrap ${activeTab === 'horarios' ? 'bg-[#ffffff]/10 text-[#ffffff]' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'}`}
             >
               <Calendar size={18} /> <span className="text-sm font-medium">Horários</span>
             </button>
             <button 
               onClick={() => setActiveTab('notificacoes')}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all whitespace-nowrap ${activeTab === 'notificacoes' ? 'bg-[#00ff66]/10 text-[#00ff66]' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'}`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all whitespace-nowrap ${activeTab === 'notificacoes' ? 'bg-[#ffffff]/10 text-[#ffffff]' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'}`}
             >
               <Bell size={18} /> <span className="text-sm font-medium">Notificações</span>
             </button>
@@ -125,7 +125,7 @@ export default function SettingsPage() {
                 <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-2">Logo da Barbearia</label>
                 <div className="flex items-center gap-6">
                   <div className="w-24 h-24 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center overflow-hidden">
-                    <span className="text-[#00ff66] text-2xl font-bold">V</span>
+                    <span className="text-[#ffffff] text-2xl font-bold">V</span>
                   </div>
                   <div>
                     <button className="btn-outline py-2 text-xs mb-2">
@@ -138,7 +138,7 @@ export default function SettingsPage() {
 
               <div>
                 <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-2">Imagem de Capa (Hero)</label>
-                <div className="w-full h-32 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center flex-col cursor-pointer hover:border-[#00ff66]/50 transition-colors">
+                <div className="w-full h-32 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center flex-col cursor-pointer hover:border-[#ffffff]/50 transition-colors">
                   <UploadCloud size={24} className="text-neutral-500 mb-2" />
                   <span className="text-xs text-neutral-400">Clique para fazer upload</span>
                 </div>
@@ -152,8 +152,8 @@ export default function SettingsPage() {
                 <div>
                   <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Cor Principal</label>
                   <div className="flex gap-4 items-center">
-                    <div className="w-10 h-10 rounded-lg bg-[#00ff66] border border-neutral-700"></div>
-                    <input type="text" className="premium-input flex-1 font-mono text-sm" defaultValue="#00ff66" />
+                    <div className="w-10 h-10 rounded-lg bg-[#ffffff] border border-neutral-700"></div>
+                    <input type="text" className="premium-input flex-1 font-mono text-sm" defaultValue="#ffffff" />
                   </div>
                 </div>
               </div>
@@ -182,7 +182,7 @@ export default function SettingsPage() {
                   <div key={day.id} className="flex items-center gap-4 p-3 rounded-lg bg-neutral-900/50 border border-neutral-800/50">
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input type="checkbox" defaultChecked={day.active} className="sr-only peer" />
-                      <div className="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#00ff66]"></div>
+                      <div className="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#ffffff]"></div>
                     </label>
                     <span className="w-28 text-sm font-medium text-neutral-300">{day.label}</span>
                     
@@ -210,7 +210,7 @@ export default function SettingsPage() {
                   <div className="mt-1">
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input type="checkbox" defaultChecked className="sr-only peer" />
-                      <div className="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#00ff66]"></div>
+                      <div className="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#ffffff]"></div>
                     </label>
                   </div>
                   <div>
@@ -223,11 +223,11 @@ export default function SettingsPage() {
                   <div className="mt-1">
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input type="checkbox" defaultChecked className="sr-only peer" />
-                      <div className="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#00ff66]"></div>
+                      <div className="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#ffffff]"></div>
                     </label>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-white flex items-center gap-2">WhatsApp Lembrete <span className="bg-[#00ff66]/20 text-[#00ff66] text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest">PRO</span></h3>
+                    <h3 className="text-sm font-medium text-white flex items-center gap-2">WhatsApp Lembrete <span className="bg-[#ffffff]/20 text-[#ffffff] text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest">PRO</span></h3>
                     <p className="text-xs text-neutral-500 mt-1">Enviar mensagem automática no WhatsApp do cliente 2 horas antes do horário.</p>
                   </div>
                 </div>
@@ -236,7 +236,7 @@ export default function SettingsPage() {
                   <div className="mt-1">
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input type="checkbox" className="sr-only peer" />
-                      <div className="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#00ff66]"></div>
+                      <div className="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#ffffff]"></div>
                     </label>
                   </div>
                   <div>

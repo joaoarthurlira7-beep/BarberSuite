@@ -9,7 +9,7 @@ const MOCK_SERVICES = [
   { id: '1', name: 'Fade Clássico', price: 50, duration: 45, category: 'Corte', description: 'Degradê perfeito, alinhamento e acabamento na navalha.', is_active: true },
   { id: '2', name: 'Ritual de Barba', price: 40, duration: 30, category: 'Barba', description: 'Toalha quente, óleos essenciais, alinhamento e massagem.', is_active: true },
   { id: '3', name: 'Full Experience', price: 80, duration: 90, category: 'Pacote', description: 'Corte + Barba + Máscara Negra + Bebida cortesia.', is_active: true },
-  { id: '4', name: 'Corte Infantil', price: 45, duration: 40, category: 'Corte', description: 'Corte para crianças com a mesma precisão e paciência.', is_active: false },
+  { id: '4', name: 'Barboterapia', price: 45, duration: 40, category: 'Corte', description: 'Corte para crianças com a mesma precisão e paciência.', is_active: false },
 ]
 
 export default function ServicesPage() {
@@ -56,7 +56,7 @@ export default function ServicesPage() {
             </div>
 
             {/* Category badge */}
-            <span className="inline-block px-2.5 py-1 rounded-full bg-[#00ff66]/10 text-[#00ff66] text-[9px] font-bold uppercase tracking-widest mb-3">
+            <span className="inline-block px-2.5 py-1 rounded-full bg-[#ffffff]/10 text-[#ffffff] text-[9px] font-bold uppercase tracking-widest mb-3">
               {service.category}
             </span>
 
@@ -68,11 +68,11 @@ export default function ServicesPage() {
 
             <div className="flex items-center gap-4 pt-4 border-t border-neutral-800/50">
               <div className="flex items-center gap-1.5 text-neutral-300">
-                <DollarSign size={16} className="text-[#00ff66]" />
+                <DollarSign size={16} className="text-[#ffffff]" />
                 <span className="font-bold">{formatCurrency(service.price)}</span>
               </div>
               <div className="flex items-center gap-1.5 text-neutral-300">
-                <Clock size={16} className="text-[#00ff66]" />
+                <Clock size={16} className="text-[#ffffff]" />
                 <span className="font-medium text-sm">{service.duration} min</span>
               </div>
             </div>

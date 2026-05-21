@@ -8,10 +8,10 @@ const KPIs = [
   { label: 'Comandas Abertas', value: '3', icon: FileText, color: 'text-blue-400' },
   { label: 'Fechadas Hoje', value: '12', icon: CheckCircle2, color: 'text-green-400' },
   { label: 'Ticket Médio', value: 'R$ 87,50', icon: Calculator, color: 'text-purple-400' },
-  { label: 'Faturamento do Dia', value: 'R$ 1.050,00', icon: Receipt, color: 'text-[#00ff66]' },
+  { label: 'Faturamento do Dia', value: 'R$ 1.050,00', icon: Receipt, color: 'text-[#ffffff]' },
 ]
 
-const MOCK_BARBERS = ['José Shaper', 'Pablo Barber', 'Rafael Nunes']
+const MOCK_BARBERS = ['José Shaper', 'Carlos Barber', 'Rafael Nunes']
 const MOCK_SERVICES = [
   { id: 1, name: 'Corte Degradê', price: 50 },
   { id: 2, name: 'Corte Clássico', price: 45 },
@@ -30,16 +30,16 @@ type Order = {
 
 const INITIAL_OPEN: Order[] = [
   { id: '101', clientName: 'Marcos T.', barber: 'José Shaper', time: '14:30', items: [{name: 'Corte Degradê', price: 50}, {name: 'Cerveja Artesanal', price: 12}], total: 62, status: 'open' },
-  { id: '102', clientName: 'Lucas Pinheiro', barber: 'Pablo Barber', time: '15:00', items: [{name: 'Corte Clássico', price: 45}], total: 45, status: 'open' },
+  { id: '102', clientName: 'Lucas Pinheiro', barber: 'Carlos Barber', time: '15:00', items: [{name: 'Corte Clássico', price: 45}], total: 45, status: 'open' },
   { id: '103', clientName: 'Fernando Silva', barber: 'José Shaper', time: '15:15', items: [{name: 'Barba Terapia', price: 40}, {name: 'Pomada Matte', price: 65}], total: 105, status: 'open' },
 ]
 
 const CLOSED_ORDERS: Order[] = [
   { id: '99', clientName: 'Rafael Andrade', barber: 'José Shaper', time: '14:00', items: [{name: 'Corte + Barba', price: 80}], total: 80, status: 'closed' },
-  { id: '98', clientName: 'João Victor', barber: 'Rafael Nunes', time: '13:45', items: [{name: 'Corte Infantil', price: 40}], total: 40, status: 'closed' },
-  { id: '97', clientName: 'Pedro Alves', barber: 'Pablo Barber', time: '13:00', items: [{name: 'Corte Clássico', price: 45}, {name: 'Óleo para Barba', price: 45}], total: 90, status: 'closed' },
+  { id: '98', clientName: 'João Victor', barber: 'Rafael Nunes', time: '13:45', items: [{name: 'Barboterapia', price: 40}], total: 40, status: 'closed' },
+  { id: '97', clientName: 'Pedro Alves', barber: 'Carlos Barber', time: '13:00', items: [{name: 'Corte Clássico', price: 45}, {name: 'Óleo para Barba', price: 45}], total: 90, status: 'closed' },
   { id: '96', clientName: 'Diego Lima', barber: 'José Shaper', time: '11:30', items: [{name: 'Corte Degradê', price: 50}], total: 50, status: 'closed' },
-  { id: '95', clientName: 'Carlos Souza', barber: 'Pablo Barber', time: '10:00', items: [{name: 'Barba Terapia', price: 40}], total: 40, status: 'closed' },
+  { id: '95', clientName: 'Carlos Souza', barber: 'Carlos Barber', time: '10:00', items: [{name: 'Barba Terapia', price: 40}], total: 40, status: 'closed' },
 ]
 
 const fmt = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -88,7 +88,7 @@ export default function OrdersPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Comandas & <span className="text-[#00ff66]">Consumo</span>
+            Comandas & <span className="text-[#ffffff]">Consumo</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Controle de serviços e produtos consumidos durante a visita.
@@ -126,7 +126,7 @@ export default function OrdersPage() {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h3 className="text-lg font-bold text-white">{order.clientName}</h3>
-                    <p className="text-xs text-[#00ff66] font-semibold tracking-wider uppercase mt-1">{order.barber}</p>
+                    <p className="text-xs text-[#ffffff] font-semibold tracking-wider uppercase mt-1">{order.barber}</p>
                   </div>
                   <span className="text-xs text-neutral-500 flex items-center gap-1">
                     <Clock size={12} /> {order.time}
@@ -233,7 +233,7 @@ export default function OrdersPage() {
           <div className="mt-auto pt-4 border-t border-white/5">
             <div className="flex justify-between items-end mb-4">
               <span className="text-xs uppercase tracking-widest text-neutral-400 font-bold">Total Previsto</span>
-              <span className="text-2xl font-bold text-[#00ff66]">{fmt(newTotal)}</span>
+              <span className="text-2xl font-bold text-[#ffffff]">{fmt(newTotal)}</span>
             </div>
             <button 
               onClick={handleCreateOrder}
@@ -251,7 +251,7 @@ export default function OrdersPage() {
       <div className="premium-card flex flex-col mt-4">
         <div className="p-6 border-b border-white/5 flex justify-between items-center">
           <h2 className="text-lg font-bold text-white uppercase tracking-wider">Fechadas Recentemente</h2>
-          <button className="text-xs text-[#00ff66] font-bold uppercase tracking-wider hover:underline">Ver Histórico Completo</button>
+          <button className="text-xs text-[#ffffff] font-bold uppercase tracking-wider hover:underline">Ver Histórico Completo</button>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -268,7 +268,7 @@ export default function OrdersPage() {
               {closedOrders.slice(0, 5).map((order) => (
                 <tr key={order.id} className="hover:bg-white/[0.02] transition-colors">
                   <td className="p-4 font-medium text-white">{order.clientName}</td>
-                  <td className="p-4 text-sm text-[#00ff66]">{order.barber}</td>
+                  <td className="p-4 text-sm text-[#ffffff]">{order.barber}</td>
                   <td className="p-4 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
                     {order.items.map(i => i.name).join(', ')}
                   </td>

@@ -9,13 +9,13 @@ const MOCK_SALES = [
   { id: '1', client_name: 'Carlos Silva', date: '21/05/2026', items: 'Fade Clássico + Pomada Matte', total: 95.00, method: 'pix', type: 'Misto' },
   { id: '2', client_name: 'Rafael Souza', date: '21/05/2026', items: 'Ritual de Barba', total: 40.00, method: 'credit_card', type: 'Serviço' },
   { id: '3', client_name: 'Lucas Mendes', date: '20/05/2026', items: 'Full Experience + Óleo de Barba', total: 145.00, method: 'pix', type: 'Misto' },
-  { id: '4', client_name: 'Thiago Alves', date: '20/05/2026', items: 'Corte Infantil', total: 45.00, method: 'cash', type: 'Serviço' },
+  { id: '4', client_name: 'Thiago Alves', date: '20/05/2026', items: 'Barboterapia', total: 45.00, method: 'cash', type: 'Serviço' },
   { id: '5', client_name: 'Bruno Costa', date: '19/05/2026', items: 'Shampoo Anticaspa', total: 55.00, method: 'debit_card', type: 'Produto' },
 ]
 
 const METHOD_LABELS = {
   pix: { label: 'PIX', color: '#00b4d8', bg: 'bg-[#00b4d8]/10' },
-  credit_card: { label: 'Crédito', color: '#00ff66', bg: 'bg-[#00ff66]/10' },
+  credit_card: { label: 'Crédito', color: '#ffffff', bg: 'bg-[#ffffff]/10' },
   debit_card: { label: 'Débito', color: '#3b82f6', bg: 'bg-blue-500/10' },
   cash: { label: 'Dinheiro', color: '#22c55e', bg: 'bg-green-500/10' },
   transfer: { label: 'Transferência', color: '#8b5cf6', bg: 'bg-purple-500/10' },
@@ -62,7 +62,7 @@ export default function SalesPage() {
       {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {[
-          { label: 'Faturamento Total', value: formatCurrency(375.00), icon: DollarSign, color: '#00ff66', desc: 'Últimos 30 dias' },
+          { label: 'Faturamento Total', value: formatCurrency(375.00), icon: DollarSign, color: '#ffffff', desc: 'Últimos 30 dias' },
           { label: 'Vendas de Produtos', value: formatCurrency(120.00), icon: ShoppingBag, color: '#3b82f6', desc: 'Pomadas, óleos, shampoos' },
           { label: 'Ticket Médio', value: formatCurrency(75.00), icon: TrendingUpIcon, color: '#22c55e', desc: 'Média por cliente' },
           { label: 'Total Transações', value: '5', icon: CreditCard, color: '#8b5cf6', desc: 'Pagamentos processados' },

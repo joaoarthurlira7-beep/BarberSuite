@@ -52,7 +52,7 @@ export default function SearchPage() {
       <header className="border-b border-neutral-900 bg-[#0a0a0a] sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <Scissors className="text-[#00ff66]" size={24} />
+            <Scissors className="text-[#ffffff]" size={24} />
             <span className="font-[family-name:var(--font-display)] text-xl tracking-tighter uppercase text-white font-bold hidden sm:block">
               Barber<span className="font-light opacity-60">Suite</span>
             </span>
@@ -89,7 +89,7 @@ export default function SearchPage() {
 
         {/* Filters */}
         <div className="flex gap-3 overflow-x-auto pb-4 mb-8 scrollbar-hide">
-          <button className="px-5 py-2 rounded-full border border-[#00ff66] bg-[#00ff66]/10 text-[#00ff66] text-xs font-bold uppercase tracking-widest whitespace-nowrap">
+          <button className="px-5 py-2 rounded-full border border-[#ffffff] bg-[#ffffff]/10 text-[#ffffff] text-xs font-bold uppercase tracking-widest whitespace-nowrap">
             Todas
           </button>
           <button className="px-5 py-2 rounded-full border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-white transition-colors text-xs font-bold uppercase tracking-widest whitespace-nowrap">
@@ -107,7 +107,7 @@ export default function SearchPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {MOCK_BARBERSHOPS.map((shop) => (
             <Link key={shop.id} href={`/b/${shop.slug}`} className="group block">
-              <div className="premium-card overflow-hidden h-full flex flex-col hover:border-[#00ff66]/30 transition-colors">
+              <div className="premium-card overflow-hidden h-full flex flex-col hover:border-[#ffffff]/30 transition-colors">
                 <div className="relative h-56 w-full bg-neutral-900 overflow-hidden">
                   <Image 
                     src={shop.cover_url} 
@@ -120,7 +120,7 @@ export default function SearchPage() {
                   
                   {/* Rating Badge */}
                   <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1 border border-white/10">
-                    <Star className="text-[#00ff66] fill-[#00ff66]" size={12} />
+                    <Star className="text-[#ffffff] fill-[#ffffff]" size={12} />
                     <span className="text-white text-xs font-bold">{shop.rating}</span>
                     <span className="text-neutral-400 text-[10px]">({shop.reviewsCount})</span>
                   </div>
@@ -128,10 +128,10 @@ export default function SearchPage() {
 
                 <div className="p-5 flex-1 flex flex-col">
                   <div className="flex justify-between items-start mb-2">
-                    <h2 className="font-[family-name:var(--font-display)] text-xl text-white tracking-wide group-hover:text-[#00ff66] transition-colors line-clamp-1">
+                    <h2 className="font-[family-name:var(--font-display)] text-xl text-white tracking-wide group-hover:text-[#ffffff] transition-colors line-clamp-1">
                       {shop.name}
                     </h2>
-                    <span className="text-[#00ff66] text-xs font-bold tracking-widest mt-1">{shop.priceRange}</span>
+                    <span className="text-[#ffffff] text-xs font-bold tracking-widest mt-1">{shop.priceRange}</span>
                   </div>
                   
                   <div className="flex items-center gap-1.5 text-neutral-400 text-xs mb-4">

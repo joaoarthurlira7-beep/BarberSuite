@@ -10,7 +10,7 @@ import { formatCurrency, getDaysUntilTrialEnd } from '@/lib/utils'
 import type { Barbershop } from '@/lib/types'
 
 const STATUS_CONFIG = {
-  pending: { label: 'Pendente', color: '#00ff66', bg: 'bg-[#00ff66]/10', icon: Clock },
+  pending: { label: 'Pendente', color: '#ffffff', bg: 'bg-[#ffffff]/10', icon: Clock },
   confirmed: { label: 'Confirmado', color: '#3b82f6', bg: 'bg-blue-500/10', icon: CheckCircle2 },
   completed: { label: 'Concluído', color: '#22c55e', bg: 'bg-green-500/10', icon: CheckCircle2 },
   canceled: { label: 'Cancelado', color: '#6b7280', bg: 'bg-neutral-800', icon: AlertCircle },
@@ -148,7 +148,7 @@ export default async function DashboardPage() {
   const daysLeft = getDaysUntilTrialEnd(barbershop.trial_ends_at ?? '')
 
   const kpis = [
-    { label: 'Faturamento Hoje', value: formatCurrency(revenueToday), icon: DollarSign, color: '#00ff66', sub: `${countToday} atendimentos hoje` },
+    { label: 'Faturamento Hoje', value: formatCurrency(revenueToday), icon: DollarSign, color: '#ffffff', sub: `${countToday} atendimentos hoje` },
     { label: 'Esta Semana', value: formatCurrency(revenueWeek), icon: TrendingUp, color: '#3b82f6', sub: `${countWeek} atendimentos` },
     { label: 'Este Mês', value: formatCurrency(revenueMonth), icon: ShoppingCart, color: '#22c55e', sub: `${countMonth} atendimentos` },
     { label: 'Agendamentos Hoje', value: String(countToday), icon: Calendar, color: '#8b5cf6', sub: `${pendingTodayCount} pendentes` },
@@ -182,13 +182,13 @@ export default async function DashboardPage() {
 
       {/* Trial Banner */}
       {barbershop.plan === 'trial' && (
-        <div className="bg-[#00ff66]/8 border border-[#00ff66]/25 rounded-2xl p-4 flex items-center justify-between gap-4">
+        <div className="bg-[#ffffff]/8 border border-[#ffffff]/25 rounded-2xl p-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#00ff66]/15 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-[#ffffff]/15 flex items-center justify-center flex-shrink-0">
               <span className="text-lg">✨</span>
             </div>
             <div>
-              <p className="text-[#00ff66] font-semibold text-sm">Trial Gratuito Ativo</p>
+              <p className="text-[#ffffff] font-semibold text-sm">Trial Gratuito Ativo</p>
               <p className="text-neutral-400 text-xs mt-0.5">
                 {daysLeft > 0 ? `${daysLeft} dias restantes no seu período de avaliação` : 'Seu trial expirou!'}
               </p>
@@ -197,7 +197,7 @@ export default async function DashboardPage() {
           <div className="flex items-center gap-3">
             <div className="hidden md:block w-32 h-2 bg-neutral-800 rounded-full overflow-hidden">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-[#00ff66] to-[#ccffea]"
+                className="h-full rounded-full bg-gradient-to-r from-[#ffffff] to-[#ccffea]"
                 style={{ width: `${Math.max(0, Math.min(100, ((14 - daysLeft) / 14) * 100))}%` }}
               />
             </div>
@@ -239,7 +239,7 @@ export default async function DashboardPage() {
           <div className="flex items-end gap-3 h-40">
             {chartData.map((d, i) => (
               <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
-                <span className="text-[9px] text-neutral-600 group-hover:text-[#00ff66] transition-colors">
+                <span className="text-[9px] text-neutral-600 group-hover:text-[#ffffff] transition-colors">
                   {d.value > 0 ? formatCurrency(d.value).replace('R$\u00a0', 'R$') : '-'}
                 </span>
                 <div className="w-full relative rounded-t-lg overflow-hidden bg-neutral-900"
@@ -249,7 +249,7 @@ export default async function DashboardPage() {
                     style={{
                       height: `${(d.value / maxChartValue) * 100}%`,
                       background: d.value > 0
-                        ? 'linear-gradient(to top, #00ff66, #ccffea80)'
+                        ? 'linear-gradient(to top, #ffffff, #ccffea80)'
                         : '#1a1a1a',
                       opacity: d.value > 0 ? 0.8 : 0.3,
                     }}
@@ -269,7 +269,7 @@ export default async function DashboardPage() {
             </h3>
             <Link
               href="/dashboard/appointments"
-              className="text-[10px] text-[#00ff66] hover:underline flex items-center gap-1 uppercase tracking-widest"
+              className="text-[10px] text-[#ffffff] hover:underline flex items-center gap-1 uppercase tracking-widest"
             >
               Ver todos <ArrowRight size={10} />
             </Link>
@@ -317,7 +317,7 @@ export default async function DashboardPage() {
       {/* Quick Access */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
-          { href: '/dashboard/services', label: 'Gerenciar Serviços', icon: '✂', color: '#00ff66' },
+          { href: '/dashboard/services', label: 'Gerenciar Serviços', icon: '✂', color: '#ffffff' },
           { href: '/dashboard/products', label: 'Controle de Estoque', icon: '📦', color: '#3b82f6' },
           { href: '/dashboard/team', label: 'Equipe', icon: '👥', color: '#22c55e' },
           { href: '/dashboard/reports', label: 'Relatórios', icon: '📊', color: '#8b5cf6' },
@@ -331,7 +331,7 @@ export default async function DashboardPage() {
             <span className="text-xs text-neutral-400 font-medium group-hover:text-white transition-colors">
               {item.label}
             </span>
-            <ArrowRight size={12} className="ml-auto text-neutral-700 group-hover:text-[#00ff66] transition-colors" />
+            <ArrowRight size={12} className="ml-auto text-neutral-700 group-hover:text-[#ffffff] transition-colors" />
           </Link>
         ))}
       </div>

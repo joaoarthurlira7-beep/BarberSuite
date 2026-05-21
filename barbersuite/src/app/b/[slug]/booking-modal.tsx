@@ -81,7 +81,7 @@ export default function BookingModal({
         {!success && (
           <div className="h-1 w-full bg-neutral-900">
             <div 
-              className="h-full bg-[#00ff66] transition-all duration-300 ease-in-out" 
+              className="h-full bg-[#ffffff] transition-all duration-300 ease-in-out" 
               style={{ width: `${(step / 5) * 100}%` }}
             />
           </div>
@@ -98,10 +98,10 @@ export default function BookingModal({
                   <button 
                     key={service.id}
                     onClick={() => { setSelectedService(service); handleNext() }}
-                    className="w-full p-4 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:border-[#00ff66] hover:bg-[#00ff66]/5 transition-all text-left flex justify-between items-center group"
+                    className="w-full p-4 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:border-[#ffffff] hover:bg-[#ffffff]/5 transition-all text-left flex justify-between items-center group"
                   >
                     <div>
-                      <p className="text-white font-medium group-hover:text-[#00ff66] transition-colors">{service.name}</p>
+                      <p className="text-white font-medium group-hover:text-[#ffffff] transition-colors">{service.name}</p>
                       <p className="text-xs text-neutral-500 flex items-center gap-1 mt-1">
                         <Clock size={12} /> {service.duration_min} min
                       </p>
@@ -119,7 +119,7 @@ export default function BookingModal({
               <div className="grid grid-cols-2 gap-3">
                 <button 
                   onClick={() => { setSelectedBarber({ id: 'any', name: 'Qualquer Barbeiro' }); handleNext() }}
-                  className="p-4 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:border-[#00ff66] hover:bg-[#00ff66]/5 transition-all flex flex-col items-center gap-3"
+                  className="p-4 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:border-[#ffffff] hover:bg-[#ffffff]/5 transition-all flex flex-col items-center gap-3"
                 >
                   <div className="w-16 h-16 rounded-full bg-neutral-800 flex items-center justify-center">
                     <User size={24} className="text-neutral-400" />
@@ -131,9 +131,9 @@ export default function BookingModal({
                   <button 
                     key={barber.id}
                     onClick={() => { setSelectedBarber(barber); handleNext() }}
-                    className="p-4 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:border-[#00ff66] hover:bg-[#00ff66]/5 transition-all flex flex-col items-center gap-3"
+                    className="p-4 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:border-[#ffffff] hover:bg-[#ffffff]/5 transition-all flex flex-col items-center gap-3"
                   >
-                    <div className="w-16 h-16 relative rounded-full overflow-hidden border-2 border-transparent hover:border-[#00ff66] transition-colors">
+                    <div className="w-16 h-16 relative rounded-full overflow-hidden border-2 border-transparent hover:border-[#ffffff] transition-colors">
                       <Image src={barber.photo_url || `https://ui-avatars.com/api/?name=${barber.name}&background=1a1a1a&color=d4af37`} alt={barber.name} fill className="object-cover" />
                     </div>
                     <div>
@@ -161,8 +161,8 @@ export default function BookingModal({
                       onClick={() => setSelectedDate(dateStr)}
                       className={`flex-shrink-0 snap-start w-16 h-20 rounded-xl border flex flex-col items-center justify-center transition-all ${
                         isSelected 
-                          ? 'border-[#00ff66] bg-[#00ff66]/10 text-[#00ff66]' 
-                          : 'border-neutral-800 bg-neutral-900/50 text-white hover:border-[#00ff66]/50'
+                          ? 'border-[#ffffff] bg-[#ffffff]/10 text-[#ffffff]' 
+                          : 'border-neutral-800 bg-neutral-900/50 text-white hover:border-[#ffffff]/50'
                       }`}
                     >
                       <span className="text-[10px] uppercase">{date.toLocaleDateString('pt-BR', { weekday: 'short' }).replace('.', '')}</span>
@@ -183,8 +183,8 @@ export default function BookingModal({
                         onClick={() => { setSelectedTime(time); handleNext() }}
                         className={`py-2 rounded-lg border text-sm font-medium transition-all ${
                           selectedTime === time 
-                            ? 'border-[#00ff66] bg-[#00ff66] text-black' 
-                            : 'border-neutral-800 bg-neutral-900/50 text-white hover:border-[#00ff66]/50'
+                            ? 'border-[#ffffff] bg-[#ffffff] text-black' 
+                            : 'border-neutral-800 bg-neutral-900/50 text-white hover:border-[#ffffff]/50'
                         }`}
                       >
                         {time}
@@ -249,7 +249,7 @@ export default function BookingModal({
               <div className="flex-1 space-y-4">
                 <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800 space-y-3">
                   <div className="flex items-start gap-3">
-                    <Scissors className="text-[#00ff66] mt-1" size={18} />
+                    <Scissors className="text-[#ffffff] mt-1" size={18} />
                     <div>
                       <p className="text-sm font-medium text-white">{selectedService?.name}</p>
                       <p className="text-[11px] text-neutral-400">{formatCurrency(selectedService?.price)} • {selectedService?.duration_min} min</p>
@@ -257,7 +257,7 @@ export default function BookingModal({
                   </div>
                   <div className="w-full h-px bg-neutral-800" />
                   <div className="flex items-start gap-3">
-                    <User className="text-[#00ff66] mt-1" size={18} />
+                    <User className="text-[#ffffff] mt-1" size={18} />
                     <div>
                       <p className="text-sm font-medium text-white">{selectedBarber?.name}</p>
                       <p className="text-[11px] text-neutral-400">Profissional selecionado</p>
@@ -265,7 +265,7 @@ export default function BookingModal({
                   </div>
                   <div className="w-full h-px bg-neutral-800" />
                   <div className="flex items-start gap-3">
-                    <Calendar className="text-[#00ff66] mt-1" size={18} />
+                    <Calendar className="text-[#ffffff] mt-1" size={18} />
                     <div>
                       <p className="text-sm font-medium text-white">
                         {new Date(selectedDate).toLocaleDateString('pt-BR')} às {selectedTime}
@@ -285,7 +285,7 @@ export default function BookingModal({
               <div className="mt-6 pt-4 border-t border-neutral-800">
                 <div className="flex justify-between items-center mb-4">
                   <span className="text-neutral-400 text-sm">Total a pagar no local</span>
-                  <span className="text-[#00ff66] font-bold text-xl">{formatCurrency(selectedService?.price)}</span>
+                  <span className="text-[#ffffff] font-bold text-xl">{formatCurrency(selectedService?.price)}</span>
                 </div>
                 <button 
                   onClick={handleSubmit}

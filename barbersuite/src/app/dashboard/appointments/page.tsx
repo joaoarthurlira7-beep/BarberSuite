@@ -7,14 +7,14 @@ import { formatCurrency } from '@/lib/utils'
 // Mock Data
 const MOCK_BARBERS = [
   { id: '1', name: 'José Shaper' },
-  { id: '2', name: 'Pablo Barber' },
+  { id: '2', name: 'Carlos Barber' },
 ]
 
 const MOCK_APPOINTMENTS = [
   { id: '1', barber_id: '1', client_name: 'Carlos Silva', time: '09:00', duration: 45, service: 'Fade Clássico', status: 'confirmed' },
   { id: '2', barber_id: '2', client_name: 'Rafael Souza', time: '10:00', duration: 30, service: 'Ritual de Barba', status: 'completed' },
   { id: '3', barber_id: '1', client_name: 'Lucas Mendes', time: '11:00', duration: 90, service: 'Full Experience', status: 'pending' },
-  { id: '4', barber_id: '2', client_name: 'Thiago Alves', time: '13:00', duration: 40, service: 'Corte Infantil', status: 'confirmed' },
+  { id: '4', barber_id: '2', client_name: 'Thiago Alves', time: '13:00', duration: 40, service: 'Barboterapia', status: 'confirmed' },
 ]
 
 const TIME_SLOTS = Array.from({ length: 27 }, (_, i) => {
@@ -43,7 +43,7 @@ export default function AppointmentsPage() {
     switch (status) {
       case 'confirmed': return 'border-blue-500 bg-blue-500/10'
       case 'completed': return 'border-green-500 bg-green-500/10'
-      case 'pending': return 'border-[#00ff66] bg-[#00ff66]/10'
+      case 'pending': return 'border-[#ffffff] bg-[#ffffff]/10'
       default: return 'border-neutral-700 bg-neutral-800'
     }
   }
@@ -61,7 +61,7 @@ export default function AppointmentsPage() {
               <ChevronLeft size={16} />
             </button>
             <div className="flex items-center gap-2 px-3 text-sm font-medium text-white">
-              <CalendarIcon size={14} className="text-[#00ff66]" />
+              <CalendarIcon size={14} className="text-[#ffffff]" />
               {currentDate.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: 'short' })}
             </div>
             <button onClick={handleNextDay} className="p-1.5 hover:bg-neutral-800 rounded-md transition-colors text-white">
@@ -99,7 +99,7 @@ export default function AppointmentsPage() {
               {/* Header */}
               <div className="h-12 border-b border-neutral-800/50 flex items-center justify-center sticky top-0 bg-[#0a0a0a] z-10">
                 <span className="text-sm font-medium text-white flex items-center gap-2">
-                  <User size={14} className="text-[#00ff66]" />
+                  <User size={14} className="text-[#ffffff]" />
                   {barber.name}
                 </span>
               </div>

@@ -6,7 +6,7 @@ import { Users, Clock, Zap, Check, X, Plus } from 'lucide-react'
 // --- Mock Data ---
 const KPIs = [
   { label: 'Na Fila Agora', value: '3', icon: Users, color: 'text-blue-400' },
-  { label: 'Tempo Médio de Espera', value: '24 min', icon: Clock, color: 'text-[#00ff66]' },
+  { label: 'Tempo Médio de Espera', value: '24 min', icon: Clock, color: 'text-[#ffffff]' },
   { label: 'Convertidos Hoje', value: '8', icon: Zap, color: 'text-green-400' },
 ]
 
@@ -15,7 +15,7 @@ type WaitlistEntry = { id: string; position: number; name: string; phone: string
 const MOCK_WAITLIST: WaitlistEntry[] = [
   { id: 'w1', position: 1, name: 'Marcos T.', phone: '(62) 99876-5432', service: 'Corte Degradê', barber: 'Qualquer um', timeIn: '14:05', waitTime: '45 min' },
   { id: 'w2', position: 2, name: 'João Silva', phone: '(62) 98765-4321', service: 'Corte + Barba', barber: 'José Shaper', timeIn: '14:20', waitTime: '30 min' },
-  { id: 'w3', position: 3, name: 'Lucas Pinheiro', phone: '(62) 99123-4567', service: 'Pézinho', barber: 'Pablo Barber', timeIn: '14:40', waitTime: '10 min' },
+  { id: 'w3', position: 3, name: 'Lucas Pinheiro', phone: '(62) 99123-4567', service: 'Pézinho', barber: 'Carlos Barber', timeIn: '14:40', waitTime: '10 min' },
 ]
 
 const MOCK_HISTORY = [
@@ -37,7 +37,7 @@ export default function WaitlistPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Lista de <span className="text-[#00ff66]">Espera</span>
+            Lista de <span className="text-[#ffffff]">Espera</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Fila virtual para clientes sem agendamento prévio.
@@ -73,11 +73,11 @@ export default function WaitlistPage() {
           
           <div className="flex flex-col gap-4">
             {waitlist.map(entry => (
-              <div key={entry.id} className="premium-card p-0 flex overflow-hidden border-l-4" style={{ borderLeftColor: entry.position === 1 ? '#00ff66' : 'rgba(255,255,255,0.2)' }}>
+              <div key={entry.id} className="premium-card p-0 flex overflow-hidden border-l-4" style={{ borderLeftColor: entry.position === 1 ? '#ffffff' : 'rgba(255,255,255,0.2)' }}>
                 {/* Position Number */}
                 <div className="w-20 bg-white/5 flex flex-col items-center justify-center border-r border-white/5">
                   <span className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest mb-1">Posição</span>
-                  <span className="font-[family-name:var(--font-display)] text-4xl font-bold" style={{ color: entry.position === 1 ? '#00ff66' : '#fff' }}>
+                  <span className="font-[family-name:var(--font-display)] text-4xl font-bold" style={{ color: entry.position === 1 ? '#ffffff' : '#fff' }}>
                     {entry.position}
                   </span>
                 </div>
@@ -89,7 +89,7 @@ export default function WaitlistPage() {
                     <p className="text-xs text-neutral-400 mt-0.5">{entry.phone}</p>
                     <div className="flex items-center gap-4 mt-3">
                       <span className="text-xs font-semibold px-2 py-1 rounded bg-white/10 text-white">{entry.service}</span>
-                      <span className="text-xs text-[#00ff66] font-semibold">{entry.barber}</span>
+                      <span className="text-xs text-[#ffffff] font-semibold">{entry.barber}</span>
                     </div>
                   </div>
                   
@@ -149,7 +149,7 @@ export default function WaitlistPage() {
             <select className="premium-input w-full appearance-none">
               <option>Qualquer um (Mais rápido)</option>
               <option>José Shaper</option>
-              <option>Pablo Barber</option>
+              <option>Carlos Barber</option>
             </select>
           </div>
 

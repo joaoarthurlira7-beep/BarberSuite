@@ -14,12 +14,12 @@ const MOCK_TEAM = [
     photo: 'https://images.unsplash.com/photo-1593702288056-ccde39692473?w=400&q=80',
     instagram: '@joseshaper',
     phone: '62999999999',
-    color: '#00ff66',
+    color: '#ffffff',
     is_active: true
   },
   { 
     id: '2', 
-    name: 'Pablo Barber', 
+    name: 'Carlos Barber', 
     role: 'Especialista em Visagismo', 
     bio: 'Especialista em visagismo e estilos clássicos com precisão absoluta. Mais de 5 anos de experiência.', 
     photo: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&q=80',
@@ -45,17 +45,17 @@ interface CommissionRow {
 const COMMISSION_DATA: Record<string, CommissionRow[]> = {
   'Este Mês': [
     { id: '1', barber: 'José Shaper',  atendimentos: 98,  faturamentoBruto: 6370,  percentualComissao: 50, status: 'Pendente' },
-    { id: '2', barber: 'Pablo Barber', atendimentos: 74,  faturamentoBruto: 4810,  percentualComissao: 45, status: 'Pendente' },
+    { id: '2', barber: 'Carlos Barber', atendimentos: 74,  faturamentoBruto: 4810,  percentualComissao: 45, status: 'Pendente' },
     { id: '3', barber: 'Rafael Nunes', atendimentos: 52,  faturamentoBruto: 3380,  percentualComissao: 40, status: 'Pago'     },
   ],
   'Semana Passada': [
     { id: '1', barber: 'José Shaper',  atendimentos: 24,  faturamentoBruto: 1560,  percentualComissao: 50, status: 'Pago'     },
-    { id: '2', barber: 'Pablo Barber', atendimentos: 19,  faturamentoBruto: 1235,  percentualComissao: 45, status: 'Pago'     },
+    { id: '2', barber: 'Carlos Barber', atendimentos: 19,  faturamentoBruto: 1235,  percentualComissao: 45, status: 'Pago'     },
     { id: '3', barber: 'Rafael Nunes', atendimentos: 13,  faturamentoBruto: 845,   percentualComissao: 40, status: 'Pago'     },
   ],
   'Mês Passado': [
     { id: '1', barber: 'José Shaper',  atendimentos: 104, faturamentoBruto: 6760,  percentualComissao: 50, status: 'Pago'     },
-    { id: '2', barber: 'Pablo Barber', atendimentos: 81,  faturamentoBruto: 5265,  percentualComissao: 45, status: 'Pago'     },
+    { id: '2', barber: 'Carlos Barber', atendimentos: 81,  faturamentoBruto: 5265,  percentualComissao: 45, status: 'Pago'     },
     { id: '3', barber: 'Rafael Nunes', atendimentos: 59,  faturamentoBruto: 3835,  percentualComissao: 40, status: 'Pago'     },
   ],
 }
@@ -139,7 +139,7 @@ export default function TeamPage() {
               </div>
 
               <h3 className="font-[family-name:var(--font-display)] text-xl text-white tracking-wide">{member.name}</h3>
-              <p className="text-[#00ff66] text-xs font-bold uppercase tracking-widest mt-1 mb-4">{member.role}</p>
+              <p className="text-[#ffffff] text-xs font-bold uppercase tracking-widest mt-1 mb-4">{member.role}</p>
               
               <p className="text-neutral-400 text-sm mb-6 line-clamp-3">
                 {member.bio}
@@ -148,7 +148,7 @@ export default function TeamPage() {
               {/* Social/Contact */}
               <div className="flex items-center gap-4 pt-4 border-t border-neutral-800/50 w-full justify-center">
                 {member.instagram && (
-                  <a href={`https://instagram.com/${member.instagram.replace('@', '')}`} target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-[#00ff66] transition-colors">
+                  <a href={`https://instagram.com/${member.instagram.replace('@', '')}`} target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-[#ffffff] transition-colors">
                     <Instagram size={18} />
                   </a>
                 )}
@@ -193,7 +193,7 @@ export default function TeamPage() {
                 className="px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
                 style={
                   period === p
-                    ? { background: '#00ff66', color: '#030303' }
+                    ? { background: '#ffffff', color: '#030303' }
                     : { color: 'rgba(200,207,224,0.5)' }
                 }
               >
@@ -237,7 +237,7 @@ export default function TeamPage() {
                         <div className="flex items-center gap-3">
                           <div
                             className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
-                            style={{ background: 'rgba(0,255,102,0.12)', color: '#00ff66', border: '1px solid rgba(0,255,102,0.25)' }}
+                            style={{ background: 'rgba(255, 255, 255,0.12)', color: '#ffffff', border: '1px solid rgba(255, 255, 255,0.25)' }}
                           >
                             {row.barber.split(' ').map((n) => n[0]).slice(0, 2).join('')}
                           </div>
@@ -268,7 +268,7 @@ export default function TeamPage() {
 
                       {/* Valor a Receber */}
                       <td className="px-6 py-4">
-                        <span className="text-lg font-bold" style={{ color: '#00ff66' }}>
+                        <span className="text-lg font-bold" style={{ color: '#ffffff' }}>
                           {fmt(valorComissao)}
                         </span>
                       </td>
@@ -338,15 +338,15 @@ export default function TeamPage() {
           <div className="premium-card p-5 flex items-center gap-4">
             <div
               className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(0,255,102,0.1)', border: '1px solid rgba(0,255,102,0.25)' }}
+              style={{ background: 'rgba(255, 255, 255,0.1)', border: '1px solid rgba(255, 255, 255,0.25)' }}
             >
-              <DollarSign size={18} style={{ color: '#00ff66' }} />
+              <DollarSign size={18} style={{ color: '#ffffff' }} />
             </div>
             <div>
               <p className="text-[10px] uppercase font-bold tracking-widest" style={{ color: 'rgba(255,255,255,0.4)' }}>
                 Total em Comissões
               </p>
-              <p className="text-lg font-bold" style={{ color: '#00ff66' }}>
+              <p className="text-lg font-bold" style={{ color: '#ffffff' }}>
                 {fmt(rows.reduce((s, r) => s + (r.faturamentoBruto * r.percentualComissao) / 100, 0))}
               </p>
             </div>
@@ -393,7 +393,7 @@ export default function TeamPage() {
             
             <div className="space-y-4">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-20 h-20 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center cursor-pointer hover:border-[#00ff66] transition-colors">
+                <div className="w-20 h-20 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center cursor-pointer hover:border-[#ffffff] transition-colors">
                   <Plus size={24} className="text-neutral-500" />
                 </div>
                 <div className="flex-1">
@@ -432,10 +432,10 @@ export default function TeamPage() {
               <div>
                 <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Cor no Calendário</label>
                 <div className="flex gap-2">
-                  {['#00ff66', '#3b82f6', '#22c55e', '#8b5cf6', '#ec4899', '#f97316'].map(color => (
+                  {['#ffffff', '#3b82f6', '#22c55e', '#8b5cf6', '#ec4899', '#f97316'].map(color => (
                     <button key={color} className="w-8 h-8 rounded-full border-2 border-transparent hover:border-white transition-all focus:border-white focus:outline-none" style={{ backgroundColor: color }} />
                   ))}
-                  <input type="color" className="w-8 h-8 rounded-full border-0 p-0 cursor-pointer overflow-hidden" defaultValue="#00ff66" />
+                  <input type="color" className="w-8 h-8 rounded-full border-0 p-0 cursor-pointer overflow-hidden" defaultValue="#ffffff" />
                 </div>
               </div>
             </div>

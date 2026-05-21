@@ -5,16 +5,16 @@ import { Bell, ShieldCheck, CalendarClock, Settings2, Smartphone, Send, Check } 
 // --- Mock Data ---
 const KPIs = [
   { label: 'Enviados Hoje', value: '24', icon: Bell, color: 'text-blue-400' },
-  { label: 'Taxa de Confirmação', value: '89%', icon: ShieldCheck, color: 'text-[#00ff66]' },
+  { label: 'Taxa de Confirmação', value: '89%', icon: ShieldCheck, color: 'text-[#ffffff]' },
   { label: 'Faltas Evitadas', value: '3', icon: CalendarClock, color: 'text-green-400' },
 ]
 
 const REMINDERS = [
   { id: 1, time: '14:30', client: 'Marcos T.', barber: 'José Shaper', service: 'Corte Degradê', status: 'Confirmado' },
-  { id: 2, time: '15:00', client: 'Lucas Pinheiro', barber: 'Pablo Barber', service: 'Corte Clássico', status: 'Enviado' },
+  { id: 2, time: '15:00', client: 'Lucas Pinheiro', barber: 'Carlos Barber', service: 'Corte Clássico', status: 'Enviado' },
   { id: 3, time: '15:15', client: 'Fernando Silva', barber: 'José Shaper', service: 'Corte + Barba', status: 'Enviado' },
   { id: 4, time: '16:00', client: 'Carlos Eduardo', barber: 'Rafael Nunes', service: 'Barba Terapia', status: 'Falha' },
-  { id: 5, time: '16:30', client: 'Pedro Alves', barber: 'Pablo Barber', service: 'Corte Degradê', status: 'Agendado' },
+  { id: 5, time: '16:30', client: 'Pedro Alves', barber: 'Carlos Barber', service: 'Corte Degradê', status: 'Agendado' },
 ]
 
 const getStatusColor = (status: string) => {
@@ -34,7 +34,7 @@ export default function RemindersPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-white uppercase tracking-tight">
-            Lembretes de <span className="text-[#00ff66]">Horários</span>
+            Lembretes de <span className="text-[#ffffff]">Horários</span>
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'rgba(200,207,224,0.6)' }}>
             Reduza faltas e atrasos com envios automáticos via SMS.
@@ -90,7 +90,7 @@ export default function RemindersPage() {
                     <td className="p-4 font-medium text-white">{rem.client}</td>
                     <td className="p-4">
                       <p className="text-sm text-white">{rem.service}</p>
-                      <p className="text-[10px] text-[#00ff66] uppercase">{rem.barber}</p>
+                      <p className="text-[10px] text-[#ffffff] uppercase">{rem.barber}</p>
                     </td>
                     <td className="p-4 text-center">
                       <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${getStatusColor(rem.status)}`}>
@@ -121,13 +121,13 @@ export default function RemindersPage() {
           
           <div className="premium-card p-6 flex flex-col gap-5">
             <div className="flex items-center gap-3 border-b border-white/5 pb-4">
-              <Settings2 className="text-[#00ff66]" />
+              <Settings2 className="text-[#ffffff]" />
               <h2 className="text-lg font-bold text-white uppercase tracking-wider">Configuração Automática</h2>
             </div>
 
             <div>
               <label className="flex items-center gap-2 cursor-pointer mb-4">
-                <input type="checkbox" className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#00ff66]" defaultChecked />
+                <input type="checkbox" className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#ffffff]" defaultChecked />
                 <span className="text-sm font-bold text-white">Ativar Envio Automático</span>
               </label>
 

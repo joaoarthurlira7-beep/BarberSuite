@@ -71,6 +71,15 @@ export default function LoginPage() {
 
     setLoading(true)
 
+    // DEMO BYPASS
+    if (email === 'demo@barbeariasuite.com' && password === 'demo123') {
+      setTimeout(() => {
+        router.push('/dashboard')
+        router.refresh()
+      }, 800)
+      return
+    }
+
     const supabase = createClient()
     const { error: authError } = await supabase.auth.signInWithPassword({
       email,
@@ -78,13 +87,19 @@ export default function LoginPage() {
     })
 
     if (authError) {
-      setFormError('Invalid credentials. Please check your email and password.')
+      setFormError('Credenciais inválidas. Use o acesso de demonstração.')
       setLoading(false)
       return
     }
 
     router.push('/dashboard')
     router.refresh()
+  }
+
+  const handleDemoLogin = () => {
+    setEmail('demo@barbeariasuite.com')
+    setPassword('demo123')
+    setFormError('')
   }
 
   return (
@@ -229,15 +244,16 @@ export default function LoginPage() {
             <div className="animate-in" data-delay="900">
               <div className="flex items-center gap-4 my-8">
                 <div className="flex-1 h-px bg-white/10" />
-                <span className="text-neutral-500 text-xs uppercase tracking-widest">or continue with</span>
+                <span className="text-neutral-500 text-xs uppercase tracking-widest">Acesso Rápido</span>
                 <div className="flex-1 h-px bg-white/10" />
               </div>
               <div className="flex gap-4 justify-center">
-                <button className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
-                  <span className="text-sm font-bold">G</span>
-                </button>
-                <button className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
-                  <span className="text-sm font-bold">A</span>
+                <button 
+                  onClick={handleDemoLogin}
+                  type="button"
+                  className="w-full rounded-xl bg-[rgba(255, 255, 255,0.1)] border border-[#ffffff]/30 flex items-center justify-center py-3 hover:bg-[rgba(255, 255, 255,0.15)] transition-colors text-[#ffffff] text-xs font-bold uppercase tracking-widest"
+                >
+                  Preencher Dados de Demonstração
                 </button>
               </div>
             </div>
@@ -252,10 +268,10 @@ export default function LoginPage() {
             </p>
             <h2
               className="font-display text-5xl xl:text-6xl uppercase leading-[1.05] font-bold"
-              style={{ textShadow: '0 0 60px rgba(0,255,102,0.25)' }}
+              style={{ textShadow: '0 0 60px rgba(255, 255, 255,0.25)' }}
             >
               O futuro da<br />
-              <span className="text-[#00ff66]">gestão</span><br />
+              <span className="text-[#ffffff]">gestão</span><br />
               chegou.
             </h2>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-xs">
