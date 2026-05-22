@@ -68,11 +68,13 @@ export default function AdminDashboardScreen() {
       }
 
       // 1. Fetch Barbershop
-      const { data: shop, error: shopErr } = await supabase
+      const { data: shops, error: shopErr } = await supabase
         .from('barbershops')
         .select('id, name')
         .eq('owner_id', userData.user.id)
-        .single()
+        .limit(1)
+
+      const shop = shops?.[0]
 
       if (shopErr || !shop) {
         // Fallback if no shop is owned by this user

@@ -31,12 +31,13 @@ export default function SettingsScreen() {
 
     setProfileEmail(userData.user.email || 'Sem e-mail')
 
-    const { data: shop } = await supabase
+    const { data: shops } = await supabase
       .from('barbershops')
       .select('name, plan, plan_status')
       .eq('owner_id', userData.user.id)
-      .single()
+      .limit(1)
     
+    const shop = shops?.[0]
     if (shop) {
       setProfileName(shop.name)
       setPlanName(shop.plan)

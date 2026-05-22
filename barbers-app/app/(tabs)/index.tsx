@@ -99,12 +99,13 @@ export default function ScheduleGridScreen() {
       const { data: userData } = await supabase.auth.getUser()
       if (!userData.user) return
 
-      const { data: shop } = await supabase
+      const { data: shops } = await supabase
         .from('barbershops')
         .select('id')
         .eq('owner_id', userData.user.id)
-        .single()
+        .limit(1)
       
+      const shop = shops?.[0]
       if (!shop) return
       setBarbershopId(shop.id)
 
