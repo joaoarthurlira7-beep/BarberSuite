@@ -176,7 +176,7 @@ export default function ScheduleGridScreen() {
   const handleApptPress = (appt: Appointment) => {
     const options: any[] = []
     
-    if (appt.status === 'pending') {
+    if (appt.status === 'pending' || appt.status === 'confirmed') {
       options.push({ text: 'Iniciar Corte', onPress: async () => {
         setAppointments(prev => prev.map(a => a.id === appt.id ? { ...a, status: 'in_progress' } : a))
         await supabase.from('appointments').update({ status: 'in_progress' }).eq('id', appt.id)
