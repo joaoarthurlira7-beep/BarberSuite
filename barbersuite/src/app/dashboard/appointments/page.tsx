@@ -22,7 +22,7 @@ export default function AppointmentsPage() {
   const [services, setServices] = useState<any[]>([])
   
   // Modal State
-  const [newAppt, setNewAppt] = useState({ client_name: '', barber_id: '', service_id: '', time: '09:00' })
+  const [newAppt, setNewAppt] = useState({ client_name: '', client_phone: '', barber_id: '', service_id: '', time: '09:00' })
 
   useEffect(() => {
     fetchBarbershop()
@@ -96,7 +96,18 @@ export default function AppointmentsPage() {
   }
 
   const handleSaveAppointment = async () => {
-    if (!barbershopId || !newAppt.client_name || !newAppt.service_id) return
+    if (!barbershopId) {
+      alert('Erro: Barbearia não identificada.')
+      return
+    }
+    if (!newAppt.client_name.trim()) {
+      alert('Por favor, preencha o nome do cliente.')
+      return
+    }
+    if (!newAppt.service_id) {
+      alert('Por favor, selecione um serviço.')
+      return
+    }
 
     const service = services.find(s => s.id === newAppt.service_id)
     const scheduledAt = new Date(currentDate)
@@ -108,6 +119,7 @@ export default function AppointmentsPage() {
       barber_id: newAppt.barber_id || null,
       service_id: newAppt.service_id,
       client_name: newAppt.client_name,
+      client_phone: newAppt.client_phone || 'Sem telefone',
       scheduled_at: scheduledAt.toISOString(),
       status: 'confirmed',
       payment_status: 'pending',
@@ -115,10 +127,13 @@ export default function AppointmentsPage() {
       source: 'manual'
     })
 
-    if (!error) {
+    if (error) {
+      console.error('Erro ao salvar agendamento:', error)
+      alert(`Erro ao salvar agendamento: ${error.message}`)
+    } else {
       setIsModalOpen(false)
       fetchAppointments()
-      setNewAppt({ client_name: '', barber_id: '', service_id: '', time: '09:00' })
+      setNewAppt({ client_name: '', client_phone: '', barber_id: '', service_id: '', time: '09:00' })
     }
   }
 
@@ -246,15 +261,27 @@ export default function AppointmentsPage() {
             <h2 className="font-[family-name:var(--font-display)] text-xl text-white uppercase mb-4">Novo Agendamento</h2>
             
             <div className="space-y-4">
-              <div>
-                <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Cliente</label>
-                <input 
-                  type="text" 
-                  className="premium-input w-full" 
-                  placeholder="Nome do cliente" 
-                  value={newAppt.client_name}
-                  onChange={e => setNewAppt({...newAppt, client_name: e.target.value})}
-                />
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Cliente</label>
+                  <input 
+                    type="text" 
+                    className="premium-input w-full" 
+                    placeholder="Nome" 
+                    value={newAppt.client_name}
+                    onChange={e => setNewAppt({...newAppt, client_name: e.target.value})}
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Telefone</label>
+                  <input 
+                    type="text" 
+                    className="premium-input w-full" 
+                    placeholder="(00) 00000-0000" 
+                    value={newAppt.client_phone || ''}
+                    onChange={e => setNewAppt({...newAppt, client_phone: e.target.value})}
+                  />
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
