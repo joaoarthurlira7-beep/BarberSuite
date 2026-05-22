@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { X, Calendar, Clock, User, Scissors, CheckCircle, ArrowLeft } from 'lucide-react'
 import { formatCurrency } from '@/lib/utils'
+import { createClient } from '@/lib/supabase/client'
 
 export default function BookingModal({ 
   isOpen, 
@@ -19,6 +20,7 @@ export default function BookingModal({
   services: any[]
 }) {
   const [step, setStep] = useState(1)
+  const supabase = createClient()
   
   // Selections
   const [selectedService, setSelectedService] = useState<any>(null)
@@ -38,11 +40,35 @@ export default function BookingModal({
 
   const handleSubmit = async () => {
     setLoading(true)
-    // TODO: POST /api/appointments
-    setTimeout(() => {
-      setLoading(false)
+    
+    try {
+      const scheduledAt = new Date(`${selectedDate}T${selectedTime}:00-03:00`).toISOString()
+      
+      const { error } = await supabase
+        .from('appointments')
+        .insert({
+          barbershop_id: barbershop.id,
+          barber_id: selectedBarber?.id === 'any' ? null : selectedBarber?.id,
+          service_id: selectedService?.id,
+          client_name: clientData.name,
+          client_phone: clientData.phone,
+          client_email: clientData.email,
+          scheduled_at: scheduledAt,
+          status: 'pending',
+          payment_status: 'pending',
+          price: selectedService?.price,
+          source: 'website'
+        })
+
+      if (error) throw error
+
       setSuccess(true)
-    }, 1500)
+    } catch (error) {
+      console.error('Erro ao agendar:', error)
+      alert('Não foi possível realizar o agendamento. Tente novamente.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   // Mock days

@@ -73,7 +73,7 @@ export default function SettingsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Nome do Estabelecimento</label>
-                  <input type="text" className="premium-input w-full" defaultValue="Vallen Barbearia" />
+                  <input type="text" className="premium-input w-full" defaultValue="Barbearia Suite" />
                 </div>
                 <div>
                   <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Slug (URL)</label>
@@ -81,7 +81,7 @@ export default function SettingsPage() {
                     <span className="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-neutral-800 bg-neutral-900 text-neutral-500 sm:text-sm">
                       barbersuite.com.br/b/
                     </span>
-                    <input type="text" className="premium-input rounded-l-none flex-1 min-w-0" defaultValue="vallen" />
+                    <input type="text" className="premium-input rounded-l-none flex-1 min-w-0" defaultValue="barbearia-suite" />
                   </div>
                 </div>
               </div>
@@ -89,11 +89,11 @@ export default function SettingsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">WhatsApp</label>
-                  <input type="text" className="premium-input w-full" defaultValue="(62) 98480-4310" />
+                  <input type="text" className="premium-input w-full" defaultValue="(11) 99999-9999" />
                 </div>
                 <div>
                   <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Email Público</label>
-                  <input type="email" className="premium-input w-full" defaultValue="contato@vallen.com" />
+                  <input type="email" className="premium-input w-full" defaultValue="contato@barbeariasuite.com.br" />
                 </div>
               </div>
 
@@ -102,15 +102,15 @@ export default function SettingsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="md:col-span-3">
                     <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Logradouro, Número, Complemento</label>
-                    <input type="text" className="premium-input w-full" defaultValue="Avenida Transbrasiliana, 14" />
+                    <input type="text" className="premium-input w-full" defaultValue="Avenida Paulista, 1000" />
                   </div>
                   <div className="md:col-span-2">
                     <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Cidade</label>
-                    <input type="text" className="premium-input w-full" defaultValue="Uruaçu" />
+                    <input type="text" className="premium-input w-full" defaultValue="São Paulo" />
                   </div>
                   <div>
                     <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">UF</label>
-                    <input type="text" className="premium-input w-full" defaultValue="GO" />
+                    <input type="text" className="premium-input w-full" defaultValue="SP" />
                   </div>
                 </div>
               </div>
@@ -125,7 +125,7 @@ export default function SettingsPage() {
                 <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-2">Logo da Barbearia</label>
                 <div className="flex items-center gap-6">
                   <div className="w-24 h-24 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center overflow-hidden">
-                    <span className="text-[#ffffff] text-2xl font-bold">V</span>
+                    <span className="text-[#ffffff] text-2xl font-bold">B</span>
                   </div>
                   <div>
                     <button className="btn-outline py-2 text-xs mb-2">

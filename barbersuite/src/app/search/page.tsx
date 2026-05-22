@@ -10,9 +10,9 @@ import { formatCurrency } from '@/lib/utils'
 const MOCK_BARBERSHOPS = [
   {
     id: '1',
-    name: 'Vallen Barbearia',
-    slug: 'vallen',
-    city: 'Uruaçu, GO',
+    name: 'Barbearia Suite',
+    slug: 'barbearia-suite',
+    city: 'São Paulo, SP',
     rating: 4.9,
     reviewsCount: 124,
     cover_url: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80',

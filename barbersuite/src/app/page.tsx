@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ParticleCanvas } from '@/components/ParticleCanvas';
-
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const features = [
@@ -46,7 +44,7 @@ const features = [
 const plans = [
   {
     id: 'basic',
-    name: 'INSTANCE',
+    name: 'INICIAL',
     label: 'BASIC',
     price: 'R$90',
     period: '/mês',
@@ -63,7 +61,7 @@ const plans = [
   },
   {
     id: 'pro',
-    name: 'SWARM',
+    name: 'CRESCIMENTO',
     label: 'PRO',
     price: 'R$120',
     period: '/mês',
@@ -82,7 +80,7 @@ const plans = [
   },
   {
     id: 'enterprise',
-    name: 'NETWORK',
+    name: 'ESCALA',
     label: 'ENTERPRISE',
     price: 'R$200',
     period: '/mês',
@@ -169,12 +167,8 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen text-[#c8cfe0] overflow-x-hidden" style={{ background: '#030303' }}>
 
-      {/* ══════════════════════════════════════════
-          GLOBAL PARTICLE BACKGROUND (full page)
-      ══════════════════════════════════════════ */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <ParticleCanvas count={200} color="255, 255, 255" />
-      </div>
+      {/* Background simplificado */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[#030303]"></div>
 
       {/* ── 1. NAVBAR ── */}
       <nav className="glass-dark fixed top-0 left-0 right-0 z-50">
@@ -207,7 +201,7 @@ export default function LandingPage() {
             <Link href="/login" className="btn-outline text-xs py-2 px-5 hidden sm:inline-flex">
               Entrar
             </Link>
-            <Link href="/signup" className="btn-neon text-xs py-2 px-5">
+            <Link href="/signup" className="btn-primary text-xs py-2 px-5">
               Começar Grátis
             </Link>
           </div>
@@ -225,26 +219,24 @@ export default function LandingPage() {
 
         {/* LEFT COLUMN: Text Content */}
         <div className="relative flex flex-col items-start gap-8 z-10 w-full max-w-2xl">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-[#ffffff] font-bold">
-            Sua barbearia no futuro
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#a1a1aa] font-bold">
+            Sistema de Gestão Profissional
           </span>
           <h1
             className="animate-fade-in-up opacity-0 delay-200 font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.05] tracking-tight text-white text-left"
           >
-            A Plataforma Que
+            Tudo Para Sua
             <br />
-            Sua Barbearia{' '}
-            <br />
-            <em className="not-italic text-white">Merecia</em>
+            Barbearia{' '}
+            <span className="text-gradient">Crescer</span>
           </h1>
 
           <p className="animate-fade-in-up opacity-0 delay-300 max-w-lg text-left text-lg sm:text-xl leading-relaxed" style={{ color: 'rgba(200,207,224,0.6)' }}>
-            Agendamento inteligente, gestão financeira, controle de equipe e
-            página pública profissional — tudo em um lugar.
+            Foque no que você faz de melhor. Nós cuidamos do agendamento, financeiro e controle da sua equipe com um sistema simples e eficiente.
           </p>
 
           <div className="animate-fade-in-up opacity-0 delay-400 flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full">
-            <Link href="/signup" className="btn-neon text-sm py-4 px-8 animate-pulse-glow w-full sm:w-auto justify-center">
+            <Link href="/signup" className="btn-primary text-sm py-4 px-8 w-full sm:w-auto justify-center">
               Criar Conta Grátis →
             </Link>
             <a href="#features" className="btn-outline text-sm py-4 px-8 w-full sm:w-auto justify-center">
@@ -301,7 +293,7 @@ export default function LandingPage() {
                     <input type="password" placeholder="••••••••" className="premium-input bg-[#0a0a0a] border-white/10 text-sm py-3.5 focus:border-[#ffffff] focus:ring-1 focus:ring-[#ffffff]" />
                   </div>
                   
-                  <Link href="/dashboard" className="btn-neon w-full justify-center py-3.5 mt-4 text-xs font-bold shadow-[0_0_15px_rgba(255, 255, 255,0.2)]">
+                  <Link href="/dashboard" className="btn-primary w-full justify-center py-3.5 mt-4 text-xs font-bold">
                     Entrar no Sistema
                   </Link>
                   
@@ -341,7 +333,7 @@ export default function LandingPage() {
             </span>
             <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
               Tudo Que Você Precisa{' '}
-              <span className="text-neon-gradient">Em Um Só Lugar</span>
+              <span className="text-gradient">Em Um Só Lugar</span>
             </h2>
             <p className="mt-4 max-w-xl mx-auto" style={{ color: 'rgba(200,207,224,0.55)' }}>
               Desenvolvido especificamente para barbearias brasileiras, com cada
@@ -380,10 +372,6 @@ export default function LandingPage() {
 
       {/* ── 4. PRICING ── */}
       <section id="pricing" className="relative py-28 px-6 z-10 particle-section">
-        {/* Extra dense particle layer just for pricing */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <ParticleCanvas count={120} color="255, 255, 255" />
-        </div>
 
         {/* faint radial glow at top */}
         <div
@@ -400,7 +388,7 @@ export default function LandingPage() {
             </span>
             <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
               Planos Para{' '}
-              <span className="text-neon-gradient">Toda Barbearia</span>
+              <span className="text-gradient">Toda Barbearia</span>
             </h2>
             <p className="mt-4" style={{ color: 'rgba(200,207,224,0.5)' }}>
               Comece grátis por 14 dias. Escolha o plano quando estiver pronto.
@@ -497,7 +485,7 @@ export default function LandingPage() {
                   <Link
                     href={plan.id === 'enterprise' ? '/contact' : '/signup'}
                     className={`w-full justify-center flex text-xs py-3 px-6 font-bold uppercase tracking-[0.12em] rounded transition-all duration-300 ${
-                      plan.highlighted ? 'btn-neon' : 'pricing-cta-outline'
+                      plan.highlighted ? 'btn-primary' : 'pricing-cta-outline'
                     }`}
                   >
                     ▪ {plan.cta.toUpperCase()}
@@ -525,7 +513,7 @@ export default function LandingPage() {
             </span>
             <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-white">
               Barbearias Que Já{' '}
-              <span className="text-neon-gradient">Transformaram</span> Seus Negócios
+              <span className="text-gradient">Transformaram</span> Seus Negócios
             </h2>
           </div>
 
@@ -579,7 +567,7 @@ export default function LandingPage() {
 
           <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">
             Pronto Para{' '}
-            <span className="text-neon-gradient">Transformar</span>
+            <span className="text-gradient">Transformar</span>
             <br />
             Sua Barbearia?
           </h2>
@@ -588,7 +576,7 @@ export default function LandingPage() {
             14 dias grátis. Sem cartão de crédito. Configure em 5 minutos.
           </p>
 
-          <Link href="/signup" className="btn-neon text-sm py-5 px-12 animate-pulse-glow">
+          <Link href="/signup" className="btn-primary text-sm py-5 px-12">
             Criar Minha Conta Grátis →
           </Link>
         </div>

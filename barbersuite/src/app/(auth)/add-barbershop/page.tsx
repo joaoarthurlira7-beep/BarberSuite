@@ -111,20 +111,57 @@ export default function AddBarbershopPage() {
     setGlobalError('')
 
     try {
-      // Simulate API Call delay
-      await new Promise(r => setTimeout(r, 1500))
-      
-      // Attempt auth signup in Supabase (or hit real API)
       const supabase = createClient()
-      const { error: signUpError } = await supabase.auth.signUp({
+      
+      // 1. Attempt auth signup in Supabase
+      const { data: authData, error: signUpError } = await supabase.auth.signUp({
         email: formData.adminEmail,
         password: formData.password,
+        options: {
+          data: {
+            barbershop_name: formData.name,
+            slug: formData.slug,
+          }
+        }
       })
 
       if (signUpError) throw new Error(signUpError.message)
       
-      // Next, we would insert the barbershop data. We simulate success here.
-      router.push('/dashboard')
+      const userId = authData.user?.id
+
+      // 2. Insert row in barbershops table
+      if (userId) {
+        const { error: dbError } = await supabase.from('barbershops').insert({
+          slug: formData.slug,
+          name: formData.name,
+          owner_id: userId,
+          primary_color: formData.primaryColor,
+          address: formData.address,
+          phone: formData.phone,
+          tagline: formData.description,
+        })
+
+        if (dbError) {
+          console.error('Barbershop database insert error:', dbError)
+          throw new Error('Conta de usuário criada, mas erro ao registrar barbearia no banco de dados.')
+        }
+      }
+
+      // 3. Try to sign in automatically
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+        email: formData.adminEmail,
+        password: formData.password,
+      })
+
+      setLoading(false)
+
+      if (!signInError && signInData?.session) {
+        router.push('/dashboard')
+        router.refresh()
+      } else {
+        // Show success status even if we cannot log in due to email verification
+        setGlobalError('Conta criada com sucesso! Por favor, verifique seu e-mail para confirmar seu cadastro antes de acessar o painel.')
+      }
     } catch (err: any) {
       setGlobalError(err.message || 'Failed to create barbershop. Please try again.')
       setLoading(false)

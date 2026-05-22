@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# Next.js build
+.next/
+
+# Expo build and cache
+.expo/
+dist/
+web-build/
+
+# Local environment variables
+.env*.local
+.env
+
+# Vercel
+.vercel/
+
+# Temporary / other untracked folders
+frontend/

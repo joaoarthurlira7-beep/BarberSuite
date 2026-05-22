@@ -110,12 +110,23 @@ export default function SignupPage() {
 
       if (dbError) {
         console.error('Barbershop insert error:', dbError)
-        // Non-blocking: user was already created — just continue to success state
       }
     }
 
+    // 3. Try to sign in automatically
+    const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+
     setLoading(false)
-    setSuccess(true)
+
+    if (!signInError && signInData?.session) {
+      router.push('/dashboard')
+      router.refresh()
+    } else {
+      setSuccess(true) // Fallback to verification screen if email confirmation is required
+    }
   }
 
   return (

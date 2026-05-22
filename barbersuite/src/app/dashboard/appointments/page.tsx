@@ -1,21 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Plus, ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, User, Scissors } from 'lucide-react'
 import { formatCurrency } from '@/lib/utils'
-
-// Mock Data
-const MOCK_BARBERS = [
-  { id: '1', name: 'José Shaper' },
-  { id: '2', name: 'Carlos Barber' },
-]
-
-const MOCK_APPOINTMENTS = [
-  { id: '1', barber_id: '1', client_name: 'Carlos Silva', time: '09:00', duration: 45, service: 'Fade Clássico', status: 'confirmed' },
-  { id: '2', barber_id: '2', client_name: 'Rafael Souza', time: '10:00', duration: 30, service: 'Ritual de Barba', status: 'completed' },
-  { id: '3', barber_id: '1', client_name: 'Lucas Mendes', time: '11:00', duration: 90, service: 'Full Experience', status: 'pending' },
-  { id: '4', barber_id: '2', client_name: 'Thiago Alves', time: '13:00', duration: 40, service: 'Barboterapia', status: 'confirmed' },
-]
+import { createClient } from '@/lib/supabase/client'
 
 const TIME_SLOTS = Array.from({ length: 27 }, (_, i) => {
   const hour = Math.floor(i / 2) + 8
@@ -26,6 +14,74 @@ const TIME_SLOTS = Array.from({ length: 27 }, (_, i) => {
 export default function AppointmentsPage() {
   const [currentDate, setCurrentDate] = useState(new Date())
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const supabase = createClient()
+  
+  const [barbershopId, setBarbershopId] = useState<string | null>(null)
+  const [barbers, setBarbers] = useState<any[]>([])
+  const [appointments, setAppointments] = useState<any[]>([])
+  const [services, setServices] = useState<any[]>([])
+  
+  // Modal State
+  const [newAppt, setNewAppt] = useState({ client_name: '', barber_id: '', service_id: '', time: '09:00' })
+
+  useEffect(() => {
+    fetchBarbershop()
+  }, [])
+
+  useEffect(() => {
+    if (barbershopId) {
+      fetchBarbers()
+      fetchServices()
+      fetchAppointments()
+    }
+  }, [barbershopId, currentDate])
+
+  const fetchBarbershop = async () => {
+    const { data: userData } = await supabase.auth.getUser()
+    if (!userData.user) return
+
+    const { data: shop } = await supabase
+      .from('barbershops')
+      .select('id')
+      .eq('owner_id', userData.user.id)
+      .single()
+    
+    if (shop) setBarbershopId(shop.id)
+  }
+
+  const fetchBarbers = async () => {
+    const { data } = await supabase
+      .from('barbers')
+      .select('*')
+      .eq('barbershop_id', barbershopId)
+      .eq('is_active', true)
+    if (data) setBarbers(data)
+  }
+
+  const fetchServices = async () => {
+    const { data } = await supabase
+      .from('services')
+      .select('*')
+      .eq('barbershop_id', barbershopId)
+      .eq('is_active', true)
+    if (data) setServices(data)
+  }
+
+  const fetchAppointments = async () => {
+    const startOfDay = new Date(currentDate)
+    startOfDay.setHours(0, 0, 0, 0)
+    const endOfDay = new Date(currentDate)
+    endOfDay.setHours(23, 59, 59, 999)
+
+    const { data } = await supabase
+      .from('appointments')
+      .select('*, services(name, duration_min, price)')
+      .eq('barbershop_id', barbershopId)
+      .gte('scheduled_at', startOfDay.toISOString())
+      .lte('scheduled_at', endOfDay.toISOString())
+    
+    if (data) setAppointments(data)
+  }
 
   const handlePrevDay = () => {
     const newDate = new Date(currentDate)
@@ -39,11 +95,39 @@ export default function AppointmentsPage() {
     setCurrentDate(newDate)
   }
 
+  const handleSaveAppointment = async () => {
+    if (!barbershopId || !newAppt.client_name || !newAppt.service_id) return
+
+    const service = services.find(s => s.id === newAppt.service_id)
+    const scheduledAt = new Date(currentDate)
+    const [hours, minutes] = newAppt.time.split(':').map(Number)
+    scheduledAt.setHours(hours, minutes, 0, 0)
+
+    const { error } = await supabase.from('appointments').insert({
+      barbershop_id: barbershopId,
+      barber_id: newAppt.barber_id || null,
+      service_id: newAppt.service_id,
+      client_name: newAppt.client_name,
+      scheduled_at: scheduledAt.toISOString(),
+      status: 'confirmed',
+      payment_status: 'pending',
+      price: service?.price || 0,
+      source: 'manual'
+    })
+
+    if (!error) {
+      setIsModalOpen(false)
+      fetchAppointments()
+      setNewAppt({ client_name: '', barber_id: '', service_id: '', time: '09:00' })
+    }
+  }
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'confirmed': return 'border-blue-500 bg-blue-500/10'
       case 'completed': return 'border-green-500 bg-green-500/10'
       case 'pending': return 'border-[#ffffff] bg-[#ffffff]/10'
+      case 'in_progress': return 'border-purple-500 bg-purple-500/10'
       default: return 'border-neutral-700 bg-neutral-800'
     }
   }
@@ -94,7 +178,13 @@ export default function AppointmentsPage() {
           </div>
 
           {/* Barber Columns */}
-          {MOCK_BARBERS.map((barber) => (
+          {barbers.length === 0 && (
+            <div className="flex-1 flex items-center justify-center text-neutral-500">
+              Cadastre barbeiros na aba Equipe para visualizar a agenda.
+            </div>
+          )}
+
+          {barbers.map((barber) => (
             <div key={barber.id} className="flex-1 min-w-[250px] border-r border-neutral-800/50 relative">
               {/* Header */}
               <div className="h-12 border-b border-neutral-800/50 flex items-center justify-center sticky top-0 bg-[#0a0a0a] z-10">
@@ -110,15 +200,21 @@ export default function AppointmentsPage() {
                   <div 
                     key={idx} 
                     className="h-16 border-b border-neutral-800/30 cursor-pointer hover:bg-neutral-800/20 transition-colors"
-                    onClick={() => setIsModalOpen(true)}
+                    onClick={() => {
+                      setNewAppt({ ...newAppt, barber_id: barber.id, time })
+                      setIsModalOpen(true)
+                    }}
                   ></div>
                 ))}
 
                 {/* Appointments Overlay */}
-                {MOCK_APPOINTMENTS.filter(a => a.barber_id === barber.id).map((apt) => {
-                  const [hours, minutes] = apt.time.split(':').map(Number)
-                  const startIdx = (hours - 8) * 2 + (minutes === 30 ? 1 : 0)
-                  const height = (apt.duration / 30) * 4 // 4rem = 64px = 1h-16 class
+                {appointments.filter(a => a.barber_id === barber.id || (!a.barber_id && barber === barbers[0])).map((apt) => {
+                  const d = new Date(apt.scheduled_at)
+                  const hours = d.getHours()
+                  const minutes = d.getMinutes()
+                  const startIdx = (hours - 8) * 2 + (minutes >= 30 ? 1 : 0)
+                  const duration = apt.services?.duration_min || 30
+                  const height = (duration / 30) * 4 // 4rem = 64px = 1h-16 class
                   
                   return (
                     <div
@@ -127,10 +223,13 @@ export default function AppointmentsPage() {
                       style={{
                         top: `${startIdx * 4}rem`,
                         height: `${height}rem`,
+                        minHeight: '4rem',
                       }}
                     >
-                      <p className="text-xs font-bold text-white truncate">{apt.time} - {apt.client_name}</p>
-                      <p className="text-[10px] text-neutral-300 truncate mt-0.5">{apt.service}</p>
+                      <p className="text-xs font-bold text-white truncate">
+                        {hours.toString().padStart(2, '0')}:{minutes.toString().padStart(2, '0')} - {apt.client_name}
+                      </p>
+                      <p className="text-[10px] text-neutral-300 truncate mt-0.5">{apt.services?.name}</p>
                     </div>
                   )
                 })}
@@ -149,28 +248,53 @@ export default function AppointmentsPage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Cliente</label>
-                <input type="text" className="premium-input w-full" placeholder="Nome do cliente" />
+                <input 
+                  type="text" 
+                  className="premium-input w-full" 
+                  placeholder="Nome do cliente" 
+                  value={newAppt.client_name}
+                  onChange={e => setNewAppt({...newAppt, client_name: e.target.value})}
+                />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Barbeiro</label>
-                  <select className="premium-input w-full appearance-none">
-                    {MOCK_BARBERS.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
+                  <select 
+                    className="premium-input w-full appearance-none"
+                    value={newAppt.barber_id}
+                    onChange={e => setNewAppt({...newAppt, barber_id: e.target.value})}
+                  >
+                    <option value="">Selecione...</option>
+                    {barbers.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Serviço</label>
-                  <select className="premium-input w-full appearance-none">
-                    <option>Fade Clássico</option>
-                    <option>Ritual de Barba</option>
+                  <select 
+                    className="premium-input w-full appearance-none"
+                    value={newAppt.service_id}
+                    onChange={e => setNewAppt({...newAppt, service_id: e.target.value})}
+                  >
+                    <option value="">Selecione...</option>
+                    {services.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                   </select>
                 </div>
+              </div>
+              <div>
+                <label className="block text-[10px] uppercase text-neutral-500 font-bold mb-1">Horário (Hoje)</label>
+                <select 
+                  className="premium-input w-full appearance-none"
+                  value={newAppt.time}
+                  onChange={e => setNewAppt({...newAppt, time: e.target.value})}
+                >
+                  {TIME_SLOTS.map(t => <option key={t} value={t}>{t}</option>)}
+                </select>
               </div>
             </div>
 
             <div className="flex gap-3 mt-8">
               <button onClick={() => setIsModalOpen(false)} className="btn-outline flex-1 justify-center py-2 text-xs">Cancelar</button>
-              <button onClick={() => setIsModalOpen(false)} className="btn-neon flex-1 justify-center py-2 text-xs">Salvar</button>
+              <button onClick={handleSaveAppointment} className="btn-neon flex-1 justify-center py-2 text-xs">Salvar</button>
             </div>
           </div>
         </div>

@@ -106,7 +106,7 @@ export default async function DashboardPage() {
     // 2. Buscar agendamentos de Hoje (com relacionamento de barbeiros e serviços)
     const { data: todayAptsRaw } = await supabase
       .from('appointments')
-      .select('*, barber:barbers(name), service:services(name)')
+      .select('*, barbers(name), services(name)')
       .eq('barbershop_id', barbershop!.id)
       .gte('scheduled_at', startOfDay.toISOString())
       .lte('scheduled_at', endOfDay.toISOString())
@@ -116,8 +116,8 @@ export default async function DashboardPage() {
       id: apt.id,
       client_name: apt.client_name,
       time: new Date(apt.scheduled_at).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-      barber: apt.barber ? (apt.barber as any).name : 'Não atribuído',
-      service: apt.service ? (apt.service as any).name : 'Serviço excluído',
+      barber: apt.barbers ? (apt.barbers as any).name : 'Não atribuído',
+      service: apt.services ? (apt.services as any).name : 'Serviço excluído',
       status: apt.status,
       price: Number(apt.price) || 0
     }))

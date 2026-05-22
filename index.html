@@ -28,19 +28,32 @@
     <!-- STRUCTURED DATA -->
     <script type="application/ld+json">
 {
-"@context": "https://schema.org",
-"@type": "BarberShop",
-"name": "Vallen Barbearia",
-"image": "https://images.unsplash.com/photo-1621605815971-fbc98d665033",
-"telephone": "+5562984804310",
-"address": {
-"@type": "PostalAddress",
-"streetAddress": "Rua Principal, 123",
-"addressLocality": "Uruaçu",
-"addressCountry": "BR"
-},
-"url": "https://vallenbarbearia.com.br",
-"priceRange": "$$"
+  "@context": "https://schema.org",
+  "@type": "BarberShop",
+  "name": "Vallen Barbearia",
+  "image": "https://images.unsplash.com/photo-1621605815971-fbc98d665033",
+  "telephone": "+5562984804310",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Avenida Transbrasiliana, 14",
+    "addressLocality": "Uruaçu",
+    "addressRegion": "GO",
+    "addressCountry": "BR"
+  },
+  "url": "https://vallenbarbearia.com.br",
+  "priceRange": "$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/vallenbarbearia",
+    "https://www.facebook.com/vallenbarbearia"
+  ]
 }
 </script>
     <style>
@@ -359,7 +372,7 @@
 
     <!-- NAVIGATION -->
     <nav id="navbar"
-        class="absolute top-0 left-0 w-full z-40 px-6 py-6 flex justify-between items-center transition-all duration-300 border-b border-transparent bg-transparent">
+        class="fixed top-0 left-0 w-full z-40 px-6 py-4 flex justify-between items-center transition-all duration-300 border-b border-white/5 bg-black/50 backdrop-blur-md">
         <!-- Logo -->
         <a href="#" id="logo"
             class="font-display text-2xl tracking-tighter uppercase font-semibold text-white z-50 flex items-center gap-2 mix-blend-difference">
@@ -640,10 +653,11 @@
                         <h3 class="font-display text-2xl uppercase group-hover:pl-4 transition-all">Fade Clássico</h3>
                         <span class="text-lg font-light">R$ 50</span>
                     </div>
-                    <p class="text-neutral-500 text-sm font-light group-hover:text-neutral-300 transition-colors">
-                        <span data-lang="pt">Degradê perfeito, alinhamento e acabamento na navalha.</span>
-                        <span data-lang="en" class="hidden">Perfect fade, lining and razor finish.</span>
+                    <p class="text-neutral-500 text-sm font-light group-hover:text-neutral-300 transition-colors mb-4">
+                        <span data-lang="pt">Corte de precisão milimétrica. Inclui degradê impecável, alinhamento simétrico e acabamento suave na navalha para um visual moderno e limpo.</span>
+                        <span data-lang="en" class="hidden">Millimeter precision cut. Includes flawless fade, symmetrical lining, and a smooth razor finish for a modern, clean look.</span>
                     </p>
+                    <a href="#reservas" class="text-[#d8c3a5] text-xs font-bold uppercase tracking-widest hover:text-white transition-colors group-hover:pl-2">Agendar Agora &rarr;</a>
                 </div>
 
                 <!-- Service Item 2 -->
@@ -653,10 +667,11 @@
                         <h3 class="font-display text-2xl uppercase group-hover:pl-4 transition-all">Ritual de Barba</h3>
                         <span class="text-lg font-light">R$ 40</span>
                     </div>
-                    <p class="text-neutral-500 text-sm font-light group-hover:text-neutral-300 transition-colors">
-                        <span data-lang="pt">Toalha quente, óleos essenciais, alinhamento e massagem.</span>
-                        <span data-lang="en" class="hidden">Hot towel, essential oils, shaping and massage.</span>
+                    <p class="text-neutral-500 text-sm font-light group-hover:text-neutral-300 transition-colors mb-4">
+                        <span data-lang="pt">Um verdadeiro spa para o homem. Inclui aplicação de toalha quente, óleos essenciais relaxantes, alinhamento perfeito dos fios e massagem facial.</span>
+                        <span data-lang="en" class="hidden">A true spa experience for men. Includes hot towel application, relaxing essential oils, perfect shaping, and a facial massage.</span>
                     </p>
+                    <a href="#reservas" class="text-[#d8c3a5] text-xs font-bold uppercase tracking-widest hover:text-white transition-colors group-hover:pl-2">Agendar Agora &rarr;</a>
                 </div>
 
                 <!-- Service Item 3 -->
@@ -666,10 +681,11 @@
                         <h3 class="font-display text-2xl uppercase group-hover:pl-4 transition-all">Full Experience</h3>
                         <span class="text-lg font-light">R$ 80</span>
                     </div>
-                    <p class="text-neutral-500 text-sm font-light group-hover:text-neutral-300 transition-colors">
-                        <span data-lang="pt">Corte + Barba + Máscara Negra + Bebida cortesia.</span>
-                        <span data-lang="en" class="hidden">Haircut + Beard + Black Mask + Complimentary drink.</span>
+                    <p class="text-neutral-500 text-sm font-light group-hover:text-neutral-300 transition-colors mb-4">
+                        <span data-lang="pt">O pacote definitivo de cuidados. Transformação completa com corte, ritual de barba, limpeza facial profunda com máscara negra e uma bebida premium cortesia.</span>
+                        <span data-lang="en" class="hidden">The ultimate grooming package. Complete transformation with haircut, beard ritual, deep facial cleansing with a black mask, and a complimentary premium drink.</span>
                     </p>
+                    <a href="#reservas" class="text-[#d8c3a5] text-xs font-bold uppercase tracking-widest hover:text-white transition-colors group-hover:pl-2">Agendar Agora &rarr;</a>
                 </div>
 
                 <!-- Service Item 4 -->
@@ -679,11 +695,11 @@
                         <h3 class="font-display text-2xl uppercase group-hover:pl-4 transition-all">Corte Infantil</h3>
                         <span class="text-lg font-light">R$ 45</span>
                     </div>
-                    <p class="text-neutral-500 text-sm font-light group-hover:text-neutral-300 transition-colors">
-                        <span data-lang="pt">Corte para crianças com a mesma precisão e paciência.</span>
-                        <span data-lang="en" class="hidden">Haircut for kids with the same precision and
-                            patience.</span>
+                    <p class="text-neutral-500 text-sm font-light group-hover:text-neutral-300 transition-colors mb-4">
+                        <span data-lang="pt">Atendimento especializado para os pequenos, com o máximo de paciência, cuidado e a mesma precisão técnica de um corte adulto.</span>
+                        <span data-lang="en" class="hidden">Specialized service for kids, with maximum patience, care, and the same technical precision as an adult cut.</span>
                     </p>
+                    <a href="#reservas" class="text-[#d8c3a5] text-xs font-bold uppercase tracking-widest hover:text-white transition-colors group-hover:pl-2">Agendar Agora &rarr;</a>
                 </div>
             </div>
         </div>
@@ -1197,6 +1213,51 @@
                     <span data-lang="pt">Siga @vallenbarbearia</span><span data-lang="en" class="hidden">Follow
                         @vallenbarbearia</span>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-24 bg-neutral-950 text-white border-t border-neutral-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-xs uppercase tracking-widest text-[#d8c3a5] mb-2 block">Dúvidas Comuns</span>
+                <h2 class="font-display text-5xl md:text-6xl uppercase tracking-tight">Perguntas Frequentes</h2>
+            </div>
+            <div class="space-y-6 reveal delay-100">
+                <!-- FAQ Item 1 -->
+                <div class="border-b border-neutral-800 pb-6 group cursor-pointer" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-display text-xl uppercase font-bold group-hover:text-[#d8c3a5] transition-colors">Preciso agendar com antecedência?</h3>
+                        <iconify-icon icon="solar:alt-arrow-down-linear" class="text-neutral-500 transition-transform group-[.active]:rotate-180"></iconify-icon>
+                    </div>
+                    <p class="mt-4 text-neutral-400 text-sm font-light hidden group-[.active]:block leading-relaxed">
+                        Recomendamos agendar seu horário com antecedência para garantir que você seja atendido no melhor momento para sua rotina, mas também atendemos por ordem de chegada mediante disponibilidade.
+                    </p>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="border-b border-neutral-800 pb-6 group cursor-pointer" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-display text-xl uppercase font-bold group-hover:text-[#d8c3a5] transition-colors">Quais formas de pagamento vocês aceitam?</h3>
+                        <iconify-icon icon="solar:alt-arrow-down-linear" class="text-neutral-500 transition-transform group-[.active]:rotate-180"></iconify-icon>
+                    </div>
+                    <p class="mt-4 text-neutral-400 text-sm font-light hidden group-[.active]:block leading-relaxed">
+                        Aceitamos cartões de crédito e débito das principais bandeiras, dinheiro em espécie e pagamentos via PIX.
+                    </p>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="border-b border-neutral-800 pb-6 group cursor-pointer" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-display text-xl uppercase font-bold group-hover:text-[#d8c3a5] transition-colors">O que está incluso na Full Experience?</h3>
+                        <iconify-icon icon="solar:alt-arrow-down-linear" class="text-neutral-500 transition-transform group-[.active]:rotate-180"></iconify-icon>
+                    </div>
+                    <p class="mt-4 text-neutral-400 text-sm font-light hidden group-[.active]:block leading-relaxed">
+                        A Full Experience é o nosso pacote premium. Ela inclui o corte de cabelo, o ritual completo de barba (com toalha quente e massagem), aplicação de máscara negra para limpeza de pele facial e uma bebida premium como cortesia.
+                    </p>
+                </div>
+            </div>
+            <div class="flex justify-center mt-12 reveal delay-200">
+                <a href="https://wa.me/5562984804310" target="_blank" class="text-xs uppercase tracking-widest text-[#d8c3a5] hover:text-white font-bold transition-colors underline underline-offset-4">Ainda tem dúvidas? Fale conosco no WhatsApp</a>
             </div>
         </div>
     </section>
