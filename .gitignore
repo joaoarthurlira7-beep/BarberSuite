@@ -18,3 +18,5 @@ web-build/
 
 # Temporary / other untracked folders
 frontend/
+
+.vercel

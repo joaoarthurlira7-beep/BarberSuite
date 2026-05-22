@@ -124,7 +124,7 @@ export default function AppointmentsPage() {
       status: 'confirmed',
       payment_status: 'pending',
       price: service?.price || 0,
-      source: 'manual'
+      source: 'admin'
     })
 
     if (error) {
